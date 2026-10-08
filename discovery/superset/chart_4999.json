@@ -1,0 +1,19 @@
+{
+  "id": 4999,
+  "name": "Web Sessions Ref Type",
+  "dashboard": 527,
+  "datasource": "286__table (web_sankey_sessions_ref_type)",
+  "viz": "sankey_v2",
+  "metric": "SUM(value) AS Sessions Count",
+  "groupby": [
+    "source",
+    "target"
+  ],
+  "filters": [
+    {
+      "col": "event_date",
+      "op": "TEMPORAL_RANGE",
+      "val": "Current month"
+    }
+  ]
+}

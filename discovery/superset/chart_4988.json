@@ -1,0 +1,19 @@
+{
+  "id": 4988,
+  "name": "All Platforms Sessions Flow",
+  "dashboard": 527,
+  "datasource": "276__table (all_sessions_for_sankey_chart, virtual SQL on PostgreSQL)",
+  "viz": "sankey_v2",
+  "metric": "SUM(value) AS Sessions Count",
+  "groupby": [
+    "source",
+    "target"
+  ],
+  "filters": [
+    {
+      "col": "date",
+      "op": "TEMPORAL_RANGE",
+      "val": "Current month"
+    }
+  ]
+}

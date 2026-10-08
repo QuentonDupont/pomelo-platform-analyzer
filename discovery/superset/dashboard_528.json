@@ -1,0 +1,34 @@
+{
+  "id": 528,
+  "title": "Platform Traffic Analysis",
+  "changed_on": "2026-09-23",
+  "charts": {
+    "5001": "All Platforms Daily Non Bounce Traffic",
+    "5002": "iOS Platform Daily Non Bounce Traffic",
+    "5003": "Android Platform Daily Non Bounce Traffic",
+    "5004": "Web Desktop Platform Daily Non Bounce Traffic",
+    "5005": "Web Mobile Platform Daily Non Bounce Traffic",
+    "5006": "Daily Bounces By Platforms",
+    "5007": "iOS Daily Bounce Rate",
+    "5008": "Android Daily Bounce Rate",
+    "5009": "Web Desktop Daily Bounce Rate",
+    "5010": "Web Mobile Daily Bounce Rate",
+    "5011": "iOS Conversion Rate (Ex Bounces)",
+    "5012": "All Platforms Conversion Rate (Ex Bounces)",
+    "5013": "Android Conversion Rate (Ex Bounces)",
+    "5014": "Web Desktop Conversion Rate (Ex Bounces)",
+    "5015": "Web Mobile Conversion Rate (Ex Bounces)"
+  },
+  "native_filters": [
+    {
+      "name": "Session Date",
+      "type": "filter_time",
+      "default": "Current month",
+      "chartsInScope": [
+        5001,
+        5002
+      ]
+    }
+  ],
+  "note": "Charts 4988-4999 named in the brief are NOT on 528; they belong to dashboard 527 'Sankey Dashboard Based on Sessions'."
+}

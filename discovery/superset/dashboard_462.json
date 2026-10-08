@@ -1,0 +1,46 @@
+{
+  "id": 462,
+  "title": "Channel Non Bounce Traffic and Conversion Analysis",
+  "chart_ids": [
+    4481,
+    4482,
+    4483,
+    4484,
+    4485,
+    4486,
+    4487,
+    4488,
+    4489,
+    4496,
+    4497,
+    4498,
+    4499,
+    4500,
+    4501,
+    4502,
+    4503,
+    4504,
+    4505,
+    4506,
+    4507
+  ],
+  "native_filters": [
+    {
+      "name": "Session Date",
+      "type": "filter_time",
+      "default": "2026-06-01T00:00:00 : 2026-07-15T00:00:00",
+      "chartsInScope": [
+        4481,
+        4482,
+        4483,
+        4484,
+        4485,
+        4486,
+        4487,
+        4488,
+        4489
+      ]
+    }
+  ],
+  "note": "Chart definitions not dumped (time budget); per-channel traffic/orders/CR charts."
+}

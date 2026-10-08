@@ -1,0 +1,5413 @@
+[
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1143.3",
+    "previous_release_id": "v1.1141.10",
+    "go_live_at": "2026-08-13T06:51:11Z",
+    "bangkok_date": "2026-08-13",
+    "signal": "workflow_run",
+    "evidence_run_id": 31675389797,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 5967,
+        "title": "feat(vto): [PRDT-11323] Google vertex VTO",
+        "merged_at": "2026-08-07T06:59:42Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "adapters/base",
+          "common",
+          "config",
+          "config/google-vto",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5968,
+        "title": "fix(vto): [PRDT-11323] vault update",
+        "merged_at": "2026-08-07T08:24:25Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5969,
+        "title": "fix(marketplace): [PRDT-11309] Read original order date from marketplace API",
+        "merged_at": "2026-08-07T11:29:19Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5970,
+        "title": "feat(pos): [BUSK-2789] Exclude POS cart form showing up on web/apps",
+        "merged_at": "2026-08-11T05:52:22Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5971,
+        "title": "fix(cart): [PRDT-000] freegift eligibility",
+        "merged_at": "2026-08-13T04:49:18Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5972,
+        "title": "fix(marketplace): [PRDT-000] Retuen items missing",
+        "merged_at": "2026-08-13T05:34:28Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5973,
+        "title": "fix(deploy): [PRDT-000] Vault update for vto",
+        "merged_at": "2026-08-13T06:31:00Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 7,
+    "confounded": true,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1143.4",
+    "previous_release_id": "v1.1143.3",
+    "go_live_at": "2026-08-13T08:39:22Z",
+    "bangkok_date": "2026-08-13",
+    "signal": "workflow_run",
+    "evidence_run_id": 31682996388,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 5974,
+        "title": "fix(marketplace): [PRDT-000] Handle empty returns",
+        "merged_at": "2026-08-13T08:17:25Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1143.5",
+    "previous_release_id": "v1.1143.4",
+    "go_live_at": "2026-08-13T09:25:47Z",
+    "bangkok_date": "2026-08-13",
+    "signal": "workflow_run",
+    "evidence_run_id": 31686512248,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 5975,
+        "title": "fix(vto): [PRDT-000] Vertex api issue on prod",
+        "merged_at": "2026-08-13T09:07:42Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters/base"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1143.6",
+    "previous_release_id": "v1.1143.5",
+    "go_live_at": "2026-08-13T11:00:51Z",
+    "bangkok_date": "2026-08-13",
+    "signal": "workflow_run",
+    "evidence_run_id": 31693607746,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 5976,
+        "title": "fix(vto): [PRDT-000] Replace sdk with google api",
+        "merged_at": "2026-08-13T10:45:48Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters/base",
+          "(root)",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1143.11",
+    "previous_release_id": "v1.1143.6",
+    "go_live_at": "2026-08-19T03:59:17Z",
+    "bangkok_date": "2026-08-19",
+    "signal": "workflow_run",
+    "evidence_run_id": 32214075715,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 5977,
+        "title": "fix(retry-payment): [PRDT-000] Failure on pre-prod",
+        "merged_at": "2026-08-14T04:17:51Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "common/models"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5978,
+        "title": "chore: [PRDT-10593] Sunset all V3, V4 endpoints",
+        "merged_at": "2026-08-14T05:36:13Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "common/models",
+          "controllers/v2",
+          "controllers/v3",
+          "controllers/v4",
+          "controllers/v6",
+          "server",
+          "shared/models",
+          "specifications/v2"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5979,
+        "title": "fix(deploy): [PRDT-000] V3,V4 removal",
+        "merged_at": "2026-08-14T06:10:09Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5980,
+        "title": "fix(image): [PRDT-000] Handle missing cover image",
+        "merged_at": "2026-08-18T07:35:09Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5982,
+        "title": "fix(cart): [PRDT-000] Update image selection query",
+        "merged_at": "2026-08-19T02:42:23Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5983,
+        "title": "fix(cart): [PRDT-000] use COALESCE, as IFNULL not handling empty string",
+        "merged_at": "2026-08-19T03:40:32Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 6,
+    "confounded": true,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1147.0",
+    "previous_release_id": "v1.1143.11",
+    "go_live_at": "2026-08-24T04:11:30Z",
+    "bangkok_date": "2026-08-24",
+    "signal": "workflow_run",
+    "evidence_run_id": 32689054041,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 5984,
+        "title": "fix(selectable-cart): [PRDT-000] Sorting",
+        "merged_at": "2026-08-19T05:55:08Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5985,
+        "title": "feat(flagsmith): [PRDT-11315] Remove flags which are permanently live",
+        "merged_at": "2026-08-21T02:47:21Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters/base",
+          "config",
+          "controllers/v6",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5986,
+        "title": "feat(categories): [PRDT-11431] Optimize categories-details api",
+        "merged_at": "2026-08-21T06:13:52Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "controllers/v7"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5987,
+        "title": "feat(cart): [PRDT-000] Add to cart optimization",
+        "merged_at": "2026-08-21T11:07:45Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6",
+          "shared/functions"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5988,
+        "title": "feat(checkout): [PRDT-000] PIMS product exclusion",
+        "merged_at": "2026-08-24T03:51:14Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "common/modules",
+          "config",
+          "tests/common"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 5,
+    "confounded": true,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1148.1",
+    "previous_release_id": "v1.1147.0",
+    "go_live_at": "2026-08-25T06:59:28Z",
+    "bangkok_date": "2026-08-25",
+    "signal": "workflow_run",
+    "evidence_run_id": 32819405034,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 5989,
+        "title": "feat(skinny-baner): [PRDT-11424] Skinny banner endpoint revamp",
+        "merged_at": "2026-08-25T02:39:40Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters/base",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5990,
+        "title": "fix(checkout): [PRDT-000] Skip PIMS based on is_virtual flag",
+        "merged_at": "2026-08-25T05:38:46Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "common/modules",
+          "config",
+          "tests/common",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1149.1",
+    "previous_release_id": "v1.1148.1",
+    "go_live_at": "2026-08-31T07:27:56Z",
+    "bangkok_date": "2026-08-31",
+    "signal": "workflow_run",
+    "evidence_run_id": 33368465808,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 5998,
+        "title": "chore(gitignore): [PRDT-000] Ignore local .tmux file",
+        "merged_at": "2026-08-27T07:26:25Z",
+        "author": "wallop-t",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5991,
+        "title": "fix(order): [PRDT-11426] Order history endpoint optimization",
+        "merged_at": "2026-08-28T04:08:50Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "common/adapters",
+          "controllers/v6",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 5999,
+        "title": "fix(order): [PRDT-11426] Order detail endpoint optimization",
+        "merged_at": "2026-08-28T04:45:14Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6000,
+        "title": "feat(pims): [PRDT-000] Add mkp order id to payload",
+        "merged_at": "2026-08-31T02:48:55Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "common/modules",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6001,
+        "title": "fix(voucher): [PRDT-000] Use a new flag for auto apply",
+        "merged_at": "2026-08-31T05:45:49Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "config",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 5,
+    "confounded": true,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1150.0",
+    "previous_release_id": "v1.1149.1",
+    "go_live_at": "2026-09-02T05:45:34Z",
+    "bangkok_date": "2026-09-02",
+    "signal": "workflow_run",
+    "evidence_run_id": 33595952078,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 6002,
+        "title": "fix(cart): [PRDT-000] make inactive products as soldout",
+        "merged_at": "2026-08-31T09:18:07Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6003,
+        "title": "fix: [PRDT-11466] Optimizations",
+        "merged_at": "2026-09-01T07:35:17Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters/base",
+          "adapters",
+          "controllers/v6",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6007,
+        "title": "fix(cicd-pipeline): [PRDT-000] Resolve cicd for breaking change upgrade checkout dependency",
+        "merged_at": "2026-09-01T10:15:47Z",
+        "author": "daniel-g-pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6011,
+        "title": "feat(pos): [PRDT-11509] Move diamond discount to voucher code",
+        "merged_at": "2026-09-02T02:51:43Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6",
+          "shared/functions",
+          "tests/shared",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 4,
+    "confounded": true,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1149.6",
+    "previous_release_id": "v1.1150.0",
+    "go_live_at": "2026-09-07T08:23:26Z",
+    "bangkok_date": "2026-09-07",
+    "signal": "workflow_run",
+    "evidence_run_id": 34100304340,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 5981,
+        "title": "fix(signup-credit): [PRDT-000] Add additional error handling + auto add store credit log if not exists",
+        "merged_at": "2026-09-02T06:49:25Z",
+        "author": "daniel-g-pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6021,
+        "title": "fix(category-related): [PRDT-11467] Increase cache expire",
+        "merged_at": "2026-09-02T06:58:10Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6004,
+        "title": "feat(kerry-express-returns): [PRDT-11477] Refactor address handling for Kerry Express returns",
+        "merged_at": "2026-09-03T03:13:49Z",
+        "author": "daniel-g-pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "(root)",
+          "shared/functions",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6027,
+        "title": "fix: [PRDT-11431] Optimize loyalty/payment-method/daily-checkin",
+        "merged_at": "2026-09-03T08:08:14Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6028,
+        "title": "feat(product): [PRDT-11429] Optimise similar-products endpoint",
+        "merged_at": "2026-09-07T03:25:15Z",
+        "author": "daniel-g-pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters/base",
+          "adapters",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6030,
+        "title": "feat(recommendation): [PRDT-11465] Optimise custom-recommendations endpoint",
+        "merged_at": "2026-09-07T04:00:33Z",
+        "author": "daniel-g-pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters/base",
+          "adapters",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 6,
+    "confounded": true,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1156.0",
+    "previous_release_id": "v1.1149.6",
+    "go_live_at": "2026-09-14T05:15:12Z",
+    "bangkok_date": "2026-09-14",
+    "signal": "workflow_run",
+    "evidence_run_id": 34808921513,
+    "environment": "api-ecs-production\u001b[0m",
+    "prs": [
+      {
+        "number": 6035,
+        "title": "feat(homefeed): [PRDT-11468] Add controller level caching",
+        "merged_at": "2026-09-09T17:20:28Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6038,
+        "title": "feat(homefeed): [PRDT-11468] Remove product details",
+        "merged_at": "2026-09-11T09:16:33Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "config",
+          "controllers/v6",
+          "controllers/v7",
+          "lib",
+          "tests/lib",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6039,
+        "title": "feat(pims): [PRDT-000] Update validateOrder payload",
+        "merged_at": "2026-09-14T02:54:21Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "common/modules",
+          "controllers/v7",
+          "tests/common",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 3,
+    "confounded": true
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1160.0",
+    "previous_release_id": "v1.1156.0",
+    "go_live_at": "2026-09-18T12:11:11Z",
+    "bangkok_date": "2026-09-18",
+    "signal": "workflow_run",
+    "evidence_run_id": 35343302866,
+    "environment": "api-ecs-production\u001b[0m",
+    "prs": [
+      {
+        "number": 6040,
+        "title": "fix(cart): [PRDT-000] Skip syncing products to selectable cart for POS",
+        "merged_at": "2026-09-14T10:51:48Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6041,
+        "title": "feat(fjb): [PRDT-000] Setup adyen FJB creds",
+        "merged_at": "2026-09-15T10:06:36Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "common",
+          "config/payment",
+          "controllers/v6",
+          "payment",
+          "shared/functions"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6042,
+        "title": "feat(fjb): [PRDT-000] update merchant account pre-prod",
+        "merged_at": "2026-09-15T10:45:16Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "config/payment"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6043,
+        "title": "feat(skinny-banner): only serve a banner where its shop row is active",
+        "merged_at": "2026-09-17T03:21:08Z",
+        "author": "wallop-t",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6044,
+        "title": "feat(adyen): [PRDT-000] Updaye MY shop to use GL merchant account",
+        "merged_at": "2026-09-18T11:56:19Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "common",
+          "config/payment",
+          "controllers/v6",
+          "payment",
+          "shared/functions"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 5,
+    "confounded": true
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1168.1",
+    "previous_release_id": "v1.1160.0",
+    "go_live_at": "2026-09-24T10:47:02Z",
+    "bangkok_date": "2026-09-24",
+    "signal": "workflow_run",
+    "evidence_run_id": 35989194358,
+    "environment": "api-ecs-production\u001b[0m",
+    "prs": [
+      {
+        "number": 6047,
+        "title": "feat(guest-checkout): [PRDT-11590] mark tthe he customer as guest",
+        "merged_at": "2026-09-21T11:15:58Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "specifications/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6048,
+        "title": "feat(guest-checkout): [PRDT-11589] Password reset email",
+        "merged_at": "2026-09-22T07:51:18Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "adapters",
+          "common",
+          "config/http",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6049,
+        "title": "feat(shipping-locations): [BUSK-2837] Allow configuration based on platforms",
+        "merged_at": "2026-09-22T11:07:25Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6051,
+        "title": "feat(guest-checkout): [PRDT-000] add logs",
+        "merged_at": "2026-09-23T05:02:51Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6050,
+        "title": "feat(preorder): [BUSK-2807] Disable TTB and COD on pre-order carts",
+        "merged_at": "2026-09-23T05:51:51Z",
+        "author": "daniel-g-pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "config",
+          "controllers/v6",
+          "shared/functions",
+          "tests/shared",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6052,
+        "title": "feat(guest-checkout): [PRDT-000] Reduce cc-add time window from 90s to 20s",
+        "merged_at": "2026-09-23T06:47:14Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6053,
+        "title": "fix(preorder): [BUSK-2807] Fix is_selectable for COD option",
+        "merged_at": "2026-09-24T04:32:05Z",
+        "author": "daniel-g-pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6054,
+        "title": "feat(guest-checkout): [PRDT-000] Reduce cc addtime window to 5 sec",
+        "merged_at": "2026-09-24T06:32:33Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6055,
+        "title": "feat(guest-checkout): [PRDT-000] Update template for Verify customer",
+        "merged_at": "2026-09-24T08:04:04Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6056,
+        "title": "fix(guest-checkout): [PRDT-000] Update template for Verify customer- revert",
+        "merged_at": "2026-09-24T10:10:35Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 10,
+    "confounded": true
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1168.3",
+    "previous_release_id": "v1.1168.1",
+    "go_live_at": "2026-09-25T05:57:00Z",
+    "bangkok_date": "2026-09-25",
+    "signal": "workflow_run",
+    "evidence_run_id": 36100689111,
+    "environment": "api-ecs-production\u001b[0m",
+    "prs": [
+      {
+        "number": 6057,
+        "title": "fix(deploy): [PRDT-000] guest checkout",
+        "merged_at": "2026-09-24T10:45:55Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6058,
+        "title": "fix(best-sellers): [PRDT-000] Remove Jumpsuits and Rompers",
+        "merged_at": "2026-09-25T05:40:31Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "config"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1170.0",
+    "previous_release_id": "v1.1168.3",
+    "go_live_at": "2026-09-29T05:41:07Z",
+    "bangkok_date": "2026-09-29",
+    "signal": "workflow_run",
+    "evidence_run_id": 36527293360,
+    "environment": "api-ecs-production\u001b[0m",
+    "prs": [
+      {
+        "number": 6059,
+        "title": "fix(best-sellers): [PRDT-000] Remove categories with <5 items",
+        "merged_at": "2026-09-25T10:29:10Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "config",
+          "controllers/v7",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6060,
+        "title": "feat(token): [PRDT-11606] Optimize sign up",
+        "merged_at": "2026-09-28T09:34:30Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "shared/functions",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6062,
+        "title": "fix(product): [PRDT-11614] decouple sales from reviews",
+        "merged_at": "2026-09-28T11:55:17Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6061,
+        "title": "feat(token): [PRDT-11606] Optimize sign up",
+        "merged_at": "2026-09-29T03:01:22Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 4,
+    "confounded": true
+  },
+  {
+    "repo": "api",
+    "platform": "backend",
+    "release_id": "v1.1180.0",
+    "previous_release_id": "v1.1170.0",
+    "go_live_at": "2026-10-07T10:43:52Z",
+    "bangkok_date": "2026-10-07",
+    "signal": "workflow_run",
+    "evidence_run_id": 37609295970,
+    "environment": "api-ecs-production\u001b[0m",
+    "prs": [
+      {
+        "number": 6046,
+        "title": "feat(pre-order): [BUSK-2838] Implement Pre-Order on product pages",
+        "merged_at": "2026-09-29T04:46:32Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters/base",
+          "adapters",
+          "controllers/v6",
+          "controllers/v7",
+          "shared/functions",
+          "specifications/v6",
+          "specifications/v7",
+          "tests/shared",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6063,
+        "title": "feat: [PRDT-11618] Create codex steering + add database migrations functionality for full context",
+        "merged_at": "2026-09-29T06:56:28Z",
+        "author": "daniel-g-pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "migrations"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6064,
+        "title": "feat(pre-order): [BUSK-2840] Update cart endpoints",
+        "merged_at": "2026-09-29T09:17:37Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "specifications/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6067,
+        "title": "feat(pre-order): [PRDT-000] Not coming soon for pre-order products",
+        "merged_at": "2026-09-30T06:16:08Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters/base",
+          "controllers/v6",
+          "shared/functions",
+          "tests/shared",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6068,
+        "title": "feat(pre-order): [BUSK-2373] Split order when it has a pre-order item",
+        "merged_at": "2026-09-30T06:52:56Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "common/modules",
+          "tests/common",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6069,
+        "title": "fix(kcg): [PRDT-000] Log kcg-order-sync errors on payment status",
+        "merged_at": "2026-09-30T09:35:57Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "shared/functions",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6070,
+        "title": "feat(pre-order): [PRDT-000] Allow add to cart for pre-order products",
+        "merged_at": "2026-09-30T10:17:48Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "controllers/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6071,
+        "title": "perf(cart): [PRDT-000] Remove blocking third-party calls from cart endpoints",
+        "merged_at": "2026-10-01T10:03:44Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "adapters",
+          "common",
+          "common/modules",
+          "config/http",
+          "controllers/v6",
+          "lib",
+          "shared/functions",
+          "tests/common",
+          "tests/shared"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6072,
+        "title": "revert: [PRDT-000] Revert \"Remove blocking third-party calls from cart endpoints\" (#6071)",
+        "merged_at": "2026-10-01T11:17:31Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "adapters",
+          "common",
+          "common/modules",
+          "config/http",
+          "controllers/v6",
+          "lib",
+          "shared/functions",
+          "tests/common",
+          "tests/shared"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6074,
+        "title": "perf(cart): [PRDT-000] Cart endpoint speed-ups + cart item order",
+        "merged_at": "2026-10-01T12:13:08Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "adapters",
+          "common",
+          "common/modules",
+          "config/http",
+          "controllers/v6",
+          "lib",
+          "shared/functions",
+          "tests/common",
+          "tests/shared"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6076,
+        "title": "fix(voucher): [PRDT-000] Include shop and POS in cart rules cache key",
+        "merged_at": "2026-10-02T04:00:56Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6078,
+        "title": "feat(pre-order): [BUSK-2374] Add pre_order_delay to shipping methods",
+        "merged_at": "2026-10-02T06:01:37Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "common/core-functions",
+          "controllers/v6",
+          "tests/common",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6079,
+        "title": "fix(cart): [PRDT-000] Keep free gifts at the top when out of stock",
+        "merged_at": "2026-10-02T08:24:27Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6081,
+        "title": "feat(pre-order): [BUSK-2373] Split pre-order items when payment succeeds",
+        "merged_at": "2026-10-02T11:34:32Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "common/models",
+          "common/modules",
+          "controllers/v6",
+          "shared/functions",
+          "tests/common",
+          "tests/shared",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6083,
+        "title": "fix(pre-order): [BUSK-2373] Split pre-order items for TTB payment holds",
+        "merged_at": "2026-10-05T06:29:52Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "adapters",
+          "common/modules",
+          "shared/functions",
+          "tests/common",
+          "tests/shared",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6084,
+        "title": "feat(pre-order): [BUSK-2842] Add pre-order tracking state to order details",
+        "merged_at": "2026-10-05T06:49:06Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "config",
+          "i18n",
+          "shared/functions",
+          "tests/shared",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6088,
+        "title": "chore(carriers): [PRDT-000] Remove unused getWHStockDetailsBy adapter",
+        "merged_at": "2026-10-05T11:05:06Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 6095,
+        "title": "feat(vouchers): [PRDT-000] Add condition, voucher_type and badge_type to products vouchers",
+        "merged_at": "2026-10-06T10:55:20Z",
+        "author": "sabari-pmlo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "adapters",
+          "controllers/v6",
+          "specifications/v6",
+          "tests/unit"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 18,
+    "confounded": true
+  },
+  {
+    "repo": "mobile-android",
+    "platform": "android",
+    "release_id": "v4.88.12",
+    "previous_release_id": "v4.88.11",
+    "go_live_at": "2026-09-05T05:32:15Z",
+    "bangkok_date": "2026-09-05",
+    "signal": "tag",
+    "evidence_run_id": null,
+    "environment": "git-tag (Play go-live unverified)",
+    "prs": [
+      {
+        "number": 3527,
+        "title": "fix: [AND-000]  Google signkey json update firebase",
+        "merged_at": "2026-08-09T15:49:05Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "app",
+          "kmm/kmm-home",
+          "v1/v1-presentation"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3525,
+        "title": "fix: [AND-000] issue with anonymous ID not passing and UI in home feed",
+        "merged_at": "2026-08-10T08:26:21Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "app/src",
+          "v2/v2-home"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3528,
+        "title": "fix: [AND-000] firebase crash fixes",
+        "merged_at": "2026-08-10T09:00:08Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "v1/v1-auth",
+          "v1/v1-presentation"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3529,
+        "title": "fix: [AND-000] Remove freshChat sdk and klink integration",
+        "merged_at": "2026-09-05T05:32:15Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "app",
+          "app/src",
+          "build-logic/convention",
+          "build-logic/gradle",
+          "(root)",
+          "config/detekt",
+          "gradle",
+          "gradle/wrapper",
+          "kmm/kmm-base",
+          "kmm/kmm-product"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 4,
+    "confounded": true,
+    "note": "go_live_at is tag commit time; deploy_production.yml runs all failed in window (Vault AWS_CONFIG empty); real Play Store rollout date not in GitHub"
+  },
+  {
+    "repo": "mobile-android",
+    "platform": "android",
+    "release_id": "v4.88.13",
+    "previous_release_id": "v4.88.12",
+    "go_live_at": "2026-09-26T13:50:01Z",
+    "bangkok_date": "2026-09-26",
+    "signal": "tag",
+    "evidence_run_id": null,
+    "environment": "git-tag (Play go-live unverified)",
+    "prs": [
+      {
+        "number": 3530,
+        "title": "fix(action): Update failing build files",
+        "merged_at": "2026-09-06T05:09:23Z",
+        "author": "sureshdhakal",
+        "labels": [],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3531,
+        "title": "fix: [AND-000] issues on crashlytics fixes",
+        "merged_at": "2026-09-07T04:57:39Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "v1/v1-auth",
+          "v1/v1-presentation",
+          "v2/ui-kit"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3532,
+        "title": "fix: [AND-000] crash issues reported in v4.88.12 for 20% userbase",
+        "merged_at": "2026-09-08T03:59:40Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "app/src",
+          "v1/v1-auth",
+          "v1/v1-presentation"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3533,
+        "title": "fix: [AND-000] klink feature flag release",
+        "merged_at": "2026-09-08T07:50:51Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "kmm/kmm-base",
+          "v1/v1-presentation"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3534,
+        "title": "fix: [AND-000] Meta redirection issue fix for fb scheme format fb<appID>://",
+        "merged_at": "2026-09-16T15:21:52Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "app/src",
+          "common/src",
+          "config/detekt"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3509,
+        "title": "chore: [AND-000] R8 optimisation",
+        "merged_at": "2026-09-16T18:05:04Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "app"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3535,
+        "title": "fix: [AND-000] fix ANR issues on android app from firebase",
+        "merged_at": "2026-09-18T11:33:44Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "app/src",
+          "config/detekt",
+          "gradle",
+          "kmm/kmm-base",
+          "kmm/kmm-data",
+          "kmm/kmm-shared",
+          "v1/v1-base-presentation",
+          "v1/v1-presentation",
+          "v2/v2-auth"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3538,
+        "title": "fix: [AND-000] Netcore sdk update and permission changes",
+        "merged_at": "2026-09-26T13:48:48Z",
+        "author": "rahulatpomelo",
+        "labels": [],
+        "changed_top_dirs": [
+          "app",
+          "app/src",
+          "(root)",
+          "gradle",
+          "v1/v1-auth",
+          "v1/v1-presentation",
+          "v2/v2-home",
+          "v2/v2-product"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 8,
+    "confounded": true,
+    "note": "go_live_at is tag commit time; deploy_production.yml runs all failed in window (Vault AWS_CONFIG empty); real Play Store rollout date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "baafe250eb17fba4b21325a04469b21b11f21e65",
+    "previous_release_id": "86af0540d1c1b14e383e7b2745dee6e082f2a53c",
+    "go_live_at": "2026-08-24T14:07:21Z",
+    "bangkok_date": "2026-08-24",
+    "signal": "workflow_run",
+    "evidence_run_id": 32733636500,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3614,
+        "title": "chore: [IOS-000] added caching spm & pods for quicker deps generation",
+        "merged_at": "2026-07-12T05:34:22Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3620,
+        "title": "feat: [BUSK-1990] Checkout revamp and new UI ",
+        "merged_at": "2026-08-24T08:29:44Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "Configuration/Configuration",
+          "PMLUIKit/PMLUIKit",
+          "PMLUIKit",
+          "Pomelo/Api",
+          "Pomelo/Components",
+          "Pomelo/Config",
+          "Pomelo/DI",
+          "Pomelo/Data",
+          "Pomelo/Domain"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "bf41e409eb6440b564480c8ead8fdbee943b6c96",
+    "previous_release_id": "baafe250eb17fba4b21325a04469b21b11f21e65",
+    "go_live_at": "2026-08-27T19:06:52Z",
+    "bangkok_date": "2026-08-28",
+    "signal": "workflow_run",
+    "evidence_run_id": 33102061925,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3625,
+        "title": "fix: [IOS-000] checkout issues and event addition",
+        "merged_at": "2026-08-27T17:13:19Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "(root)",
+          "Configuration/Configuration",
+          "PMLLogging/PMLLogging",
+          "PMLUIKit/PMLUIKit",
+          "Pomelo/Api",
+          "Pomelo/Config",
+          "Pomelo/Domain",
+          "Pomelo/Model",
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "634ff7b1a0cdca1997dc917f4394ecadf7f298c0",
+    "previous_release_id": "bf41e409eb6440b564480c8ead8fdbee943b6c96",
+    "go_live_at": "2026-08-29T08:00:06Z",
+    "bangkok_date": "2026-08-29",
+    "signal": "workflow_run",
+    "evidence_run_id": 33239831740,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3630,
+        "title": "fix: [IOS-000] critical issues 2stepcheckout",
+        "merged_at": "2026-08-29T06:36:13Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Domain",
+          "Pomelo/Model",
+          "Pomelo/Scenes",
+          "Pomelo/Utilities"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "9aebdddb8773a83dee4e9a14cfd4ab203e35a620",
+    "previous_release_id": "634ff7b1a0cdca1997dc917f4394ecadf7f298c0",
+    "go_live_at": "2026-08-30T07:55:00Z",
+    "bangkok_date": "2026-08-30",
+    "signal": "workflow_run",
+    "evidence_run_id": 33298668945,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3631,
+        "title": "fix: [IOS-000] add fixes for events and navigation issue",
+        "merged_at": "2026-08-30T06:50:18Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Configuration/Configuration",
+          "Pomelo/Domain",
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "44c3ba2baac303df66a880cb04a83fbe618bfd25",
+    "previous_release_id": "9aebdddb8773a83dee4e9a14cfd4ab203e35a620",
+    "go_live_at": "2026-08-30T09:32:17Z",
+    "bangkok_date": "2026-08-30",
+    "signal": "workflow_run",
+    "evidence_run_id": 33303098103,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3632,
+        "title": "fix: [IOS-000] voucher display logic based on shop",
+        "merged_at": "2026-08-30T08:45:55Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "Pomelo/Domain",
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "3bc29af57fd38aebd18dacd69baea905e2260e48",
+    "previous_release_id": "44c3ba2baac303df66a880cb04a83fbe618bfd25",
+    "go_live_at": "2026-08-31T11:07:02Z",
+    "bangkok_date": "2026-08-31",
+    "signal": "workflow_run",
+    "evidence_run_id": 33381499031,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3633,
+        "title": "fix: [IOS-000] old checkout issues",
+        "merged_at": "2026-08-31T09:39:47Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Api",
+          "Pomelo/Data",
+          "Pomelo/Domain",
+          "Pomelo/Model",
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "57c003c97fd83738aaf7638c0cc70b1508256877",
+    "previous_release_id": "3bc29af57fd38aebd18dacd69baea905e2260e48",
+    "go_live_at": "2026-08-31T15:50:53Z",
+    "bangkok_date": "2026-08-31",
+    "signal": "workflow_run",
+    "evidence_run_id": 33404900658,
+    "environment": "app-store-build",
+    "prs": [],
+    "pr_count": 0,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "79ef97717799546578e970c33b7be76792a6901e",
+    "previous_release_id": "57c003c97fd83738aaf7638c0cc70b1508256877",
+    "go_live_at": "2026-09-03T09:33:14Z",
+    "bangkok_date": "2026-09-03",
+    "signal": "workflow_run",
+    "evidence_run_id": 33734519643,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3635,
+        "title": "fix: [IOS-000] TTB all accept discount fixes",
+        "merged_at": "2026-09-02T09:17:05Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3636,
+        "title": "fix: [IOS-000] TTB Related summary AND JFY add to bag AND waitlist fixes ",
+        "merged_at": "2026-09-02T13:18:44Z",
+        "author": "Hiteshboricha-Pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Api",
+          "Pomelo/Domain",
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3637,
+        "title": "fix: [PRDT-11486] changes for KH shop checkout flow integration",
+        "merged_at": "2026-09-03T05:16:41Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Api",
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3638,
+        "title": "fix: [iOS-000] free gift sold out message",
+        "merged_at": "2026-09-03T07:15:25Z",
+        "author": "Hiteshboricha-Pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/View"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3639,
+        "title": "fix: [iOS-000] confirmation page maintain displayed ",
+        "merged_at": "2026-09-03T08:08:21Z",
+        "author": "Hiteshboricha-Pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 5,
+    "confounded": true,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "cc8eb0e88b5025d3eca457ebe3933c61c82d6f45",
+    "previous_release_id": "79ef97717799546578e970c33b7be76792a6901e",
+    "go_live_at": "2026-09-12T17:44:47Z",
+    "bangkok_date": "2026-09-13",
+    "signal": "workflow_run",
+    "evidence_run_id": 34706520577,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3640,
+        "title": "fix: [iOS-000] New Checkout Page Fixes",
+        "merged_at": "2026-09-04T09:52:51Z",
+        "author": "Hiteshboricha-Pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Domain",
+          "Pomelo/Localization",
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3641,
+        "title": "fix: [IOS-000] voucher reselection issue in voucher BS",
+        "merged_at": "2026-09-07T15:14:17Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Resources",
+          "Pomelo/Utilities",
+          "Pomelo/View"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3642,
+        "title": "fix: [PRDT-11482] Auto add free gift to cart fixes",
+        "merged_at": "2026-09-08T11:31:26Z",
+        "author": "Hiteshboricha-Pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3643,
+        "title": "fix: [PRDT-11482] Multiple Free Gifts added issues fixes",
+        "merged_at": "2026-09-09T05:27:13Z",
+        "author": "Hiteshboricha-Pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Domain",
+          "Pomelo/Scenes",
+          "PomeloTests/Bag",
+          "PomeloTests/Model"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3646,
+        "title": "fix: [IOS-000] QA reported fixes",
+        "merged_at": "2026-09-12T14:43:30Z",
+        "author": "Hiteshboricha-Pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Model",
+          "Pomelo/Scenes",
+          "Pomelo/View"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3645,
+        "title": "fix: [IOS-000] klink flag EnableKLinkCSSupport202260908 integration",
+        "merged_at": "2026-09-12T14:44:49Z",
+        "author": "Hiteshboricha-Pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Configuration/Configuration",
+          "Pomelo/Utilities"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3644,
+        "title": "fix: [PRDT-11375] PDP improvements on UI issues and load",
+        "merged_at": "2026-09-12T16:16:40Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Configuration/Configuration",
+          "PMLLogging/PMLLogging",
+          "Pomelo/Api",
+          "Pomelo/Domain",
+          "Pomelo/Model",
+          "Pomelo/Scenes",
+          "Pomelo/Utilities",
+          "Pomelo/View",
+          "PomeloTests/Bag",
+          "PomeloTests/Model"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 7,
+    "confounded": true,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "0cd28974b86f56713fd82afe5b0547a8017d3edc",
+    "previous_release_id": "cc8eb0e88b5025d3eca457ebe3933c61c82d6f45",
+    "go_live_at": "2026-09-18T07:14:49Z",
+    "bangkok_date": "2026-09-18",
+    "signal": "workflow_run",
+    "evidence_run_id": 35316162791,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3648,
+        "title": "fix: [IOS-000] product listing optimization and improvements",
+        "merged_at": "2026-09-18T04:36:00Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "Pomelo/Scenes",
+          "Pomelo/Utilities",
+          "Pomelo/View",
+          "PomeloTests/Utilities",
+          "(root)"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "0d2adf48ae15464a2703989b2208410b57967377",
+    "previous_release_id": "0cd28974b86f56713fd82afe5b0547a8017d3edc",
+    "go_live_at": "2026-09-18T09:23:22Z",
+    "bangkok_date": "2026-09-18",
+    "signal": "workflow_run",
+    "evidence_run_id": 35326443476,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3649,
+        "title": "fix: [IOS-000] price cut issue on product display",
+        "merged_at": "2026-09-18T08:47:59Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "dba710dd091ccacf486cff491ead57e51ffd164f",
+    "previous_release_id": "0d2adf48ae15464a2703989b2208410b57967377",
+    "go_live_at": "2026-09-19T07:49:30Z",
+    "bangkok_date": "2026-09-19",
+    "signal": "workflow_run",
+    "evidence_run_id": 35428073201,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3649,
+        "title": "fix: [IOS-000] price cut issue on product display",
+        "merged_at": "2026-09-18T08:47:59Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3652,
+        "title": "fix: [IOS-000] select all  products and payment CC issues",
+        "merged_at": "2026-09-18T19:17:25Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Configuration/Configuration",
+          "Pomelo/Api",
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3654,
+        "title": "fix: [IOS-000] adyen CC payment flow for 1st time card",
+        "merged_at": "2026-09-19T06:39:33Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Scenes"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 3,
+    "confounded": true,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "66fc340ab62cf24621048f29712e2e96f0891b91",
+    "previous_release_id": "dba710dd091ccacf486cff491ead57e51ffd164f",
+    "go_live_at": "2026-09-30T07:25:10Z",
+    "bangkok_date": "2026-09-30",
+    "signal": "workflow_run",
+    "evidence_run_id": 36677657111,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3657,
+        "title": "fix: [PRDT-11572] Guest checkout Integration",
+        "merged_at": "2026-09-30T06:07:15Z",
+        "author": "Hiteshboricha-Pomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Api",
+          "Pomelo/Localization",
+          "Pomelo/Model",
+          "Pomelo/Scenes",
+          "Pomelo/Utilities",
+          "Pomelo/View"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "mobile-ios",
+    "platform": "ios",
+    "release_id": "5338b4bf5d5f190d7be9e0e7330e013a0d5afda4",
+    "previous_release_id": "66fc340ab62cf24621048f29712e2e96f0891b91",
+    "go_live_at": "2026-09-30T14:36:11Z",
+    "bangkok_date": "2026-09-30",
+    "signal": "workflow_run",
+    "evidence_run_id": 36726386580,
+    "environment": "app-store-build",
+    "prs": [
+      {
+        "number": 3659,
+        "title": "fix: [IOS-000] UI issues and logical issues in checkout flow",
+        "merged_at": "2026-09-30T13:01:19Z",
+        "author": "rahulatpomelo",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "Pomelo/Api",
+          "Pomelo/Scenes",
+          "Pomelo/Utilities"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id is master HEAD sha at ci-production dispatch (App Store/TestFlight build+submit); actual App Store go-live date not in GitHub"
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.516.3",
+    "previous_release_id": "v6.515.1",
+    "go_live_at": "2026-08-18T16:10:08Z",
+    "bangkok_date": "2026-08-18",
+    "signal": "workflow_run",
+    "evidence_run_id": 32158735246,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 3890,
+        "title": "feat(home): [BUSK-2668] init gender radio",
+        "merged_at": "2026-06-29T08:13:39Z",
+        "author": "danny-thet",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/auth",
+          "components/user",
+          "lib/auth"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3891,
+        "title": "fix(): [PRDT-11372] Brand Alignment Updates: Creative Ops Feedback",
+        "merged_at": "2026-08-14T11:32:57Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/alert",
+          "components/cart",
+          "components/common",
+          "components/editorial",
+          "components/header",
+          "components/home",
+          "components/pdp",
+          "components/product"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3892,
+        "title": "fix(): [] fix additional feedback for UI changes",
+        "merged_at": "2026-08-18T10:37:16Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/alert",
+          "components/auth",
+          "components/cart",
+          "components/checkout",
+          "components/common",
+          "components/modal",
+          "components/my-loyalty",
+          "components/order-list",
+          "components/order"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3893,
+        "title": "fix(): [web] ui updates monochromes",
+        "merged_at": "2026-08-18T15:44:32Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/pages",
+          "components/common",
+          "pages/about"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 4,
+    "confounded": true,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.516.4",
+    "previous_release_id": "v6.516.3",
+    "go_live_at": "2026-08-19T05:51:16Z",
+    "bangkok_date": "2026-08-19",
+    "signal": "workflow_run",
+    "evidence_run_id": 32220972709,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 3894,
+        "title": "fix(): [] updates rollback diamond badge",
+        "merged_at": "2026-08-19T02:02:09Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/cart"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.517.2",
+    "previous_release_id": "v6.516.4",
+    "go_live_at": "2026-08-28T11:50:44Z",
+    "bangkok_date": "2026-08-28",
+    "signal": "workflow_run",
+    "evidence_run_id": 33168665513,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 3895,
+        "title": "feat(): [] add klink chat",
+        "merged_at": "2026-08-25T10:01:52Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "__tests__/components",
+          "__tests__/pages",
+          "components/pdp",
+          "components/user",
+          "config",
+          "lib/api",
+          "lib/utils",
+          "pages",
+          "pages/checkout"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3896,
+        "title": "fix(): [] empty PR for deployment",
+        "merged_at": "2026-08-25T11:23:28Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3897,
+        "title": "fix(): [] update klink setup remove additional chat icon",
+        "merged_at": "2026-08-25T13:24:04Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/pdp",
+          "lib/utils",
+          "pages",
+          "pages/product",
+          "pages/user"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 3,
+    "confounded": true,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.517.3",
+    "previous_release_id": "v6.517.2",
+    "go_live_at": "2026-08-31T06:19:23Z",
+    "bangkok_date": "2026-08-31",
+    "signal": "workflow_run",
+    "evidence_run_id": 33363688390,
+    "environment": "production (inferred: run log expired)",
+    "prs": [],
+    "pr_count": 0,
+    "confounded": false,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.518.0",
+    "previous_release_id": "v6.517.3",
+    "go_live_at": "2026-09-08T03:45:52Z",
+    "bangkok_date": "2026-09-08",
+    "signal": "workflow_run",
+    "evidence_run_id": 34184606873,
+    "environment": "production (inferred: run log expired)",
+    "prs": [
+      {
+        "number": 3900,
+        "title": "feat(): [] optimize PDP page",
+        "merged_at": "2026-09-07T02:55:36Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/server",
+          "components/custom-head",
+          "components/home",
+          "components/images",
+          "components/pdp",
+          "components/product",
+          "components/shared",
+          "lib/utils",
+          "pages"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false,
+    "note": "release_id inferred as latest GitHub release published before dispatch (run log expired; payload version not visible)"
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.518.3",
+    "previous_release_id": "v6.518.0",
+    "go_live_at": "2026-09-11T14:00:25Z",
+    "bangkok_date": "2026-09-11",
+    "signal": "workflow_run",
+    "evidence_run_id": 34607515983,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3901,
+        "title": "fix(): [] page speed fixes",
+        "merged_at": "2026-09-08T03:52:31Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/custom-head",
+          "components/layout",
+          "components/navigation",
+          "components/pdp",
+          "lib/firebase",
+          "lib/flagsmith",
+          "(root)",
+          "pages"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3902,
+        "title": "fix(): [] add memory space for build run",
+        "merged_at": "2026-09-08T05:03:52Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3903,
+        "title": "fix(): [] fix non defined top param in data set",
+        "merged_at": "2026-09-10T08:07:48Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/editorial"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 3,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.518.6",
+    "previous_release_id": "v6.518.3",
+    "go_live_at": "2026-09-15T07:06:47Z",
+    "bangkok_date": "2026-09-15",
+    "signal": "workflow_run",
+    "evidence_run_id": 34940022620,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3904,
+        "title": "fix: improve category browsing and mobile buying across markets",
+        "merged_at": "2026-09-14T12:02:57Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/filter",
+          "components/images",
+          "components/pdp",
+          "components/product",
+          "components/shared",
+          "docs",
+          "pages/category",
+          "scss"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3905,
+        "title": "fix(home): prioritize banner media and unblock shopping buttons",
+        "merged_at": "2026-09-14T13:45:30Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/editorial",
+          "components/pdp",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3907,
+        "title": "fix(home): keep tablet Shop Now clear of slider controls",
+        "merged_at": "2026-09-15T06:18:51Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/editorial",
+          "docs"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 3,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.518.7",
+    "previous_release_id": "v6.518.6",
+    "go_live_at": "2026-09-16T16:18:08Z",
+    "bangkok_date": "2026-09-16",
+    "signal": "workflow_run",
+    "evidence_run_id": 35120952270,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3926,
+        "title": "fix(web): release skinny banner and PDP photo fix independently",
+        "merged_at": "2026-09-16T15:28:30Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "components/skinny-banner"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.518.9",
+    "previous_release_id": "v6.518.7",
+    "go_live_at": "2026-09-17T07:01:52Z",
+    "bangkok_date": "2026-09-17",
+    "signal": "workflow_run",
+    "evidence_run_id": 35192492179,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3930,
+        "title": "fix(pdp): guard window in image util so video PDPs render",
+        "merged_at": "2026-09-17T06:13:58Z",
+        "author": "wallop-t",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "(root)",
+          "__tests__/components",
+          "components/images"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3918,
+        "title": "perf: overlap startup configuration with page readiness",
+        "merged_at": "2026-09-17T06:24:04Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "__tests__/pages",
+          "docs",
+          "lib/firebase",
+          "pages"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.521.4",
+    "previous_release_id": "v6.518.9",
+    "go_live_at": "2026-09-18T11:58:49Z",
+    "bangkok_date": "2026-09-18",
+    "signal": "workflow_run",
+    "evidence_run_id": 35340226178,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3928,
+        "title": "feat(flagsmith): [] removal of flagsmith values and features as referred",
+        "merged_at": "2026-09-17T06:51:34Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__",
+          "__tests__/lib",
+          "__tests__/pages",
+          "__tests__/server-handlers",
+          "components/auth",
+          "components/cart",
+          "components/checkout",
+          "components/custom-hooks",
+          "components/header"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3920,
+        "title": "perf: reduce category and product navigation waits",
+        "merged_at": "2026-09-17T09:02:43Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "__tests__/pages",
+          "components/product",
+          "docs",
+          "lib/api",
+          "lib/utils",
+          "pages/category"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3931,
+        "title": "fix(): [] product retry and error of array on category",
+        "merged_at": "2026-09-17T09:31:13Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/error",
+          "components/filter",
+          "lib/utils",
+          "pages/category",
+          "pages/product"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3919,
+        "title": "fix: speed up PDP policy navigation and recover failed loads",
+        "merged_at": "2026-09-17T09:40:06Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "__tests__/pages",
+          "components/pdp",
+          "docs",
+          "lib/api",
+          "pages/faq"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3933,
+        "title": "fix(web): prevent category captions blocking storefront taps",
+        "merged_at": "2026-09-17T10:12:26Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/shared"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3932,
+        "title": "fix(web): balance desktop skinny banner alignment",
+        "merged_at": "2026-09-17T10:13:24Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/skinny-banner"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3929,
+        "title": "test: cover video poster server rendering after shipped fix",
+        "merged_at": "2026-09-17T10:13:58Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3908,
+        "title": "feat(pdp): simplify photo browsing on mobile web only",
+        "merged_at": "2026-09-18T03:12:37Z",
+        "author": "dsjou622",
+        "labels": [
+          "invalid",
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3935,
+        "title": "fix(deployment): Added a Next.js build cache",
+        "merged_at": "2026-09-18T04:00:52Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3916,
+        "title": "feat(pdp): offer category browsing for sold-out sizes",
+        "merged_at": "2026-09-18T04:15:20Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3917,
+        "title": "fix: remove woven logo from startup loading screen",
+        "merged_at": "2026-09-18T04:17:12Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/preloader",
+          "docs",
+          "scss"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3927,
+        "title": "fix(ci): verify Beanstalk rollout before reporting deployment success",
+        "merged_at": "2026-09-18T04:35:35Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/scripts",
+          ".github/workflows",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3936,
+        "title": "Revert \"fix: remove woven logo from startup loading screen\"",
+        "merged_at": "2026-09-18T04:54:00Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/preloader",
+          "docs",
+          "scss"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3941,
+        "title": "fix(pdp): keep wrapped mobile size buttons compact",
+        "merged_at": "2026-09-18T07:56:25Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/pdp",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3940,
+        "title": "fix(startup): remove woven logo while retaining first-paint cover",
+        "merged_at": "2026-09-18T07:56:50Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/preloader",
+          "docs"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 15,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.521.11",
+    "previous_release_id": "v6.521.4",
+    "go_live_at": "2026-09-19T15:20:26Z",
+    "bangkok_date": "2026-09-19",
+    "signal": "workflow_run",
+    "evidence_run_id": 35450343448,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3947,
+        "title": "fix(checkout): reveal errors after rejected order requests",
+        "merged_at": "2026-09-18T11:46:38Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/checkout"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3956,
+        "title": "fix(discovery): preserve recently viewed history during requests",
+        "merged_at": "2026-09-19T13:42:28Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/recently-view",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3957,
+        "title": "fix(wishlist): preserve saved items when adding to bag fails",
+        "merged_at": "2026-09-19T13:45:36Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/shared",
+          "components/wishlist",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3953,
+        "title": "fix(pdp): preserve size guide selection when measurement tabs change",
+        "merged_at": "2026-09-19T13:46:17Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3950,
+        "title": "fix(header): [PRDT-11529] prevent narrow homepage navigation overlap",
+        "merged_at": "2026-09-19T13:46:58Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/header",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3948,
+        "title": "fix(cart): keep bag recommendations horizontal on direct page entry",
+        "merged_at": "2026-09-19T13:51:34Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/cart",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3949,
+        "title": "fix(pdp): recover add-to-bag button after incomplete requests",
+        "merged_at": "2026-09-19T13:52:04Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3954,
+        "title": "fix(cart): align quantity choices with existing purchase limits",
+        "merged_at": "2026-09-19T13:52:55Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/size-quantity-selection",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3955,
+        "title": "fix(account): cancel stale order and returns searches",
+        "merged_at": "2026-09-19T13:53:33Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/shared",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3945,
+        "title": "fix(search): preserve special characters in search navigation",
+        "merged_at": "2026-09-19T13:58:25Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/search",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3952,
+        "title": "fix(search): let shoppers retry failed product searches",
+        "merged_at": "2026-09-19T14:00:28Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/search",
+          "components/shared",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3951,
+        "title": "fix(recommendations): stop promoting Tallulah without delisting products",
+        "merged_at": "2026-09-19T14:09:46Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "__tests__/pages",
+          "components/cart",
+          "components/just-for-you",
+          "components/pdp",
+          "components/shared",
+          "docs",
+          "lib/utils"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 12,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.521.12",
+    "previous_release_id": "v6.521.11",
+    "go_live_at": "2026-09-19T16:38:13Z",
+    "bangkok_date": "2026-09-19",
+    "signal": "workflow_run",
+    "evidence_run_id": 35454440254,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3961,
+        "title": "fix(pdp): align policy and gallery text with shared typography",
+        "merged_at": "2026-09-19T15:55:19Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "docs"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.522.0",
+    "previous_release_id": "v6.521.12",
+    "go_live_at": "2026-09-20T03:03:54Z",
+    "bangkok_date": "2026-09-20",
+    "signal": "workflow_run",
+    "evidence_run_id": 35484722150,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3962,
+        "title": "fix(home): hide Get this look on mobile web",
+        "merged_at": "2026-09-19T17:07:39Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/editorial"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3943,
+        "title": "feat(pdp): streamline mobile purchase flow and open bag after add",
+        "merged_at": "2026-09-20T02:14:53Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "docs",
+          "docs/mobile-pdp-purchase-flow"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.522.3",
+    "previous_release_id": "v6.522.0",
+    "go_live_at": "2026-09-20T10:14:20Z",
+    "bangkok_date": "2026-09-20",
+    "signal": "workflow_run",
+    "evidence_run_id": 35503515908,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3913,
+        "title": "fix(cart): clarify totals and preserve bag during item removal",
+        "merged_at": "2026-09-20T04:10:26Z",
+        "author": "dsjou622",
+        "labels": [
+          "PR: draft",
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/scripts",
+          ".github/workflows",
+          "(root)",
+          "__tests__/components",
+          "__tests__",
+          "__tests__/lib",
+          "__tests__/pages"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3963,
+        "title": "fix(cart): resume preproduction release of verified bag change",
+        "merged_at": "2026-09-20T04:19:24Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "docs"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.522.9",
+    "previous_release_id": "v6.522.3",
+    "go_live_at": "2026-09-21T15:21:34Z",
+    "bangkok_date": "2026-09-21",
+    "signal": "workflow_run",
+    "evidence_run_id": 35615354190,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3968,
+        "title": "fix: extend category product presentation to homepage",
+        "merged_at": "2026-09-21T01:48:57Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/pages",
+          "components/home",
+          "components/just-for-you",
+          "components/product"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3970,
+        "title": "fix: keep homepage product images in consistent portrait frames",
+        "merged_at": "2026-09-21T03:17:20Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/product"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3969,
+        "title": "fix(): [line] remove line from pre_checkout screen",
+        "merged_at": "2026-09-21T04:11:06Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/cart"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3971,
+        "title": "fix(home): automatically load more category products on scroll",
+        "merged_at": "2026-09-21T08:41:53Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/pages",
+          "components/home"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3972,
+        "title": "fix(): [meta] fix eventID and cutomer_id for deduplication",
+        "merged_at": "2026-09-21T10:19:38Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "lib/segment",
+          "lib/tracking"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3973,
+        "title": "fix(home): remove mobile banner Shop Now button",
+        "merged_at": "2026-09-21T14:27:12Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/editorial"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 6,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.522.10",
+    "previous_release_id": "v6.522.9",
+    "go_live_at": "2026-09-21T16:32:38Z",
+    "bangkok_date": "2026-09-21",
+    "signal": "workflow_run",
+    "evidence_run_id": 35623585905,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3974,
+        "title": "fix(home): remove Try It On from homepage product grid",
+        "merged_at": "2026-09-21T15:43:33Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/home",
+          "components/product",
+          "pages/category"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.523.1",
+    "previous_release_id": "v6.522.10",
+    "go_live_at": "2026-09-22T08:02:17Z",
+    "bangkok_date": "2026-09-22",
+    "signal": "workflow_run",
+    "evidence_run_id": 35700804422,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3975,
+        "title": "fix(images): reveal completed product photos instead of stuck placeholders",
+        "merged_at": "2026-09-21T23:47:55Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/images"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3976,
+        "title": "fix(products): hide category try-on and allow buying restocked waitlisted items",
+        "merged_at": "2026-09-22T01:32:55Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/pdp",
+          "pages/category"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3977,
+        "title": "fix(cart): keep shopping bag visible while voucher totals refresh",
+        "merged_at": "2026-09-22T01:47:56Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3978,
+        "title": "feat(pdp): streamline desktop purchase flow",
+        "merged_at": "2026-09-22T05:10:27Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3979,
+        "title": "fix(seo): serve Google verification file at site root",
+        "merged_at": "2026-09-22T06:49:32Z",
+        "author": "seerajapml",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "server",
+          "static"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 5,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.523.4",
+    "previous_release_id": "v6.523.1",
+    "go_live_at": "2026-09-22T09:08:13Z",
+    "bangkok_date": "2026-09-22",
+    "signal": "workflow_run",
+    "evidence_run_id": 35706690837,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3981,
+        "title": "fix(desktop): widen shopping bag and simplify PDP details",
+        "merged_at": "2026-09-22T07:45:32Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart",
+          "components/pdp"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3980,
+        "title": "fix(ci): prevent concurrent Beanstalk deployments without gating on health",
+        "merged_at": "2026-09-22T07:47:27Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".codegraph",
+          ".github/scripts",
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3983,
+        "title": "Revert \"fix(seo): serve Google verification file at site root\"",
+        "merged_at": "2026-09-22T08:16:27Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "server",
+          "static"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 3,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.523.7",
+    "previous_release_id": "v6.523.4",
+    "go_live_at": "2026-09-22T11:02:55Z",
+    "bangkok_date": "2026-09-22",
+    "signal": "workflow_run",
+    "evidence_run_id": 35717254459,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3984,
+        "title": "fix: remove desktop promo banner underline",
+        "merged_at": "2026-09-22T09:50:04Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/skinny-banner"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3982,
+        "title": "fix(home): sharpen desktop hero posters and prevent cropping",
+        "merged_at": "2026-09-22T10:05:00Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/editorial",
+          "components/pdp",
+          "scripts"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3985,
+        "title": "fix: tidy desktop PDP delivery and secondary actions",
+        "merged_at": "2026-09-22T10:12:56Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/pdp"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 3,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.523.9",
+    "previous_release_id": "v6.523.7",
+    "go_live_at": "2026-09-22T12:24:14Z",
+    "bangkok_date": "2026-09-22",
+    "signal": "workflow_run",
+    "evidence_run_id": 35724995332,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3987,
+        "title": "fix: finish category lists quietly after partial final pages",
+        "merged_at": "2026-09-22T11:28:04Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/pages",
+          "pages/category"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3986,
+        "title": "fix: match desktop Similar Products and Just For You to category grid",
+        "merged_at": "2026-09-22T11:36:53Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/shared"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.523.10",
+    "previous_release_id": "v6.523.9",
+    "go_live_at": "2026-09-22T16:51:34Z",
+    "bangkok_date": "2026-09-22",
+    "signal": "workflow_run",
+    "evidence_run_id": 35754492307,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3990,
+        "title": "fix: fill desktop PDP recommendations with eight products",
+        "merged_at": "2026-09-22T16:05:36Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.523.11",
+    "previous_release_id": "v6.523.10",
+    "go_live_at": "2026-09-23T02:41:12Z",
+    "bangkok_date": "2026-09-23",
+    "signal": "workflow_run",
+    "evidence_run_id": 35809944106,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3992,
+        "title": "fix: fill category menu banner frames",
+        "merged_at": "2026-09-23T01:54:45Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/navigation"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.526.2",
+    "previous_release_id": "v6.523.11",
+    "go_live_at": "2026-09-24T11:28:26Z",
+    "bangkok_date": "2026-09-24",
+    "signal": "workflow_run",
+    "evidence_run_id": 35991103955,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3991,
+        "title": "feat(): [guest_checkout] added guest checkout feature",
+        "merged_at": "2026-09-23T03:11:19Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "__tests__/pages",
+          "components/address-book",
+          "components/cart",
+          "components/checkout",
+          "components/layout",
+          "lib/auth",
+          "lib/state-storage",
+          "pages/checkout"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3989,
+        "title": "feat(pdp): compact model-size guidance and delivery estimates",
+        "merged_at": "2026-09-23T08:03:12Z",
+        "author": "seerajapml",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "__tests__/components",
+          "__tests__/pages",
+          "components/pdp",
+          "docs",
+          "scripts"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3994,
+        "title": "Revert \"feat(pdp): compact model-size guidance and delivery estimates\"",
+        "merged_at": "2026-09-23T08:19:10Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "__tests__/components",
+          "__tests__/pages",
+          "components/pdp",
+          "docs",
+          "scripts"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3993,
+        "title": "fix: keep shopping bag visible during cart refreshes",
+        "merged_at": "2026-09-23T08:28:15Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3996,
+        "title": "feat(pdp): compact model-size guidance and delivery estimates",
+        "merged_at": "2026-09-23T13:28:33Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "__tests__/components",
+          "__tests__/pages",
+          "components/pdp",
+          "docs",
+          "scripts"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3999,
+        "title": "Revert \"feat(pdp): compact model-size guidance and delivery estimates\"",
+        "merged_at": "2026-09-24T03:47:29Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "__tests__/components",
+          "__tests__/pages",
+          "components/pdp",
+          "docs",
+          "scripts"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4000,
+        "title": "fix(): [] reset password fixes",
+        "merged_at": "2026-09-24T08:29:11Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "__tests__/pages",
+          "components/address-book",
+          "components/auth",
+          "components/common",
+          "components/password-reset",
+          "lib/auth",
+          "pages/firebase"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 7,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.527.0",
+    "previous_release_id": "v6.526.2",
+    "go_live_at": "2026-09-24T12:43:32Z",
+    "bangkok_date": "2026-09-24",
+    "signal": "workflow_run",
+    "evidence_run_id": 35998639550,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3997,
+        "title": "feat(pdp): unify desktop and mobile purchase layout",
+        "merged_at": "2026-09-24T11:52:34Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/pdp",
+          "components/shared",
+          "docs",
+          "docs/screenshots"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.528.1",
+    "previous_release_id": "v6.527.0",
+    "go_live_at": "2026-09-24T15:46:31Z",
+    "bangkok_date": "2026-09-24",
+    "signal": "workflow_run",
+    "evidence_run_id": 36019878200,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3995,
+        "title": "feat(cart): simplify bag purchase hierarchy on mobile and desktop",
+        "merged_at": "2026-09-24T13:59:24Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/cart",
+          "components/shared",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4002,
+        "title": "fix: prevent duplicate bag rows and overlapping summary",
+        "merged_at": "2026-09-24T14:54:17Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart",
+          "components/shared"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.528.2",
+    "previous_release_id": "v6.528.1",
+    "go_live_at": "2026-09-24T18:06:13Z",
+    "bangkok_date": "2026-09-25",
+    "signal": "workflow_run",
+    "evidence_run_id": 36036538274,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4004,
+        "title": "fix: preserve vouchers through Diamond addition and confirm bag discounts",
+        "merged_at": "2026-09-24T17:09:34Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/cart",
+          "components/my-loyalty",
+          "components/pdp",
+          "components/shared",
+          "docs",
+          "pages/loyalty-diamond"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.528.3",
+    "previous_release_id": "v6.528.2",
+    "go_live_at": "2026-09-25T03:01:15Z",
+    "bangkok_date": "2026-09-25",
+    "signal": "workflow_run",
+    "evidence_run_id": 36087221301,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4005,
+        "title": "fix(cart): confirm vouchers and retain them across bag edits",
+        "merged_at": "2026-09-25T01:44:06Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/cart",
+          "components/checkout",
+          "components/pdp",
+          "components/product",
+          "components/shared",
+          "docs",
+          "pages/checkout"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.528.4",
+    "previous_release_id": "v6.528.3",
+    "go_live_at": "2026-09-25T05:47:54Z",
+    "bangkok_date": "2026-09-25",
+    "signal": "workflow_run",
+    "evidence_run_id": 36098557860,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4001,
+        "title": "fix(product): restore PDP and add category units sold",
+        "merged_at": "2026-09-25T04:56:41Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "components/product",
+          "docs",
+          "lib/utils"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.528.5",
+    "previous_release_id": "v6.528.4",
+    "go_live_at": "2026-09-25T07:35:19Z",
+    "bangkok_date": "2026-09-25",
+    "signal": "workflow_run",
+    "evidence_run_id": 36106491870,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4008,
+        "title": "fix(pdp): restore size guides for partially measured products",
+        "merged_at": "2026-09-25T06:43:21Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.529.1",
+    "previous_release_id": "v6.528.5",
+    "go_live_at": "2026-09-25T13:28:29Z",
+    "bangkok_date": "2026-09-25",
+    "signal": "workflow_run",
+    "evidence_run_id": 36139131094,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4011,
+        "title": "feat: simplify shopping bag and keep Diamond benefits in the bag",
+        "merged_at": "2026-09-25T11:39:25Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart",
+          "components/pdp",
+          "components/shared"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4012,
+        "title": "fix(cart): retain prior voucher after invalid replacement and close picker",
+        "merged_at": "2026-09-25T12:33:37Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart",
+          "components/portal"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.529.2",
+    "previous_release_id": "v6.529.1",
+    "go_live_at": "2026-09-27T01:00:32Z",
+    "bangkok_date": "2026-09-27",
+    "signal": "workflow_run",
+    "evidence_run_id": 36283161688,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4013,
+        "title": "fix: show available sold counts in homepage Customer Favourites",
+        "merged_at": "2026-09-27T00:11:04Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/home",
+          "components/product"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.529.3",
+    "previous_release_id": "v6.529.2",
+    "go_live_at": "2026-09-28T05:13:50Z",
+    "bangkok_date": "2026-09-28",
+    "signal": "workflow_run",
+    "evidence_run_id": 36379467868,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4014,
+        "title": "fix(cart): skip dismissed voucher refresh and clarify current-order benefits",
+        "merged_at": "2026-09-28T04:20:58Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "components/shared"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.529.6",
+    "previous_release_id": "v6.529.3",
+    "go_live_at": "2026-09-28T12:04:08Z",
+    "bangkok_date": "2026-09-28",
+    "signal": "workflow_run",
+    "evidence_run_id": 36417259307,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4009,
+        "title": "fix(checkout): show progress while saving shipping address",
+        "merged_at": "2026-09-28T05:03:16Z",
+        "author": "seerajapml",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/address-book"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4007,
+        "title": "Make homepage hero banners clickable without Shop Now buttons",
+        "merged_at": "2026-09-28T05:03:42Z",
+        "author": "seerajapml",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/editorial"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4010,
+        "title": "fix(account): redirect to homepage after logout",
+        "merged_at": "2026-09-28T05:04:03Z",
+        "author": "seerajapml",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "components/user",
+          "lib/api"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4006,
+        "title": "fix(): [] deeplink for apps after reset password",
+        "merged_at": "2026-09-28T05:08:56Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/password-reset",
+          "pages/firebase"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4015,
+        "title": "fix(): [events] fix order complete events and meta events",
+        "merged_at": "2026-09-28T07:22:25Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "__tests__/pages",
+          "components/checkout",
+          "lib/segment",
+          "lib/tracking",
+          "lib/utils",
+          "pages/checkout",
+          "pages/user",
+          "(root)"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 5,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.530.0",
+    "previous_release_id": "v6.529.6",
+    "go_live_at": "2026-09-29T08:17:09Z",
+    "bangkok_date": "2026-09-29",
+    "signal": "workflow_run",
+    "evidence_run_id": 36539600973,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 3960,
+        "title": "fix(pdp): show failed restock notification feedback",
+        "merged_at": "2026-09-28T08:35:22Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/shared",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4018,
+        "title": "feat(checkout): redesign confirmation and Indonesia transfer states",
+        "merged_at": "2026-09-29T07:13:20Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "__tests__/test-cases",
+          "components/checkout",
+          "docs/confirmation-preview",
+          "docs"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.530.5",
+    "previous_release_id": "v6.530.0",
+    "go_live_at": "2026-09-30T07:39:38Z",
+    "bangkok_date": "2026-09-30",
+    "signal": "workflow_run",
+    "evidence_run_id": 36682907081,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4020,
+        "title": "fix(category): protect selected filters from malformed metadata",
+        "merged_at": "2026-09-29T08:26:56Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/filter"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4016,
+        "title": "fix(cart): prevent long bag items overlapping recommendations",
+        "merged_at": "2026-09-29T09:03:05Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4021,
+        "title": "fix(search): clear queries and recover failed recommendations",
+        "merged_at": "2026-09-29T11:02:32Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/search",
+          "components/shared",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4026,
+        "title": "fix(cart): align desktop divider and loyalty star while scrolling",
+        "merged_at": "2026-09-30T05:10:51Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/cart",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4025,
+        "title": "fix(pdp): report actual stock availability in product schema",
+        "merged_at": "2026-09-30T05:12:39Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/pages",
+          "pages/product"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4022,
+        "title": "fix(pdp): keep voucher quotes with the current product",
+        "merged_at": "2026-09-30T05:13:30Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/pdp",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4017,
+        "title": "fix(checkout): isolate analytics errors from payment navigation",
+        "merged_at": "2026-09-30T05:14:03Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/checkout",
+          "docs"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 7,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.530.6",
+    "previous_release_id": "v6.530.5",
+    "go_live_at": "2026-10-03T16:17:09Z",
+    "bangkok_date": "2026-10-03",
+    "signal": "workflow_run",
+    "evidence_run_id": 37134999060,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4065,
+        "title": "[TECH-12] Track consented Google Ads purchases after payment acceptance",
+        "merged_at": "2026-10-03T14:40:18Z",
+        "author": "dsjou622",
+        "labels": [],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "__tests__/pages",
+          "components/alert",
+          "components/checkout",
+          "lib/tracking",
+          "lib/utils",
+          "pages",
+          "pages/checkout",
+          "pages/user"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.530.7",
+    "previous_release_id": "v6.530.6",
+    "go_live_at": "2026-10-04T14:06:11Z",
+    "bangkok_date": "2026-10-04",
+    "signal": "workflow_run",
+    "evidence_run_id": 37206702650,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4069,
+        "title": "feat(pdp): [TECH-14] show country delivery and returns policies",
+        "merged_at": "2026-10-04T12:51:51Z",
+        "author": "dsjou622",
+        "labels": [],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/addresses",
+          "components/pdp",
+          "docs"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.530.8",
+    "previous_release_id": "v6.530.7",
+    "go_live_at": "2026-10-04T16:24:26Z",
+    "bangkok_date": "2026-10-04",
+    "signal": "workflow_run",
+    "evidence_run_id": 37215303717,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4071,
+        "title": "fix(pdp): [TECH-14] align mobile shipping and returns margins",
+        "merged_at": "2026-10-04T15:24:25Z",
+        "author": "dsjou622",
+        "labels": [],
+        "changed_top_dirs": [
+          "components/pdp"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.530.10",
+    "previous_release_id": "v6.530.8",
+    "go_live_at": "2026-10-04T18:42:19Z",
+    "bangkok_date": "2026-10-05",
+    "signal": "workflow_run",
+    "evidence_run_id": 37224082753,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4073,
+        "title": "feat(navigation): [TECH-13] release desktop mega-menu",
+        "merged_at": "2026-10-04T16:25:18Z",
+        "author": "dsjou622",
+        "labels": [],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "components/header",
+          "components/navigation",
+          "lib/api"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4075,
+        "title": "fix(navigation): [TECH-13] preserve narrow desktop header space",
+        "merged_at": "2026-10-04T17:45:49Z",
+        "author": "dsjou622",
+        "labels": [],
+        "changed_top_dirs": [
+          "components/navigation",
+          "(root)"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.530.11",
+    "previous_release_id": "v6.530.10",
+    "go_live_at": "2026-10-05T04:29:44Z",
+    "bangkok_date": "2026-10-05",
+    "signal": "workflow_run",
+    "evidence_run_id": 37262123151,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4076,
+        "title": "fix(home): [TECH-11] backport banner video origin to release",
+        "merged_at": "2026-10-05T02:29:39Z",
+        "author": "dsjou622",
+        "labels": [],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/home"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 1,
+    "confounded": false
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.534.3",
+    "previous_release_id": "v6.530.11",
+    "go_live_at": "2026-10-05T16:25:58Z",
+    "bangkok_date": "2026-10-05",
+    "signal": "workflow_run",
+    "evidence_run_id": 37338144574,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4027,
+        "title": "feat(): [] two stepcheckout feature added",
+        "merged_at": "2026-09-30T08:08:28Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/address-book",
+          "components/cart",
+          "components/checkout",
+          "components/common",
+          "components/custom-hooks",
+          "components/header",
+          "components/user",
+          "lib/api"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4024,
+        "title": "fix(i18n): [PRDT-11628] ship only the page language and reject junk locales",
+        "merged_at": "2026-09-30T10:48:29Z",
+        "author": "QuentonDupont",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "lib/i18n"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4038,
+        "title": "fix(): [] id checkout issues fix",
+        "merged_at": "2026-09-30T12:44:08Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "__tests__/pages",
+          "components/cart",
+          "components/checkout",
+          "components/common",
+          "components/user",
+          "lib/api",
+          "pages",
+          "pages/firebase"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4037,
+        "title": "fix(cart): [BUSK-2556] load shopping bag without waiting for item count",
+        "merged_at": "2026-09-30T12:48:05Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4041,
+        "title": "fix(): [] issues for id shop and address",
+        "merged_at": "2026-10-01T04:44:01Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart",
+          "components/checkout",
+          "components/order"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4040,
+        "title": "fix: preserve saved bag rows and guard checkout eligibility",
+        "merged_at": "2026-10-01T07:07:25Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__",
+          "__tests__/lib",
+          "__tests__/server-handlers",
+          "components/cart",
+          "components/checkout",
+          "lib/api"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4023,
+        "title": "feat(category): add a collapsed Size filter",
+        "merged_at": "2026-10-01T07:34:19Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "__tests__/test-cases",
+          "components/filter",
+          "components/shared",
+          "docs"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4043,
+        "title": "Revert \"fix: preserve saved bag rows and guard checkout eligibility\"",
+        "merged_at": "2026-10-01T09:58:11Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__",
+          "__tests__/lib",
+          "__tests__/server-handlers",
+          "components/cart",
+          "components/checkout",
+          "lib/api"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4046,
+        "title": "feat(ci): open AI draft PRs from Jira Ready tickets and share AGENTS.md with all AI agents",
+        "merged_at": "2026-10-02T04:17:18Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "(root)"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4048,
+        "title": "chore(ci): require the ticket template in the Jira AI PR action",
+        "merged_at": "2026-10-02T04:22:05Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4049,
+        "title": "fix(ci): let the Jira AI PR ticket check read pull requests",
+        "merged_at": "2026-10-02T05:09:16Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4050,
+        "title": "fix(ci): show why Claude stopped when the Jira AI PR run fails",
+        "merged_at": "2026-10-02T05:19:23Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4054,
+        "title": "fix(): [] issue for banner kh shop",
+        "merged_at": "2026-10-02T06:33:47Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/editorial"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4051,
+        "title": "chore(ci): skip releases for merges that only change CI or AI-agent files",
+        "merged_at": "2026-10-02T06:34:55Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4052,
+        "title": "ci(build): skip the master build when a merge only changes CI or agent files",
+        "merged_at": "2026-10-02T06:35:22Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4045,
+        "title": "fix(): [] feedbacks for checkout flow",
+        "merged_at": "2026-10-02T06:36:19Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows",
+          "__tests__/components",
+          "__tests__",
+          "__tests__/lib",
+          "__tests__/pages",
+          "__tests__/server-handlers",
+          "components/address-book",
+          "components/cart",
+          "components/checkout",
+          "components/header"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4056,
+        "title": "ci(jira): report every failed Jira AI PR run back to the ticket",
+        "merged_at": "2026-10-02T07:04:41Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4059,
+        "title": "ci(jira): use pmlo-jira-ai-pr 5e6697c (In Review needs an open PR)",
+        "merged_at": "2026-10-02T07:49:58Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4058,
+        "title": "ci(jira): send the Anthropic workspace ID with Claude requests",
+        "merged_at": "2026-10-02T07:55:38Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4060,
+        "title": "fix(checkout): [BUGS-0] fix for rollback issues",
+        "merged_at": "2026-10-02T09:02:06Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart",
+          "components/checkout"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4063,
+        "title": "fix(): [selectable] selectable, sold out, checkout page calculation",
+        "merged_at": "2026-10-02T12:44:52Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "components/cart",
+          "components/checkout",
+          "lib/api",
+          "lib/utils",
+          "pages/checkout"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4064,
+        "title": "fix(home): [TECH-11] restore banner video delivery origin",
+        "merged_at": "2026-10-03T14:51:19Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/home"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4081,
+        "title": "fix(checkout): [PR-0] feedback addressed",
+        "merged_at": "2026-10-05T05:46:00Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart",
+          "components/checkout",
+          "components/common",
+          "components/user",
+          "pages/checkout"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4084,
+        "title": "ci(jira): call Jira through the API gateway with pmlo-jira-ai-pr 5cc952d",
+        "merged_at": "2026-10-05T08:25:51Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3967,
+        "title": "fix(recommendations): exclude legacy partner bags from suggestions",
+        "merged_at": "2026-10-05T08:29:11Z",
+        "author": "dsjou622",
+        "labels": [
+          "PR: draft",
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "lib/utils"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 3966,
+        "title": "feat(about): add franchise partner enquiry section [PRDT-10804]",
+        "merged_at": "2026-10-05T08:32:56Z",
+        "author": "dsjou622",
+        "labels": [
+          "PR: draft",
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/about",
+          "docs",
+          "pages/about",
+          "static/img"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4088,
+        "title": "fix(cashback): [PRT-0] feeback fixings",
+        "merged_at": "2026-10-05T12:44:07Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/pages",
+          "components/cart",
+          "components/checkout"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4067,
+        "title": "fix: [TECH-12] retain consented Google Ads tracking on master",
+        "merged_at": "2026-10-05T14:02:09Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "__tests__/pages",
+          "components/alert",
+          "components/checkout",
+          "lib/tracking",
+          "lib/utils",
+          "pages",
+          "pages/checkout",
+          "pages/user"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4068,
+        "title": "fix: [TECH-13] retain menu, PDP policies and desktop hero on master",
+        "merged_at": "2026-10-05T14:59:53Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "__tests__/server",
+          "components/addresses",
+          "components/editorial",
+          "components/header",
+          "components/navigation",
+          "components/pdp",
+          "docs",
+          "docs/pdp-policy-refresh-20261005"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 29,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.535.0",
+    "previous_release_id": "v6.534.3",
+    "go_live_at": "2026-10-06T14:24:02Z",
+    "bangkok_date": "2026-10-06",
+    "signal": "workflow_run",
+    "evidence_run_id": 37459861357,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4093,
+        "title": "fix(error): [PR-0] error console for current progress list of loyalty",
+        "merged_at": "2026-10-06T07:06:33Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/pages",
+          "components/checkout",
+          "components/my-loyalty",
+          "pages/user"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4100,
+        "title": "ci(jira): use pmlo-jira-ai-pr 6bf6a13 (English status names, friendlier ticket check)",
+        "merged_at": "2026-10-06T07:10:48Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4103,
+        "title": "fix(ci): [QAAU-0000] run cypress e2e on node 22",
+        "merged_at": "2026-10-06T07:30:24Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4104,
+        "title": "ci(jira): use pmlo-jira-ai-pr 225cbbe (assign the PR to the ticket owner)",
+        "merged_at": "2026-10-06T07:54:33Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          ".github/workflows"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4102,
+        "title": "fix(cart): [TECH-24] build cart and free gift image urls from full or partial paths",
+        "merged_at": "2026-10-06T08:10:20Z",
+        "author": "github-actions[bot]",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4096,
+        "title": "[PRDT-11759] Restore full-width desktop homepage banner artwork",
+        "merged_at": "2026-10-06T08:23:38Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "components/editorial"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4107,
+        "title": "feat(tracking): add GTM-KVR77N4R container behind marketing consent",
+        "merged_at": "2026-10-06T11:45:58Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/pages",
+          "pages"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 7,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.535.6",
+    "previous_release_id": "v6.535.0",
+    "go_live_at": "2026-10-08T04:25:47Z",
+    "bangkok_date": "2026-10-08",
+    "signal": "workflow_run",
+    "evidence_run_id": 37722234644,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4094,
+        "title": "fix(my-account): show join option when loyalty is not registered in this shop",
+        "merged_at": "2026-10-06T15:43:11Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/my-loyalty"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4091,
+        "title": "fix(routing): [PRDT-11713] retain queries in locale redirects",
+        "merged_at": "2026-10-07T03:06:32Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/server",
+          "server"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4089,
+        "title": "fix(navigation): [TECH-13] bypass retained catalog redirects",
+        "merged_at": "2026-10-07T03:07:36Z",
+        "author": "dsjou622",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "lib/api"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4117,
+        "title": "fix(cart): [TECH-29] prioritise sign in over guest checkout in the bag",
+        "merged_at": "2026-10-07T07:14:21Z",
+        "author": "github-actions[bot]",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "components/cart"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4112,
+        "title": "fix(cart): [TECH-28] follow api selection for items added to the bag",
+        "merged_at": "2026-10-07T07:45:02Z",
+        "author": "github-actions[bot]",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "components/cart",
+          "lib/api"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4114,
+        "title": "fix(api): ignore url query string when syncing shop and language",
+        "merged_at": "2026-10-07T10:33:54Z",
+        "author": "sureshdhakal",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "lib/utils"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4120,
+        "title": "fix(category): [TECH-40] resolve slugs starting with digits via search",
+        "merged_at": "2026-10-08T03:08:37Z",
+        "author": "github-actions[bot]",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "lib/api"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 7,
+    "confounded": true
+  },
+  {
+    "repo": "www",
+    "platform": "web",
+    "release_id": "v6.536.1",
+    "previous_release_id": "v6.535.6",
+    "go_live_at": "2026-10-08T09:11:51Z",
+    "bangkok_date": "2026-10-08",
+    "signal": "workflow_run",
+    "evidence_run_id": 37752494350,
+    "environment": "www-svc-production",
+    "prs": [
+      {
+        "number": 4118,
+        "title": "feat(gtm): [PR-0] event send to gtm",
+        "merged_at": "2026-10-08T03:28:31Z",
+        "author": "bikesh-shakya",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/lib",
+          "lib/segment",
+          "lib/tracking"
+        ],
+        "success_metric_declared": false
+      },
+      {
+        "number": 4105,
+        "title": "fix(auth): [TECH-26] show social login errors and make success path reliable",
+        "merged_at": "2026-10-08T07:48:13Z",
+        "author": "github-actions[bot]",
+        "labels": [
+          "released"
+        ],
+        "changed_top_dirs": [
+          "__tests__/components",
+          "__tests__/lib",
+          "components/auth",
+          "lib/auth"
+        ],
+        "success_metric_declared": false
+      }
+    ],
+    "pr_count": 2,
+    "confounded": true
+  }
+]
