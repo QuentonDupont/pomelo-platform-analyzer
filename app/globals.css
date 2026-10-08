@@ -93,3 +93,44 @@ tr.low td { opacity: .55; }
 .pending { color: var(--amber); font-weight: 600; }
 .legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--muted); }
 .sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
+
+/* ---- Phase 2 ---- */
+h3 { font-size: 13px; margin: 10px 0 4px; color: var(--muted); font-weight: 600; }
+.small { font-size: 11px; }
+.kpi .v.small { font-size: 13px; font-weight: 600; }
+.skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--bg); padding: 6px 10px; z-index: 20; }
+.skip:focus { left: 8px; }
+a { color: var(--web); }
+a.button { display: inline-block; text-decoration: none; color: var(--bg); background: var(--ink); border-radius: 7px; padding: 6px 12px; font-weight: 600; }
+.linklike { background: none; border: 0; padding: 0; color: var(--web); text-decoration: underline; cursor: pointer; }
+fieldset.range { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px 8px; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
+fieldset.range legend { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; padding: 0 4px; }
+input[type="datetime-local"], input[type="date"], input[type="text"], textarea { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 7px; padding: 5px 8px; color-scheme: light dark; }
+input[aria-invalid="true"] { border-color: var(--bad); }
+.presets { display: flex; flex-wrap: wrap; gap: 4px; }
+.presets button { font-size: 12px; padding: 5px 8px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.field-hint { flex-basis: 100%; font-size: 11.5px; color: var(--muted); }
+.field-error { flex-basis: 100%; font-size: 12px; color: var(--bad); font-weight: 600; }
+label.inline { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); }
+.subnav { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; }
+.subnav a { padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--ink); background: var(--panel); }
+.not-evidenced { border: 1px dashed var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 8px; font-size: 12.5px; background: color-mix(in srgb, var(--panel) 85%, var(--amber) 15%); }
+.callout { border-left: 3px solid var(--good); padding: 6px 10px; margin-bottom: 8px; font-size: 13px; background: color-mix(in srgb, var(--panel) 90%, var(--good) 10%); border-radius: 0 6px 6px 0; }
+.field { display: grid; gap: 3px; font-size: 12px; color: var(--muted); }
+.field input, .field textarea, .field select { width: 100%; }
+.decision-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; }
+.alert-item { border-left: 3px solid var(--amber); padding: 6px 10px; margin: 6px 0; background: color-mix(in srgb, var(--panel) 92%, var(--amber) 8%); border-radius: 0 6px 6px 0; }
+.report-section { break-inside: avoid; margin-top: 14px; }
+.print-only { display: none; }
+.particle.flow { animation: flow 2.6s linear infinite; }
+.particle.fall { animation: fall 2.6s ease-in infinite; }
+@keyframes flow { from { transform: translateX(0); opacity: 0 } 10% { opacity: 1 } 90% { opacity: 1 } to { transform: translateX(var(--dx)); opacity: 0 } }
+@keyframes fall { from { transform: translate(0, 0); opacity: 0 } 15% { opacity: 1 } 45% { transform: translate(calc(var(--dx) * .45), 0) } to { transform: translate(calc(var(--dx) * .55), 60px); opacity: 0 } }
+@media (prefers-reduced-motion: reduce) { .particle { display: none; } * { transition: none !important; } }
+@media print {
+  .no-print, .sample-banner, .filters, .tabs, .subnav, .skip, .pulse { display: none !important; }
+  .print-only { display: block; }
+  body { background: #fff; color: #000; }
+  .panel { border-color: #ccc; break-inside: avoid; }
+}

@@ -1,0 +1,17 @@
+# Site-section taxonomy for https://www.pomelofashion.com/th/en/ (URL-path fallback).
+# Superset dataset 63 has NO page/section column, so these rules are used (a) to pick representative
+# URLs for CrUX and (b) by the future warehouse adapter over RudderStack `pages` (not connected yet).
+# Patterns are matched in order against the path after the /<country>/<lang>/ prefix.
+origin: https://www.pomelofashion.com
+sections:
+  - { id: home, pattern: "^/?$" }
+  - { id: search, pattern: "^search" }
+  - { id: pdp, pattern: "^products?/" }
+  - { id: bag, pattern: "^(cart|bag)" }
+  - { id: checkout, pattern: "^checkout" }
+  - { id: account, pattern: "^(account|login|register|orders|wishlist)" }
+  - { id: content, pattern: "^(campaign|lookbook|stories|pages|promo|landing)" }
+  - { id: listing, pattern: "^(categories|category|collections?|new-arrivals|sale|brands?)" }
+# Representative URLs for CrUX URL-level vitals (verify they have enough traffic; 404 = not enough CrUX data)
+crux_urls:
+  home: https://www.pomelofashion.com/th/en/

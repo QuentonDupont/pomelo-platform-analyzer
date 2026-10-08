@@ -1,0 +1,29 @@
+# In-dashboard alert rules. Evaluated after every sync. Alerts never fire on immature (< 7 days old)
+# or suppressed data. Slack delivery is OFF until the team confirms (slack_enabled + SLACK_WEBHOOK_URL).
+slack_enabled: false
+rules:
+  - id: th_web_bounce_up
+    label: Thailand web bounce rate up vs trailing 4 complete weeks
+    scope: { platform: web, markets: [TH] }
+    metric: bounce_rate
+    threshold_pp: 3
+    min_sessions: 1000
+    panel: decisions
+  - id: web_cr_down
+    label: Web (5 markets) non-bounce CR down vs trailing 4 complete weeks
+    scope: { platform: web, markets: [TH, SG, HK, GL, AU] }
+    metric: nonbounce_cr
+    threshold_pp: 0.15
+    min_orders: 20
+    panel: decisions
+  - id: app_bounce_up
+    label: App (iOS + Android) app-bounce rate up vs trailing 4 complete weeks
+    scope: { platform: app, markets: [TH, SG, HK, GL, AU] }
+    metric: bounce_rate
+    threshold_pp: 3
+    min_sessions: 1000
+    panel: decisions
+  - id: release_wrong_way
+    label: Release success metric moved opposite to expected after 7+ days
+    metric: release
+    panel: releases
