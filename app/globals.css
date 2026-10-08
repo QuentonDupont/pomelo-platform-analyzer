@@ -1,34 +1,59 @@
 :root {
+  color-scheme: light;
   --bg: #f6f6f4;
   --panel: #ffffff;
   --ink: #17181a;
-  --muted: #62666d;
+  --muted: #5d6168;
   --line: #e2e2de;
-  --web: #0072b2;
-  --app: #e69f00;
-  --ios: #009e73;
-  --android: #cc79a7;
+  --grid: #ececea;
+  /* Series identity: dataviz reference slots 1-4 in order (validated light + dark, adjacent CVD >= 8.4) */
+  --web: #2a78d6;
+  --app: #eb6834;
+  --ios: #1baf7a;
+  --android: #eda100;
   --unknown: #8a8f98;
-  --good: #1b7f4b;
-  --bad: #b3261e;
-  --amber: #b26b00;
+  --cmp: #a3a6ab;        /* comparison period: neutral, never a series hue */
+  /* Status (reserved for good/bad meaning, always with a sign/arrow label). Text-legible steps. */
+  --good: #0b7a0b;
+  --bad: #c22f2f;
+  --amber: #a86a00;
+  /* Diverging (change cells): blue = better, red = worse, grey midpoint */
+  --div-pos: #2a78d6;
+  --div-neg: #e34948;
+  --div-mid: #f0efec;
   --sample: #fff3c4;
   --sample-ink: #5a4300;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --bg: #111214;
     --panel: #1a1c1f;
     --ink: #ececea;
-    --muted: #9ba0a8;
+    --muted: #a3a7ae;
     --line: #2c2f34;
-    --web: #56b4e9;
+    --grid: #26292d;
+    --web: #3987e5;
+    --app: #d95926;
+    --ios: #199e70;
+    --android: #c98500;
+    --cmp: #6b6f76;
+    --good: #4cc24c;
+    --bad: #ff7a7a;
+    --amber: #fab219;
+    --div-pos: #3987e5;
+    --div-neg: #e66767;
+    --div-mid: #383835;
     --sample: #3d3210;
     --sample-ink: #ffe28a;
-    --good: #5fd39a;
-    --bad: #ff8a80;
-    --amber: #ffbf47;
   }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #111214; --panel: #1a1c1f; --ink: #ececea; --muted: #a3a7ae; --line: #2c2f34; --grid: #26292d;
+  --web: #3987e5; --app: #d95926; --ios: #199e70; --android: #c98500; --cmp: #6b6f76;
+  --good: #4cc24c; --bad: #ff7a7a; --amber: #fab219; --div-pos: #3987e5; --div-neg: #e66767; --div-mid: #383835;
+  --sample: #3d3210; --sample-ink: #ffe28a;
 }
 * { box-sizing: border-box; }
 body {
@@ -134,3 +159,4 @@ label.inline { display: inline-flex; gap: 6px; align-items: center; font-size: 1
   body { background: #fff; color: #000; }
   .panel { border-color: #ccc; break-inside: avoid; }
 }
+button[role="tab"][aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }

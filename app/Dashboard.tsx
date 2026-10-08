@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { addDays, resolveRange } from "@/lib/compute";
+import { addDays, METRIC_KEYS, resolveRange } from "@/lib/compute";
 import { DEFINITION_VERSION, Market, MARKETS } from "@/server/metrics/definitions";
 import BounceCourt from "./components/BounceCourt";
 import FilterBar, { compareFor, endOf, rangeError, startOf } from "./components/FilterBar";
@@ -28,9 +28,10 @@ function defaults(api: Api): Filters {
     markets: ALL_MARKETS,
     device: "all",
     orders: api.data.orders_source,
-    tab: "decisions",
+    tab: "numbers",
     split: false,
     lanes: "market",
+    metric: "bounce_rate",
   };
 }
 
@@ -54,7 +55,8 @@ function fromUrl(api: Api): Filters {
     markets: markets.length ? markets : ALL_MARKETS,
     device: (["all", "desktop", "mobile"].includes(q.get("d") ?? "") ? q.get("d") : "all") as Filters["device"],
     orders: q.get("o") === "session" ? "session" : q.get("o") === "backend" && api.data.has_backend_orders ? "backend" : d.orders,
-    tab: (["decisions", "overview", "releases", "quality"].includes(q.get("t") ?? "") ? q.get("t") : "decisions") as Filters["tab"],
+    tab: (["numbers", "decisions", "overview", "releases", "quality"].includes(q.get("t") ?? "") ? q.get("t") : "numbers") as Filters["tab"],
+    metric: ((METRIC_KEYS as string[]).includes(q.get("k") ?? "") ? q.get("k") : "bounce_rate") as Filters["metric"],
     split: q.get("split") === "1",
     lanes: q.get("lanes") === "device" ? "device" : "market",
   };
@@ -63,7 +65,7 @@ function fromUrl(api: Api): Filters {
 }
 
 export function filtersToQuery(f: Filters) {
-  const q = new URLSearchParams({ from: f.from, to: f.to, cfrom: f.cfrom, cto: f.cto, c: f.compare, p: f.platform, m: f.markets.join(","), d: f.device, o: f.orders, t: f.tab, lanes: f.lanes });
+  const q = new URLSearchParams({ from: f.from, to: f.to, cfrom: f.cfrom, cto: f.cto, c: f.compare, p: f.platform, m: f.markets.join(","), d: f.device, o: f.orders, t: f.tab, lanes: f.lanes, k: f.metric });
   if (f.split) q.set("split", "1");
   return q.toString();
 }
@@ -172,19 +174,20 @@ export default function Dashboard() {
         <nav className="tabs" role="tablist" aria-label="Views">
           {(
             [
+              ["numbers", "Numbers"],
               ["decisions", "Decisions"],
               ["overview", "Bounce & funnel"],
               ["releases", "Releases"],
               ["quality", "Data quality"],
             ] as const
           ).map(([k, label]) => (
-            <button key={k} role="tab" aria-selected={f.tab === k} aria-pressed={f.tab === k} onClick={() => set({ tab: k })}>
+            <button key={k} role="tab" aria-selected={f.tab === k} onClick={() => set({ tab: k })}>
               {label}
             </button>
           ))}
         </nav>
 
-        <Kpis {...props} />
+        <Kpis {...props} set={set} />
         <div className="grid" style={{ marginTop: 12 }}>
           {f.tab === "overview" && <BounceCourt {...props} set={set} />}
           <Panels {...props} set={set} reload={load} />

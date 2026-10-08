@@ -10,3 +10,4 @@ next-env.d.ts
 *.tsbuildinfo
 data/
 .env.local
+.next-build/

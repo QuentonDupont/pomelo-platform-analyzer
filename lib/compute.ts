@@ -349,3 +349,187 @@ export function fmtDate(d: string) {
 export function fmtRange(a: string, b: string) {
   return a === b ? fmtDate(a) : `${fmtDate(a)} – ${fmtDate(b)}`;
 }
+
+// ---------- CEO depth: metric registry, series, segment decomposition ----------
+export type MetricKey = "total" | "bounce_rate" | "nb" | "nonbounce_cr" | "orders" | "aov" | "revenue" | "rev_per_nb";
+
+export interface MetricDef {
+  key: MetricKey;
+  label: string;
+  kind: "count" | "rate" | "money" | "moneyRatio";
+  good: "up" | "down";
+  /** numerator / denominator of the metric (count metrics: den = null) */
+  num: (a: Agg) => number;
+  den: (a: Agg) => number | null;
+  numLabel: string;
+  denLabel: string | null;
+  needsOrders: boolean;
+  fmt: (v: number | null) => string;
+  /** format a change in this metric */
+  fmtDelta: (d: number | null) => string;
+}
+
+const ppDelta = (d: number | null, dp = 2) => (d == null ? "—" : `${d >= 0 ? "+" : ""}${(d * 100).toFixed(dp)} pp`);
+const signed = (d: number | null, f: (n: number) => string) => (d == null ? "—" : `${d >= 0 ? "+" : "−"}${f(Math.abs(d))}`);
+
+export const METRICS: Record<MetricKey, MetricDef> = {
+  total: { key: "total", label: "Total sessions", kind: "count", good: "up", num: (a) => a.total, den: () => null, numLabel: "sessions", denLabel: null, needsOrders: false, fmt: (v) => fmtInt(v), fmtDelta: (d) => signed(d, (n) => fmtInt(n)) },
+  bounce_rate: { key: "bounce_rate", label: "Bounce rate", kind: "rate", good: "down", num: (a) => a.bounces, den: (a) => a.total, numLabel: "bounced sessions", denLabel: "total sessions", needsOrders: false, fmt: (v) => fmtPct(v, 1), fmtDelta: (d) => ppDelta(d, 2) },
+  nb: { key: "nb", label: "Non-bounce sessions", kind: "count", good: "up", num: (a) => a.nb, den: () => null, numLabel: "non-bounce sessions", denLabel: null, needsOrders: false, fmt: (v) => fmtInt(v), fmtDelta: (d) => signed(d, (n) => fmtInt(n)) },
+  nonbounce_cr: { key: "nonbounce_cr", label: "Non-bounce CR", kind: "rate", good: "up", num: (a) => a.orders, den: (a) => a.nb, numLabel: "orders", denLabel: "non-bounce sessions", needsOrders: true, fmt: (v) => fmtPct(v, 3), fmtDelta: (d) => ppDelta(d, 3) },
+  orders: { key: "orders", label: "Orders", kind: "count", good: "up", num: (a) => a.orders, den: () => null, numLabel: "orders", denLabel: null, needsOrders: true, fmt: (v) => fmtInt(v), fmtDelta: (d) => signed(d, (n) => fmtInt(n)) },
+  aov: { key: "aov", label: "AOV", kind: "moneyRatio", good: "up", num: (a) => a.revenue, den: (a) => a.orders, numLabel: "booked revenue (USD)", denLabel: "orders", needsOrders: true, fmt: (v) => fmtUsd(v, 2), fmtDelta: (d) => signed(d, (n) => fmtUsd(n, 2)) },
+  revenue: { key: "revenue", label: "Booked revenue", kind: "money", good: "up", num: (a) => a.revenue, den: () => null, numLabel: "booked revenue (USD)", denLabel: null, needsOrders: true, fmt: (v) => fmtUsd(v), fmtDelta: (d) => signed(d, (n) => fmtUsd(n)) },
+  rev_per_nb: { key: "rev_per_nb", label: "Revenue / non-bounce session", kind: "moneyRatio", good: "up", num: (a) => a.revenue, den: (a) => a.nb, numLabel: "booked revenue (USD)", denLabel: "non-bounce sessions", needsOrders: true, fmt: (v) => fmtUsd(v, 3), fmtDelta: (d) => signed(d, (n) => fmtUsd(n, 3)) },
+};
+export const METRIC_KEYS = Object.keys(METRICS) as MetricKey[];
+
+export function metricValue(m: MetricDef, a: Agg): number | null {
+  if (m.needsOrders && !a.orders_known) return null;
+  const d = m.den(a);
+  if (d === null) return m.num(a);
+  return d > 0 ? m.num(a) / d : null;
+}
+
+/** 95% interval for the metric value: Wilson for rates, day-bootstrap for money ratios, none for counts. */
+export function metricCi(m: MetricDef, a: Agg, days: Agg[]): [number, number] | null {
+  if (m.needsOrders && !a.orders_known) return null;
+  if (m.kind === "rate") return wilson(m.num(a), m.den(a) ?? 0);
+  if (m.kind === "moneyRatio") {
+    const pts = days.map((d) => ({ num: m.num(d), den: m.den(d) ?? 0 })).filter((p) => p.den > 0);
+    if (pts.length < 3) return null;
+    let seed = 11;
+    const rnd = () => (seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648;
+    const vals: number[] = [];
+    for (let i = 0; i < 1000; i++) {
+      let n = 0,
+        dd = 0;
+      for (let j = 0; j < pts.length; j++) {
+        const p = pts[Math.floor(rnd() * pts.length)];
+        n += p.num;
+        dd += p.den;
+      }
+      if (dd > 0) vals.push(n / dd);
+    }
+    vals.sort((x, y) => x - y);
+    return [vals[Math.floor(vals.length * 0.025)], vals[Math.floor(vals.length * 0.975)]];
+  }
+  return null;
+}
+
+export interface SeriesPoint {
+  t: string; // day "YYYY-MM-DD" or hour "YYYY-MM-DDTHH"
+  agg: Agg;
+  value: number | null;
+  ci: [number, number] | null;
+}
+
+/** Daily series (or hourly when `hourly` rows are passed) for one platform scope. */
+export function metricSeries(m: MetricDef, rows: DailyRow[], f: Filter, src: OrdersSource, hourly?: HourlyRow[]): SeriesPoint[] {
+  const out: SeriesPoint[] = [];
+  if (hourly) {
+    const hs = hourly.filter((r) => r.day >= f.from && r.day <= f.to && inPlatformKey(r.platform, f.platform) && f.markets.includes(r.market) && (f.device === "all" || r.device === f.device));
+    const key = (h: HourlyRow) => `${h.day}T${String(h.hour).padStart(2, "0")}`;
+    for (const k of [...new Set(hs.map(key))].sort()) {
+      const a = aggregate(hs.filter((h) => key(h) === k), src);
+      out.push({ t: k, agg: a, value: metricValue(m, a), ci: metricCi(m, a, []) });
+    }
+    return out;
+  }
+  for (let d = f.from; d <= f.to; d = addDays(d, 1)) {
+    const a = aggregate(filterRows(rows, { ...f, from: d, to: d }), src);
+    if (!a.days) continue;
+    out.push({ t: d, agg: a, value: metricValue(m, a), ci: metricCi(m, a, []) });
+  }
+  return out;
+}
+
+export interface Segment {
+  key: string;
+  label: string;
+  market: Market;
+  platform: "web" | "ios" | "android";
+  device: Device | "all";
+}
+
+/** Market × (Web mobile, Web desktop, iOS, Android) segments inside the platform filter. */
+export function segmentsFor(platform: PlatformFilter | "all", markets: Market[], webDevice: Device | "all" = "all"): Segment[] {
+  const parts: { platform: Segment["platform"]; device: Segment["device"]; name: string }[] = [];
+  if (platform === "web" || platform === "all") {
+    if (webDevice === "all" || webDevice === "mobile") parts.push({ platform: "web", device: "mobile", name: "Web mobile" });
+    if (webDevice === "all" || webDevice === "desktop") parts.push({ platform: "web", device: "desktop", name: "Web desktop" });
+  }
+  if (platform === "app" || platform === "ios" || platform === "all") parts.push({ platform: "ios", device: "all", name: "iOS" });
+  if (platform === "app" || platform === "android" || platform === "all") parts.push({ platform: "android", device: "all", name: "Android" });
+  return markets.flatMap((m) => parts.map((p) => ({ key: `${m}|${p.platform}|${p.device}`, label: `${m} · ${p.name}`, market: m, platform: p.platform, device: p.device })));
+}
+
+export function segmentAgg(rows: DailyRow[], s: Segment, from: string, to: string, src: OrdersSource) {
+  return aggregate(filterRows(rows, { from, to, platform: s.platform, markets: [s.market], device: s.device }), src);
+}
+
+export interface Contribution {
+  key: string;
+  label: string;
+  a: { num: number; den: number | null; value: number | null; share: number | null };
+  b: { num: number; den: number | null; value: number | null; share: number | null };
+  mix: number; // ratio metrics: effect of the segment's share of the denominator changing
+  rate: number; // ratio metrics: effect of the segment's own rate changing
+  total: number; // contribution to the headline change; contributions sum exactly to it
+}
+
+/**
+ * Exact decomposition of a metric's change across segments.
+ * Counts/money: contribution = the segment's own change. Ratio metrics (R = Σ wᵢrᵢ, wᵢ = denᵢ/Σden):
+ * ΔR = Σ Δwᵢ·r̄ᵢ (mix) + Σ w̄ᵢ·Δrᵢ (rate), midpoint weights, so the parts sum exactly to ΔR.
+ */
+export function decomposeChange(m: MetricDef, segs: { key: string; label: string; a: Agg; b: Agg }[]) {
+  if (m.kind === "count" || m.kind === "money") {
+    const contributions: Contribution[] = segs.map((s) => {
+      const va = m.num(s.a);
+      const vb = m.num(s.b);
+      return { key: s.key, label: s.label, a: { num: va, den: null, value: va, share: null }, b: { num: vb, den: null, value: vb, share: null }, mix: 0, rate: 0, total: vb - va };
+    });
+    return { contributions, total: contributions.reduce((x, c) => x + c.total, 0), mix: 0, rate: 0 };
+  }
+  const denA = segs.reduce((x, s) => x + (m.den(s.a) ?? 0), 0);
+  const denB = segs.reduce((x, s) => x + (m.den(s.b) ?? 0), 0);
+  const contributions: Contribution[] = [];
+  for (const s of segs) {
+    const da = m.den(s.a) ?? 0;
+    const db = m.den(s.b) ?? 0;
+    if (!da && !db) continue;
+    const wa = denA ? da / denA : 0;
+    const wb = denB ? db / denB : 0;
+    const ra0 = da ? m.num(s.a) / da : null;
+    const rb0 = db ? m.num(s.b) / db : null;
+    const ra = ra0 ?? (rb0 as number);
+    const rb = rb0 ?? (ra0 as number);
+    const mix = (wb - wa) * ((ra + rb) / 2);
+    const rate = ((wa + wb) / 2) * (rb - ra);
+    contributions.push({
+      key: s.key,
+      label: s.label,
+      a: { num: m.num(s.a), den: da, value: ra0, share: wa },
+      b: { num: m.num(s.b), den: db, value: rb0, share: wb },
+      mix,
+      rate,
+      total: mix + rate,
+    });
+  }
+  const mix = contributions.reduce((x, c) => x + c.mix, 0);
+  const rate = contributions.reduce((x, c) => x + c.rate, 0);
+  return { contributions, total: mix + rate, mix, rate };
+}
+
+/** Neutral sentence describing a decomposition (no causal claims). */
+export function describeChange(m: MetricDef, d: ReturnType<typeof decomposeChange>): string {
+  if (!d.contributions.length || d.total === 0) return `${m.label} did not change between the two periods.`;
+  const byMag = [...d.contributions].sort((x, y) => Math.abs(y.total) - Math.abs(x.total));
+  const same = byMag.filter((c) => Math.sign(c.total) === Math.sign(d.total)).slice(0, 2);
+  const against = byMag.find((c) => Math.sign(c.total) === -Math.sign(d.total) && c.total !== 0);
+  const lead = same.map((c) => `${c.label} ${m.fmtDelta(c.total)}`).join(" and ");
+  const offset = against ? `, partly offset by ${against.label} ${m.fmtDelta(against.total)}` : "";
+  const mr = m.kind === "rate" || m.kind === "moneyRatio" ? ` Of the ${m.fmtDelta(d.total)}, ${m.fmtDelta(d.mix)} comes from the traffic mix shifting between segments and ${m.fmtDelta(d.rate)} from rates changing within segments.` : "";
+  return `${m.label} changed ${m.fmtDelta(d.total)}. Biggest contributors: ${lead}${offset}.${mr}`;
+}

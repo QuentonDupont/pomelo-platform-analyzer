@@ -137,6 +137,34 @@ describe("decision layer maths", () => {
   });
 });
 
+describe("CEO depth: change decomposition", () => {
+  it("segment contributions (mix + rate) sum exactly to the headline change for every metric", async () => {
+    const { decomposeChange, METRICS, METRIC_KEYS, metricValue, segmentAgg, segmentsFor } = await import("../lib/compute");
+    const shifted = rows.map((r) => (r.day >= "2026-09-21" && r.platform === "web" && r.device === "mobile" ? { ...r, total: r.total * 2, bounces: Math.round(r.total * 2 * 0.86), nb: r.total * 2 - Math.round(r.total * 2 * 0.86) } : r));
+    for (const platform of ["web", "app", "all"] as const) {
+      for (const k of METRIC_KEYS) {
+        const m = METRICS[k];
+        const segs = segmentsFor(platform, [...M]).map((s) => ({ key: s.key, label: s.label, a: segmentAgg(shifted, s, "2026-09-14", "2026-09-20", "backend"), b: segmentAgg(shifted, s, "2026-09-21", "2026-09-27", "backend") }));
+        const d = decomposeChange(m, segs);
+        const A = aggregate(filterRows(shifted, { from: "2026-09-14", to: "2026-09-20", platform, markets: [...M], device: "all" }), "backend");
+        const B = aggregate(filterRows(shifted, { from: "2026-09-21", to: "2026-09-27", platform, markets: [...M], device: "all" }), "backend");
+        expect(d.total).toBeCloseTo(metricValue(m, B)! - metricValue(m, A)!, 9);
+        expect(d.contributions.reduce((x, c) => x + c.total, 0)).toBeCloseTo(d.total, 9);
+      }
+    }
+  });
+  it("a pure traffic-mix shift shows up as mix, not rate", async () => {
+    const { decomposeChange, METRICS, segmentAgg, segmentsFor } = await import("../lib/compute");
+    // double web-mobile traffic at the same bounce rate: web bounce rises only through mix
+    const shifted = rows.map((r) => (r.day >= "2026-09-21" && r.platform === "web" && r.device === "mobile" ? { ...r, total: r.total * 2, bounces: r.bounces * 2, nb: r.nb * 2 } : r));
+    const segs = segmentsFor("web", [...M]).map((s) => ({ key: s.key, label: s.label, a: segmentAgg(shifted, s, "2026-09-14", "2026-09-20", "backend"), b: segmentAgg(shifted, s, "2026-09-21", "2026-09-27", "backend") }));
+    const d = decomposeChange(METRICS.bounce_rate, segs);
+    expect(d.total).toBeGreaterThan(0);
+    expect(Math.abs(d.rate)).toBeLessThan(1e-12);
+    expect(d.mix).toBeCloseTo(d.total, 12);
+  });
+});
+
 describe("intervals", () => {
   it("Newcombe difference contains the point estimate and excludes 0 for a clear change", () => {
     const ci = newcombeDiff(500, 1000, 600, 1000)!;

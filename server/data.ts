@@ -153,7 +153,8 @@ export function coverage(rows: DailyRow[]) {
   return { total_sessions: total, unknown_platform_sessions: unknown, unknown_platform_share: total ? unknown / total : 0, orders_without_tracked_sessions: ordersNoTraffic };
 }
 
+/** Calendar is driven by days that have tracked sessions (order-only days don't make a range usable). */
 export function availableWeeks(rows: DailyRow[]) {
-  const days = [...new Set(rows.map((r) => r.day))].sort();
+  const days = [...new Set(rows.filter((r) => r.total > 0).map((r) => r.day))].sort();
   return { days, weeks: completeWeeks(days, bangkokToday()), latest: days[days.length - 1] ?? null, earliest: days[0] ?? null };
 }

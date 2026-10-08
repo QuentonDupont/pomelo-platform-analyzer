@@ -13,6 +13,9 @@ import D10Alerts from "./decisions/D10Alerts";
 import DataQuality from "./DataQuality";
 import Funnel from "./Funnel";
 import Releases from "./Releases";
+import ChangeBridge from "./ChangeBridge";
+import SegmentMatrix from "./SegmentMatrix";
+import TrendExplorer from "./TrendExplorer";
 import type { Filters, PanelProps } from "./types";
 
 const DECISION_NAV: [string, string][] = [
@@ -31,8 +34,15 @@ const DECISION_NAV: [string, string][] = [
 /** Routes the active tab to its panels. */
 export default function Panels(props: PanelProps & { set: (p: Partial<Filters>) => void; reload: () => void }) {
   const { set, reload, ...p } = props;
-  void set;
   switch (p.f.tab) {
+    case "numbers":
+      return (
+        <div className="grid">
+          <TrendExplorer {...p} set={set} />
+          <ChangeBridge {...p} set={set} />
+          <SegmentMatrix {...p} set={set} />
+        </div>
+      );
     case "decisions":
       return (
         <div className="grid" id="panel-decisions">

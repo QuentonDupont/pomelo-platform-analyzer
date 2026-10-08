@@ -1,0 +1,37 @@
+/* ---- CEO depth: charts (dataviz method: thin marks, hairline grid, tooltip + table twin) ---- */
+.viz { position: relative; }
+.viz svg { display: block; overflow: visible; }
+.viz-toolbar { display: flex; justify-content: flex-end; gap: 6px; margin-bottom: 4px; }
+.viz-toolbar button { font-size: 12px; padding: 3px 8px; }
+.viz-tip { position: absolute; z-index: 5; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14); font-size: 12px; }
+.viz-tip-title { font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+.viz-tip-row { display: grid; grid-template-columns: 16px auto 1fr; gap: 2px 6px; align-items: baseline; padding: 1px 0; }
+.viz-tip-row strong { font-size: 13px; color: var(--ink); }
+.viz-tip-sub { grid-column: 2 / 4; font-size: 11px; color: var(--muted); }
+.viz-tip-foot { margin-top: 4px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 4px; }
+.viz-key { display: inline-block; width: 12px; height: 2px; border-radius: 1px; align-self: center; }
+.viz-key.blank { background: transparent; }
+.viz-axis text { font-size: 10.5px; fill: var(--muted); }
+.viz-grid line { stroke: var(--grid); stroke-width: 1; }
+.viz-hit { fill: transparent; cursor: crosshair; }
+.viz-plot:focus { outline: none; }
+.viz-plot:focus-visible { outline: 2px solid var(--web); outline-offset: 2px; }
+.viz-mark { cursor: pointer; }
+.viz-mark:hover rect.bar, .viz-mark:focus rect.bar { filter: brightness(1.15); }
+.viz-mark:focus { outline: none; }
+.viz-mark:focus-visible rect.bar { stroke: var(--ink); stroke-width: 1.5; }
+.math { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-top: 10px; background: var(--panel); }
+.math .formula { font-size: 15px; margin: 4px 0 8px; }
+.math .formula strong { font-size: 18px; font-variant-numeric: proportional-nums; }
+.math dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0; font-size: 13px; }
+.math dt { color: var(--muted); }
+button.kpi { cursor: pointer; text-align: left; font: inherit; color: inherit; width: 100%; }
+button.kpi[aria-expanded="true"] { outline: 2px solid var(--web); outline-offset: -1px; }
+.kpi .v { font-variant-numeric: proportional-nums; }
+.mtx td.cell { text-align: right; cursor: pointer; border: 2px solid var(--panel); border-radius: 6px; min-width: 104px; vertical-align: top; }
+.mtx td.cell:focus-visible { outline: 2px solid var(--ink); }
+.mtx .v { font-weight: 700; font-size: 13.5px; }
+.mtx th.rowh { text-align: left; }
+.arrow-up::before { content: "▲ "; font-size: 9px; }
+.arrow-down::before { content: "▼ "; font-size: 9px; }
+.chart-controls { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }

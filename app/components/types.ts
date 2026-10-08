@@ -111,9 +111,11 @@ export interface Filters {
   markets: Market[];
   device: "all" | "desktop" | "mobile";
   orders: OrdersSource;
-  tab: "decisions" | "overview" | "releases" | "quality";
+  tab: "numbers" | "decisions" | "overview" | "releases" | "quality";
   split: boolean;
   lanes: "market" | "device";
+  /** metric shown in the Numbers tab charts (trend, bridge, matrix) */
+  metric: import("@/lib/compute").MetricKey;
 }
 
 /** What every panel receives. `cur`/`cmp` are already resolved to the chosen From/To (hour-precise where data allows). */
