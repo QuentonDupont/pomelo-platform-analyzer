@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { aggregate, Agg, filterRows, fmtInt, METRIC_KEYS, METRICS, metricValue } from "@/lib/compute";
+import { aggregate, Agg, comparable, filterRows, fmtInt, METRIC_KEYS, METRICS, metricValue } from "@/lib/compute";
 import { Market, MARKETS, MIN_ORDERS, MIN_SESSIONS, newcombeDiff } from "@/server/metrics/definitions";
 import { Panel, RealBadge } from "./shared";
 import { ChartOrTable, Tip } from "./viz";
@@ -27,6 +27,7 @@ export default function SegmentMatrix(props: PanelProps & { set: (p: Partial<Fil
     ...markets.map((x) => ({ key: x.id, label: x.id === "GL" ? "Global USD" : x.id === "AU" ? "Australia*" : x.label, markets: [x.id] as Market[] })),
     { key: "all", label: "All selected markets", markets: f.markets, total: true },
   ];
+  const like = comparable(cur, cmp);
   const at = (rows: typeof cur.rows, from: string, to: string, ms: Market[], col: Col): Agg => aggregate(filterRows(rows, { from, to, platform: col.platform, markets: ms, device: col.device }), f.orders);
 
   const cells = rowsDef.map((r) =>
@@ -35,7 +36,8 @@ export default function SegmentMatrix(props: PanelProps & { set: (p: Partial<Fil
       const b = at(cur.rows, cur.from, cur.to, r.markets, col);
       const va = metricValue(m, a);
       const vb = metricValue(m, b);
-      const delta = va != null && vb != null ? vb - va : null;
+      // totals over windows with unequal data coverage are not comparable
+      const delta = va != null && vb != null && (like || (m.kind !== "count" && m.kind !== "money")) ? vb - va : null;
       const insufficient = b.total < MIN_SESSIONS || (m.needsOrders && b.orders < MIN_ORDERS) || (m.needsOrders && cur.ordersUnavailable);
       let clear = false;
       let ci: [number, number] | null = null;
@@ -204,6 +206,12 @@ export default function SegmentMatrix(props: PanelProps & { set: (p: Partial<Fil
         </label>
       }
     >
+      {!like && (
+        <div className="field-warn" role="status">
+          Partial data: selected range has session data for {cur.daysWithData} of {cur.daysInRange} days, comparison for {cmp.daysWithData} of {cmp.daysInRange}.{" "}
+          {m.kind === "count" || m.kind === "money" ? "Changes in totals are hidden because they would not be like-for-like." : "Rate changes are shown; treat with care."}
+        </div>
+      )}
       <ChartOrTable label={`${m.label} matrix`} chart={grid} table={table} />
     </Panel>
   );

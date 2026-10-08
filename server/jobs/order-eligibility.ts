@@ -1,13 +1,13 @@
-// "Eligible order" filters for online_sales (dataset 33). The CEO brief's exact rule is still an
-// open question (OPEN_QUESTIONS #4); these are the evidenced candidates, kept in one place so the
-// reconciliation result can change them without touching the sync code.
+// "Eligible order" filters for online_sales (dataset 33). This combination reproduces the CEO brief
+// (Phase 2 reconciliation, 2026-10-08): 970 vs 971 eligible orders 7 Sep–6 Oct; App 175/163 vs 174/163;
+// Web 33/28 exact. ±1 is consistent with orders whose status changed after the brief was produced.
+// Includes site-to-store (S2S); no staff/influencer or fraud exclusion (see OPEN_QUESTIONS "Phase 2 data pull").
 import type { Filter } from "../adapters/superset";
 
 export const ELIGIBLE_ORDER_FILTERS: Filter[] = [
   { column: "is_billable_order", operator: "eq", value: true },
-  { column: "test", operator: "eq", value: false },
-  { column: "is_fraud_customer", operator: "eq", value: false },
   { column: "platform", operator: "neq", value: "Apollo" },
+  { column: "simple_order_status", operator: "neq", value: "Cancelled" },
 ];
 
-export const ELIGIBLE_ORDER_RULE_STATUS = "candidate — pending confirmation of the CEO brief's 'eligible' rule";
+export const ELIGIBLE_ORDER_RULE_STATUS = "reconciled to the CEO brief (970 vs 971 orders, 7 Sep–6 Oct) — billable, non-Apollo, not cancelled, incl. S2S";

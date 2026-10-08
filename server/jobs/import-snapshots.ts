@@ -185,7 +185,11 @@ export function importFunnel(): number {
       const p = String(pick(r, "platform") ?? "").toLowerCase();
       const platform = p.startsWith("web") ? "web" : p.startsWith("ios") ? "ios" : p.startsWith("android") ? "android" : null;
       if (!platform) continue;
-      st.run(day10(pick(r, "week", "week_start")), platform, String(pick(r, "stage", "event")), num(pick(r, "stage_order", "order")) ?? 0, num(pick(r, "sessions", "count")) ?? 0, src);
+      // sankey rows: numeric `stage` = order, `event` = stage name, sessions_in/out; sessions reaching a stage = max(in, out)
+      const name = pick(r, "event") != null ? String(pick(r, "event")) : String(pick(r, "stage"));
+      const order = num(pick(r, "stage_order")) ?? (pick(r, "event") != null ? num(pick(r, "stage")) : null) ?? 0;
+      const reached = num(pick(r, "sessions", "count")) ?? Math.max(num(pick(r, "sessions_in")) ?? 0, num(pick(r, "sessions_out")) ?? 0);
+      st.run(day10(pick(r, "week", "week_start")), platform, name, order, reached, src);
       n++;
     }
   });

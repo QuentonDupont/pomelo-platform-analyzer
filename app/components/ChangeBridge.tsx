@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { aggregate, Contribution, decomposeChange, describeChange, filterRows, fmtInt, fmtPct, METRIC_KEYS, METRICS, metricValue, segmentAgg, segmentsFor } from "@/lib/compute";
+import { aggregate, comparable, Contribution, decomposeChange, describeChange, filterRows, fmtInt, fmtPct, METRIC_KEYS, METRICS, metricValue, segmentAgg, segmentsFor } from "@/lib/compute";
 import { NotEvidenced, Panel, PLATFORM_LABEL, RealBadge } from "./shared";
 import { ChartOrTable, Legend, niceTicks, Tip, tipLeft } from "./viz";
 import type { Filters, PanelProps } from "./types";
@@ -23,7 +23,9 @@ export default function ChangeBridge(props: PanelProps & { set: (p: Partial<Filt
   const B = aggregate(filterRows(cur.rows, { ...scope, from: cur.from, to: cur.to }), f.orders);
   const va = metricValue(m, A);
   const vb = metricValue(m, B);
-  const unavailable = A.total === 0 || B.total === 0 || va == null || vb == null || (m.needsOrders && cur.ordersUnavailable);
+  const like = comparable(cur, cmp);
+  const coverageNote = like ? null : `Selected range has session data for ${cur.daysWithData} of ${cur.daysInRange} days; comparison for ${cmp.daysWithData} of ${cmp.daysInRange} days.`;
+  const unavailable = A.total === 0 || B.total === 0 || va == null || vb == null || (m.needsOrders && cur.ordersUnavailable) || (!like && (m.kind === "count" || m.kind === "money"));
   const d = decomposeChange(m, segs);
   const sorted = [...d.contributions].sort((x, y) => Math.abs(y.total) - Math.abs(x.total));
   const shown = sorted.slice(0, TOP);
@@ -238,9 +240,17 @@ export default function ChangeBridge(props: PanelProps & { set: (p: Partial<Filt
       }
     >
       {unavailable ? (
-        <NotEvidenced what={`${m.label} change for these periods`} needs="data for both periods (and orders at this precision for order-based metrics)" />
+        <NotEvidenced
+          what={`${m.label} change for these periods`}
+          needs={coverageNote ? `like-for-like periods — ${coverageNote} Totals over unequal coverage are not comparable; pick periods with full data or use a rate metric` : "data for both periods (and orders at this precision for order-based metrics)"}
+        />
       ) : (
         <>
+          {coverageNote && (
+            <div className="field-warn" role="status">
+              Partial data: {coverageNote} Rates are still comparable; treat with care.
+            </div>
+          )}
           <div className="callout">{describeChange(m, d)}</div>
           <ChartOrTable label={`${m.label} bridge`} chart={chart} table={table} />
         </>

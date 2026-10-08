@@ -142,20 +142,29 @@ export default function TrendExplorer(props: PanelProps & { set: (p: Partial<Fil
           <path key={s.id} d={path(s.pts)} fill="none" stroke={s.color} strokeWidth={s.cmp ? 1.5 : 2} strokeLinejoin="round" strokeLinecap="round" />
         ))}
         {/* direct labels at line ends (relief for low-contrast hues) */}
-        {series.map((s, k) => {
-          const last = [...s.pts].reverse().find((p) => p.value != null);
-          if (!last) return null;
-          const i = s.pts.lastIndexOf(last);
-          return (
-            <g key={`lab-${s.id}`}>
-              <circle cx={x(i)} cy={y(last.value!)} r={3.5} fill={s.color} stroke="var(--panel)" strokeWidth={2} />
-              <text x={W - pad.r + 8} y={y(last.value!) + 4 + (k - series.length / 2) * 1.5} fontSize="11" fill="var(--ink)">
-                <tspan fontWeight={700}>{m.fmt(last.value)}</tspan>
-                <tspan fill="var(--muted)"> {s.cmp ? "comparison" : s.label}</tspan>
+        {(() => {
+          // end labels, pushed apart so they never overlap (min 15px), each tied to its line by a leader
+          const ends = series
+            .map((s) => {
+              const last = [...s.pts].reverse().find((p) => p.value != null);
+              return last ? { s, last, i: s.pts.lastIndexOf(last), y: y(last.value!), ly: y(last.value!) } : null;
+            })
+            .filter((e): e is NonNullable<typeof e> => e != null)
+            .sort((a, b) => a.y - b.y);
+          for (let k = 1; k < ends.length; k++) ends[k].ly = Math.max(ends[k].ly, ends[k - 1].ly + 15);
+          const overflow = ends.length ? ends[ends.length - 1].ly - (H - pad.b) : 0;
+          if (overflow > 0) for (const e of ends) e.ly -= overflow;
+          return ends.map((e) => (
+            <g key={`lab-${e.s.id}`}>
+              <circle cx={x(e.i)} cy={e.y} r={3.5} fill={e.s.color} stroke="var(--panel)" strokeWidth={2} />
+              <line x1={x(e.i) + 5} x2={W - pad.r + 4} y1={e.y} y2={e.ly} stroke={e.s.color} strokeOpacity={0.5} />
+              <text x={W - pad.r + 8} y={e.ly + 4} fontSize="11" fill="var(--ink)">
+                <tspan fontWeight={700}>{m.fmt(e.last.value)}</tspan>
+                <tspan fill="var(--muted)"> {e.s.cmp ? "comparison" : e.s.label}</tspan>
               </text>
             </g>
-          );
-        })}
+          ));
+        })()}
         {rels.map((r) => {
           const i = labels.indexOf(r.bangkok_date);
           return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { addDays, aggregate, Agg, decomposeChange, filterRows, fmtInt, fmtPct, METRIC_KEYS, MetricDef, MetricKey, METRICS, metricCi, metricValue, segmentAgg, segmentsFor } from "@/lib/compute";
+import { addDays, aggregate, Agg, comparable, coverageShare, decomposeChange, filterRows, fmtInt, fmtPct, METRIC_KEYS, MetricDef, MetricKey, METRICS, metricCi, metricValue, segmentAgg, segmentsFor } from "@/lib/compute";
 import { bootstrapRatioDiff, MIN_ORDERS, MIN_SESSIONS, newcombeDiff } from "@/server/metrics/definitions";
 import { PLATFORM_LABEL, scopeFilter, useCountUp } from "./shared";
 import type { Filters, PanelProps } from "./types";
@@ -29,6 +29,11 @@ export default function Kpis(props: PanelProps & { set?: (p: Partial<Filters>) =
   const a = aggregate(filterRows(cur.rows, scopeFilter(f, cur.from, cur.to, f.platform)), f.orders);
   const b = aggregate(filterRows(cmp.rows, scopeFilter(f, cmp.from, cmp.to, f.platform)), f.orders);
   const curDays = dailyAggs(cur.rows, f, cur.from, cur.to);
+  const partial = comparable(cur, cmp)
+    ? null
+    : coverageShare(cmp) < 0.9
+      ? `comparison incomplete: ${cmp.daysWithData} of ${cmp.daysInRange} days have data`
+      : `selected range incomplete: ${cur.daysWithData} of ${cur.daysInRange} days have data`;
   const ordersNa = cur.ordersUnavailable || !a.orders_known;
   const na = (m: MetricDef) =>
     m.needsOrders && ordersNa ? "orders not available at this precision" : m.key === "bounce_rate" && a.total < MIN_SESSIONS ? "insufficient sample" : m.needsOrders && m.kind !== "count" && m.kind !== "money" && a.orders < MIN_ORDERS ? "insufficient sample" : null;
@@ -48,6 +53,7 @@ export default function Kpis(props: PanelProps & { set?: (p: Partial<Filters>) =
               spark={curDays.map((d) => metricValue(m, d))}
               n={m.denLabel ? `${fmtInt(m.den(a))} ${m.denLabel}` : m.key === "revenue" ? "USD, before returns" : ""}
               reduced={props.reduced}
+              partial={partial}
               open={open === k}
               onToggle={() => setOpen(open === k ? null : k)}
             />
@@ -59,16 +65,22 @@ export default function Kpis(props: PanelProps & { set?: (p: Partial<Filters>) =
   );
 }
 
-function KpiTile({ m, label, value, prev, na, spark, n, reduced, open, onToggle }: { m: MetricDef; label: string; value: number | null; prev: number | null; na: string | null; spark: (number | null)[]; n: string; reduced: boolean; open: boolean; onToggle: () => void }) {
+function KpiTile({ m, label, value, prev, na, spark, n, reduced, partial, open, onToggle }: { m: MetricDef; label: string; value: number | null; prev: number | null; na: string | null; spark: (number | null)[]; n: string; reduced: boolean; partial: string | null; open: boolean; onToggle: () => void }) {
   const v = useCountUp(value ?? 0, reduced);
   let delta = "no comparison";
   let cls = "flat";
-  if (!na && value != null && prev != null) {
+  const totalsMetric = m.kind === "count" || m.kind === "money";
+  if (partial && totalsMetric) {
+    // totals over windows with different data coverage are not comparable
+    delta = partial;
+    cls = "pending";
+  } else if (!na && value != null && prev != null) {
     const d = value - prev;
     const rel = prev !== 0 && m.kind !== "rate" ? ` (${d >= 0 ? "+" : ""}${((d / prev) * 100).toFixed(1)}%)` : "";
     delta = `${m.fmtDelta(d)}${rel}`;
     // arrow = direction of the number; colour = better (green) / worse (red)
     cls = Math.abs(d) < 1e-12 ? "flat" : `${(m.good === "up" ? d > 0 : d < 0) ? "up" : "down"} ${d > 0 ? "arrow-up" : "arrow-down"}`;
+    if (partial) delta += " · partial data";
   }
   const pts = spark.filter((x): x is number => x != null);
   const lo = Math.min(...pts);

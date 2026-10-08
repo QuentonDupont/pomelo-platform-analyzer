@@ -106,7 +106,14 @@ export interface ResolvedRange {
   partialDays: { day: string; fromHour: number; toHour: number; precision: "hour" | "rounded-to-day"; orders: "hour" | "unavailable" }[];
   /** true when a partial day has hourly sessions but no hourly orders: order-based rates are not shown. */
   ordersUnavailable: boolean;
+  /** calendar days in the window, and how many of them have tracked sessions */
+  daysInRange: number;
+  daysWithData: number;
 }
+
+/** Share of the window's days that have session data; below 0.9 totals are not comparable. */
+export const coverageShare = (r: Pick<ResolvedRange, "daysInRange" | "daysWithData">) => (r.daysInRange ? r.daysWithData / r.daysInRange : 0);
+export const comparable = (a: ResolvedRange, b: ResolvedRange) => coverageShare(a) >= 0.9 && coverageShare(b) >= 0.9;
 
 /**
  * Resolve an hour-precise From/To (inclusive of the To hour) into day-grain rows.
@@ -151,7 +158,16 @@ export function resolveRange(daily: DailyRow[], hourly: HourlyRow[], fromDT: str
     }
     out.push(...acc.values());
   }
-  return { rows: out, from: a.day, to: b.day, partialDays, ordersUnavailable: partialDays.some((p) => p.orders === "unavailable") };
+  const withData = new Set(out.filter((r) => r.total > 0).map((r) => r.day)).size;
+  return {
+    rows: out,
+    from: a.day,
+    to: b.day,
+    partialDays,
+    ordersUnavailable: partialDays.some((p) => p.orders === "unavailable"),
+    daysInRange: daysBetween(a.day, b.day) + 1,
+    daysWithData: withData,
+  };
 }
 
 /** Same-length comparison window immediately before [from, to], to the hour. */

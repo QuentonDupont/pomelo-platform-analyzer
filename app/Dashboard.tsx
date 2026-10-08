@@ -111,8 +111,13 @@ export default function Dashboard() {
     if (!api || !f) return null;
     const valid = !rangeError(f.from, f.to, null, null) && !rangeError(f.cfrom, f.cto, null, null);
     const d = defaults(api);
-    const cur = resolveRange(api.data.daily, api.data.hourly ?? [], valid ? f.from : d.from, valid ? f.to : d.to);
-    const cmp = resolveRange(api.data.daily, api.data.hourly ?? [], valid ? f.cfrom : d.cfrom, valid ? f.cto : d.cto);
+    // Only days with tracked sessions count: otherwise orders from days without session data would be divided
+    // by a partial session count (e.g. a 19.8% "CR"). Days without sessions are reported by the range warning.
+    const tracked = new Set(api.data.calendar.days);
+    const daily = api.data.daily.filter((r) => tracked.has(r.day));
+    const hourly = (api.data.hourly ?? []).filter((r) => tracked.has(r.day));
+    const cur = resolveRange(daily, hourly, valid ? f.from : d.from, valid ? f.to : d.to);
+    const cmp = resolveRange(daily, hourly, valid ? f.cfrom : d.cfrom, valid ? f.cto : d.cto);
     return { cur, cmp };
   }, [api, f]);
 
