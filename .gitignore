@@ -11,3 +11,5 @@ next-env.d.ts
 data/
 .env.local
 .next-build/
+artifact/dist/
+artifact/seed/

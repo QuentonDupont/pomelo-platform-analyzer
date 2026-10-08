@@ -8,6 +8,8 @@ import FilterBar, { compareFor, endOf, rangeError, startOf } from "./components/
 import Kpis from "./components/Kpis";
 import { useReducedMotion } from "./components/shared";
 import Panels from "./components/Panels";
+import { getClient, RefreshProgress } from "./components/client";
+import Report from "./report/Report";
 import type { Api, Filters, PanelProps } from "./components/types";
 
 const POLL_MS = 60_000; // UI polls the local cache API; the server syncs sources every REFRESH_INTERVAL_MINUTES
@@ -77,11 +79,14 @@ export default function Dashboard() {
   const [now, setNow] = useState(() => Date.now());
   const reduced = useReducedMotion();
 
+  const [refreshing, setRefreshing] = useState<RefreshProgress | null>(null);
+  const [refreshMsg, setRefreshMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [report, setReport] = useState(false);
+  const client = getClient();
+
   const load = useCallback(async () => {
     try {
-      const r = await fetch("/api/metrics", { cache: "no-store" });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const j = (await r.json()) as Api;
+      const j = await getClient().load();
       if (!j?.data?.daily) throw new Error("unexpected response shape");
       setApi(j);
       setError(null);
@@ -92,7 +97,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     load();
-    const t = setInterval(load, POLL_MS);
+    // the artifact re-reads its shared database less often; its Refresh button pulls on demand
+    const t = setInterval(load, getClient().kind === "artifact" ? 5 * POLL_MS : POLL_MS);
     const c = setInterval(() => setNow(Date.now()), 15_000);
     return () => {
       clearInterval(t);
@@ -104,7 +110,12 @@ export default function Dashboard() {
     if (api && !f) setF(fromUrl(api));
   }, [api, f]);
   useEffect(() => {
-    if (f) window.history.replaceState(null, "", `?${filtersToQuery(f)}`);
+    if (!f) return;
+    try {
+      window.history.replaceState(null, "", `?${filtersToQuery(f)}`);
+    } catch {
+      /* sandboxed frames may refuse history changes; filters still work in-page */
+    }
   }, [f]);
 
   const ranges = useMemo(() => {
@@ -143,7 +154,13 @@ export default function Dashboard() {
       <a href="#main" className="skip">Skip to content</a>
       {empty && (
         <div className="sample-banner" role="status">
-          No data in the cache yet — run <code>npm run sync</code> (imports discovery snapshots; live sync needs credentials in .env.local).
+          {client.kind === "artifact" ? (
+            <>No data saved yet. Press ↻ Refresh data in the owner&apos;s Claude app to pull it from Superset.</>
+          ) : (
+            <>
+              No data in the cache yet — run <code>npm run sync</code> (imports discovery snapshots; live sync needs credentials in .env.local).
+            </>
+          )}
         </div>
       )}
       <main className="wrap" id="main">
@@ -158,14 +175,48 @@ export default function Dashboard() {
             <div className="pulse" aria-live="polite" title={lastSuperset?.message ?? ""}>
               <span className={`dot ${pulse}`} aria-hidden />
               {failed ? "A sync failed — showing last good data" : `data as of ${asOf} ICT`}
-              {pulse === "amber" && !failed && " · stale (live sync not connected)"}
+              {pulse === "amber" && !failed && (client.kind === "artifact" ? " · press Refresh for the latest" : " · stale (live sync not connected)")}
             </div>
-            <a className="button" href={`/report?${filtersToQuery(f)}`}>
-              Generate report
-            </a>
+            <button
+              type="button"
+              className="refresh"
+              disabled={Boolean(refreshing)}
+              aria-busy={Boolean(refreshing)}
+              onClick={async () => {
+                setRefreshMsg(null);
+                setRefreshing({ step: "Starting refresh", done: 0, total: 1 });
+                try {
+                  const r = await client.refresh((p) => setRefreshing(p));
+                  await load();
+                  setRefreshMsg({ ok: r.mode === "live", text: r.message });
+                } catch (e) {
+                  setRefreshMsg({ ok: false, text: e instanceof Error ? e.message : "Refresh failed." });
+                } finally {
+                  setRefreshing(null);
+                }
+              }}
+            >
+              {refreshing ? `${refreshing.step}${refreshing.total > 1 ? ` (${refreshing.done}/${refreshing.total})` : ""}…` : "↻ Refresh data"}
+            </button>
+            {client.kind === "local" ? (
+              <a className="button" href={`/report?${filtersToQuery(f)}`}>
+                Generate report
+              </a>
+            ) : (
+              <button type="button" className="button" aria-pressed={report} onClick={() => setReport(!report)}>
+                {report ? "Back to dashboard" : "Generate report"}
+              </button>
+            )}
           </div>
         </header>
 
+        {refreshMsg && (
+          <div className={refreshMsg.ok ? "callout" : "field-warn"} role="status" style={{ marginBottom: 8 }}>
+            {refreshMsg.text}
+          </div>
+        )}
+        {report && <Report embedded api={api} params={{ from: f.from, to: f.to, cfrom: f.cfrom, cto: f.cto, p: f.platform, m: f.markets, d: f.device, o: f.orders }} />}
+        <div hidden={report}>
         <FilterBar f={f} set={set} api={api} />
         {ranges.cur.partialDays.length > 0 && (
           <div className="note" role="note">
@@ -201,6 +252,7 @@ export default function Dashboard() {
           Non-bounce CR = eligible backend orders / known-bot-excluded non-bounce tracked sessions (operational ratio, not matched session conversion). Booked revenue = after-discount
           merchandise value in USD before returns. Cells with &lt; 30 sessions or &lt; 5 orders show “insufficient sample”. Changes are shown vs comparison; no causal claims.
         </p>
+        </div>
       </main>
     </>
   );

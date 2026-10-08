@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getClient } from "../client";
 import { aggregate, fmtInt, fmtPct, rates } from "@/lib/compute";
 import { MIN_SESSIONS } from "@/server/metrics/definitions";
 import { NotEvidenced, Panel, RealBadge } from "../shared";
@@ -22,13 +23,9 @@ export default function D6Vitals({ f, cur }: PanelProps) {
   const [err, setErr] = useState<string | null>(null);
   useEffect(() => {
     let alive = true;
-    fetch("/api/vitals", { cache: "no-store" })
-      .then(async (r) => {
-        const j: Envelope = await r.json();
-        if (!alive) return;
-        if (!r.ok) setErr(j.error?.message ?? `HTTP ${r.status}`);
-        else setEnv(j);
-      })
+    getClient()
+      .vitals()
+      .then((j) => alive && setEnv(j as Envelope))
       .catch((e) => alive && setErr(e instanceof Error ? e.message : "request failed"));
     return () => {
       alive = false;

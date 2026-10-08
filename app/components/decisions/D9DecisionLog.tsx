@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { getClient } from "../client";
 import { fmtDate } from "@/lib/compute";
 import { bangkokToday } from "@/lib/metrics";
 import { Panel, PendingBadge } from "../shared";
@@ -50,26 +51,25 @@ export default function D9DecisionLog(props: PanelProps & { onChange?: () => voi
     if (Object.keys(errs).length) return;
     setBusy(true);
     try {
-      const r = await fetch("/api/decisions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
-      const j = await r.json();
-      if (!r.ok) {
-        setErrors({ form: j?.error?.message ?? `Could not save (HTTP ${r.status})` });
-        return;
-      }
-      setMsg(`Saved as ${j.data.ref}. Reference ${j.data.ref} in a PR body to link its release automatically.`);
+      const { ref } = await getClient().createDecision(form);
+      setMsg(`Saved as ${ref}. Reference ${ref} in a PR body to link its release automatically.`);
       setForm(empty);
       setOpen(false);
       onChange?.();
-    } catch {
-      setErrors({ form: "Network error — decision not saved." });
+    } catch (e) {
+      setErrors({ form: e instanceof Error ? `Decision not saved: ${e.message}` : "Decision not saved." });
     } finally {
       setBusy(false);
     }
   }
 
   async function setOutcome(id: number, outcome: string) {
-    const r = await fetch("/api/decisions", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, outcome }) });
-    setMsg(r.ok ? `DEC-${id} outcome set to ${outcome}.` : `Could not update DEC-${id}.`);
+    try {
+      await getClient().updateDecision(id, outcome);
+      setMsg(`DEC-${id} outcome set to ${outcome}.`);
+    } catch (e) {
+      setMsg(`Could not update DEC-${id}${e instanceof Error ? `: ${e.message}` : ""}.`);
+    }
     onChange?.();
   }
 

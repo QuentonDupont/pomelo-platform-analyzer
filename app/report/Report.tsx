@@ -27,8 +27,9 @@ import {
 } from "@/lib/compute";
 import { bangkokToday, DEFINITION_VERSION, Market, MARKETS, METRIC_DEFS, MIN_ORDERS, MIN_SESSIONS, PlatformFilter } from "@/lib/metrics";
 import type { Api, FunnelRow } from "../components/types";
+import { getClient } from "../components/client";
 
-type Params = { from: string; to: string; cfrom: string; cto: string; p: PlatformFilter | "all"; m: Market[]; d: "all" | "desktop" | "mobile"; o: OrdersSource | null };
+export type Params = { from: string; to: string; cfrom: string; cto: string; p: PlatformFilter | "all"; m: Market[]; d: "all" | "desktop" | "mobile"; o: OrdersSource | null };
 
 const DT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
 const ALL_MARKETS = MARKETS.map((m) => m.id) as Market[];
@@ -87,13 +88,21 @@ function stagesFor(funnel: FunnelRow[], r: ResolvedRange, platforms: string[]): 
   return [...acc.values()].sort((a, b) => a.stage_order - b.stage_order);
 }
 
-export default function Report() {
-  const [params, setParams] = useState<Params | null>(null);
-  const [api, setApi] = useState<Api | null>(null);
+/** Standalone page (reads URL params, loads its own data) or embedded in the dashboard (props). */
+export default function Report(props: { embedded?: boolean; api?: Api; params?: Params } = {}) {
+  const [params, setParams] = useState<Params | null>(props.params ?? null);
+  const [api, setApi] = useState<Api | null>(props.api ?? null);
   const [err, setErr] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [csvMsg, setCsvMsg] = useState<string | null>(null);
+  const client = getClient();
 
   useEffect(() => {
+    if (props.embedded) {
+      setApi(props.api ?? null);
+      setParams(props.params ?? null);
+      return;
+    }
     const p = readParams();
     setParams(p);
     fetch(`/api/metrics${p.o ? `?orders=${p.o}` : ""}`, { cache: "no-store" })
@@ -102,7 +111,7 @@ export default function Report() {
         setApi(await r.json());
       })
       .catch((e) => setErr(e instanceof Error ? e.message : "load failed"));
-  }, []);
+  }, [props.embedded, props.api, props.params]);
 
   const model = useMemo(() => {
     if (!api || !params) return null;
@@ -113,8 +122,12 @@ export default function Report() {
     const prior = priorWindow(from, to);
     const cfrom = params.cfrom || prior.from;
     const cto = params.cto || prior.to;
-    const cur = resolveRange(api.data.daily, api.data.hourly, from, to);
-    const cmp = resolveRange(api.data.daily, api.data.hourly, cfrom, cto);
+    // only days with tracked sessions count (orders on untracked days would inflate CR)
+    const tracked = new Set(api.data.calendar.days);
+    const daily = api.data.daily.filter((r) => tracked.has(r.day));
+    const hourly = api.data.hourly.filter((r) => tracked.has(r.day));
+    const cur = resolveRange(daily, hourly, from, to);
+    const cmp = resolveRange(daily, hourly, cfrom, cto);
     return { from, to, cfrom, cto, cur, cmp, src: api.data.orders_source };
   }, [api, params]);
 
@@ -197,7 +210,6 @@ export default function Report() {
   const decisionsInRange = api.data.decisions.filter((d) => d.decided_on >= cur.from && d.decided_on <= cur.to);
   const due = api.data.decisions.filter((d) => d.outcome === "Pending" && d.review_date && d.review_date <= addDays(today, 7));
 
-  const csv = `/api/export?from=${cur.from}&to=${cur.to}&m=${markets.join(",")}&orders=${src}`;
   const orderCell = (v: string) => (noOrders ? <span className="pending">n/a at hour precision</span> : v);
   const low = (a: Agg) => a.orders < MIN_ORDERS;
 
@@ -212,17 +224,28 @@ export default function Report() {
           </div>
         </div>
         <div className="no-print" style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <button onClick={() => window.print()}>Download PDF</button>
-          <a href={csv} download>
-            <button type="button">Download CSV</button>
-          </a>
+          {client.canPrint && <button onClick={() => window.print()}>Download PDF</button>}
           <button
-            onClick={() => {
-              navigator.clipboard?.writeText(window.location.href).then(() => setCopied(true));
-            }}
+            type="button"
+            onClick={() =>
+              client
+                .exportCsv({ from: cur.from, to: cur.to, markets, orders: src })
+                .then(() => setCsvMsg(null))
+                .catch((e) => setCsvMsg(e instanceof Error ? e.message : "CSV download was not completed."))
+            }
           >
-            {copied ? "Link copied" : "Copy share link"}
+            Download CSV
           </button>
+          {!props.embedded && (
+            <button
+              onClick={() => {
+                navigator.clipboard?.writeText(window.location.href).then(() => setCopied(true));
+              }}
+            >
+              {copied ? "Link copied" : "Copy share link"}
+            </button>
+          )}
+          {csvMsg && <span className="field-warn">{csvMsg}</span>}
         </div>
       </header>
 

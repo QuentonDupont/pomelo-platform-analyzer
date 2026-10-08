@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { getClient } from "../client";
 import { Panel, PendingBadge } from "../shared";
 import type { PanelProps } from "../types";
 
@@ -17,8 +18,12 @@ export default function D10Alerts(props: PanelProps & { onChange?: () => void })
   const fired = [...new Set(alerts.map((a) => a.rule))];
 
   async function ack(id: string) {
-    const r = await fetch("/api/alerts", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) });
-    setMsg(r.ok ? "Alert acknowledged." : "Could not acknowledge the alert.");
+    try {
+      await getClient().ackAlert(id);
+      setMsg("Alert acknowledged.");
+    } catch (e) {
+      setMsg(`Could not acknowledge the alert${e instanceof Error ? `: ${e.message}` : ""}.`);
+    }
     onChange?.();
   }
 

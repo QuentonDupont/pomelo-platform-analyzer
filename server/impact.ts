@@ -1,7 +1,7 @@
 // Release impact: change vs baseline with intervals and sample sizes. Never a causal claim.
 import { addDays, aggregate, DailyRow, daysBetween, filterRows, OrdersSource, rates } from "@/lib/compute";
 import { bootstrapRatioDiff, Market, newcombeDiff } from "./metrics/definitions";
-import { MetricId } from "./metrics/release-metric";
+import type { MetricId } from "./metrics/metric-labels";
 
 export interface ReleaseRow {
   id: string;
