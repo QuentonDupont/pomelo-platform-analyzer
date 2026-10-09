@@ -47,6 +47,15 @@ table.kv td:first-child { width: 34%; color: var(--muted); font-weight: 600; }
   table.kv tr { display: block; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 }
 
+/* ---- Event-funnel step rows ---- */
+table.stage-rows { width: 100%; margin-top: 4px; }
+table.stage-rows th[scope="row"] { text-align: left; font-weight: 600; white-space: normal; width: 30%; text-transform: none; letter-spacing: 0; font-size: 13px; color: var(--ink); }
+table.stage-rows td { text-align: right; }
+table.stage-rows td.bar-cell { width: 45%; }
+table.stage-rows .bar-track { display: block; height: 10px; background: var(--grid); border-radius: 5px; overflow: hidden; }
+table.stage-rows .bar-fill { display: block; height: 10px; border-radius: 5px; transition: width .5s; }
+@media (max-width: 520px) { table.stage-rows td.bar-cell { width: 30%; } }
+
 /* ---- Funnel drop-off table ---- */
 table.dropoffs { border-collapse: separate; border-spacing: 0 2px; }
 table.dropoffs .flow-row th { text-align: left; font-size: 13px; color: var(--ink); text-transform: none; letter-spacing: 0; padding-top: 12px; border-bottom: 1px solid var(--line); }

@@ -1,26 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import { aggregate, filterRows, fmtInt, fmtPct, mondayOf, addDays } from "@/lib/compute";
+import { aggregate, filterRows, fmtDate, fmtInt, fmtPct, mondayOf, addDays } from "@/lib/compute";
 import { NotEvidenced, Panel, PLATFORM_COLOR, PLATFORM_LABEL, RealBadge } from "./shared";
 import type { PanelProps } from "./types";
 
 type Step = { name: string; n: number };
 type Who = "web" | "app" | "ios" | "android";
 
-/** Weekly RudderStack-derived funnel stages for weeks overlapping the range; App = iOS + Android summed. */
-function eventFunnel(props: PanelProps, who: Who): { steps: Step[]; weeks: string[] } {
+// Purchase-path stages of the event funnel (sign-in, login and wishlist are side paths and left out).
+// Each session is counted once per stage, so summing the events inside a stage is exact.
+const STAGES: { order: number[]; label: string; note?: string }[] = [
+  { order: [3], label: "Product list (any source)" },
+  { order: [4], label: "PDP" },
+  { order: [5], label: "Quick add to cart", note: "web & iOS only" },
+  { order: [6], label: "Add to cart (from PDP)" },
+  { order: [7], label: "Cart view" },
+  { order: [9], label: "Add address" },
+  { order: [10], label: "Payment methods viewed", note: "apps only" },
+  { order: [11], label: "Add payment" },
+  { order: [12], label: "Order complete" },
+];
+
+/** Weekly event-funnel stages for weeks overlapping the range; App = iOS + Android summed. */
+function eventFunnel(props: PanelProps, who: Who): { steps: (Step & { note?: string })[]; weeks: string[] } {
   const first = mondayOf(props.cur.from);
-  const weeks = [...new Set(props.api.data.funnel.map((r) => r.week))].filter((w) => w >= first && w <= props.cur.to);
+  const weeks = [...new Set(props.api.data.funnel.map((r) => r.week))].filter((w) => w >= first && w <= props.cur.to).sort();
   const plats = who === "app" ? ["ios", "android"] : [who];
-  const m = new Map<string, { n: number; o: number }>();
+  const byOrder = new Map<number, number>();
   for (const r of props.api.data.funnel) {
     if (!weeks.includes(r.week) || !plats.includes(r.platform)) continue;
-    const x = m.get(r.stage) ?? { n: 0, o: r.stage_order };
-    x.n += r.sessions;
-    m.set(r.stage, x);
+    byOrder.set(r.stage_order, (byOrder.get(r.stage_order) ?? 0) + r.sessions);
   }
-  return { steps: [...m.entries()].sort((a, b) => a[1].o - b[1].o).map(([name, v]) => ({ name, n: v.n })), weeks };
+  const steps = STAGES.map((s) => ({ name: s.label, note: s.note, n: s.order.reduce((a, o) => a + (byOrder.get(o) ?? 0), 0) })).filter((s) => s.n > 0);
+  return { steps, weeks };
 }
 
 export default function Funnel(props: PanelProps) {
@@ -52,10 +65,14 @@ export default function Funnel(props: PanelProps) {
       <FlowSvg steps={base} color={PLATFORM_COLOR[who]} reduced={props.reduced} label="Sessions to orders" />
       {ev.steps.length > 1 ? (
         <>
-          <div className="sub" style={{ marginTop: 10 }}>
-            Event funnel (weekly grain, weeks of {ev.weeks.join(", ")} – {addDays(ev.weeks[ev.weeks.length - 1], 6)}), sessions reaching each stage
+          <h3>
+            Purchase path in the event funnel · {ev.weeks.length === 1 ? `week of ${fmtDate(ev.weeks[0])}` : `weeks of ${fmtDate(ev.weeks[0])} – ${fmtDate(addDays(ev.weeks[ev.weeks.length - 1], 6))}`}
+          </h3>
+          <StageRows steps={ev.steps} color={PLATFORM_COLOR[who]} reduced={props.reduced} />
+          <div className="note">
+            Sessions that reached each step (RudderStack event funnel; all shops). Quick add and add from PDP are alternatives, not consecutive steps. Step-by-step drop-off % is on the{" "}
+            <strong>Funnel drop-offs</strong> tab.
           </div>
-          <FlowSvg steps={ev.steps} color={PLATFORM_COLOR[who]} reduced={props.reduced} label="Event funnel" />
         </>
       ) : (
         <NotEvidenced what="PDP → Add to bag → Checkout → Payment steps" needs="RudderStack session-event aggregates for the selected weeks (funnel_weekly snapshot)" />
@@ -122,5 +139,39 @@ function FlowSvg({ steps, color, reduced, label }: { steps: Step[]; color: strin
         );
       })}
     </svg>
+  );
+}
+
+/** One readable row per step: name · bar · sessions · share of product-list sessions. Works for any number of steps. */
+function StageRows({ steps, color, reduced }: { steps: (Step & { note?: string })[]; color: string; reduced: boolean }) {
+  const top = Math.max(1, steps[0]?.n ?? 1);
+  return (
+    <table className="stage-rows">
+      <thead>
+        <tr>
+          <th scope="col">Step</th>
+          <th scope="col" aria-label="Share of product-list sessions, as a bar" />
+          <th scope="col">Sessions</th>
+          <th scope="col">% of product-list sessions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {steps.map((s) => (
+          <tr key={s.name}>
+            <th scope="row">
+              {s.name}
+              {s.note && <span className="sub"> · {s.note}</span>}
+            </th>
+            <td className="bar-cell">
+              <span className="bar-track" aria-hidden>
+                <span className="bar-fill" style={{ width: `${Math.max(1, (s.n / top) * 100)}%`, background: color, transition: reduced ? "none" : undefined }} />
+              </span>
+            </td>
+            <td>{fmtInt(s.n)}</td>
+            <td>{fmtPct(s.n / top, 1)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
