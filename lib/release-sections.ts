@@ -2,7 +2,7 @@
 // funnel: Product list, PDP, Add to bag, Cart, Checkout …) and range-driven impact per section.
 // Pure and browser-safe: runs identically in the local app and the published Artifact.
 import { addDays, DailyRow, daysBetween } from "@/lib/compute";
-import { bootstrapRatioDiff, Market } from "@/server/metrics/definitions";
+import { bootstrapRatioDiff, Market, newcombeDiff } from "@/server/metrics/definitions";
 
 export type SectionId = "home_feed" | "product_list" | "search" | "pdp" | "add_to_bag" | "cart" | "checkout" | "order" | "account" | "wishlist" | "content" | "platform";
 
@@ -68,6 +68,82 @@ export function scopesFor(p: RelPlatform): { key: "web" | "ios" | "android"; lab
     { key: "ios", label: "iOS" },
     { key: "android", label: "Android" },
   ];
+}
+
+// ---------- CEO scorecard: one measure everywhere (conversion) ----------
+export const SHORT_LABEL: Record<SectionId, string> = {
+  home_feed: "Home feed",
+  product_list: "Product listing",
+  search: "Search",
+  pdp: "Product page",
+  add_to_bag: "Add to bag",
+  cart: "Cart",
+  checkout: "Checkout",
+  order: "Order confirmation",
+  account: "Sign-in & account",
+  wishlist: "Wishlist",
+  content: "Content & campaigns",
+  platform: "Behind-the-scenes fixes",
+};
+
+/** Plain-English release name from the sections it touched, most-touched first. */
+export function releaseName(sections: { id: SectionId; prs: number }[]): string {
+  const top = [...sections].sort((a, b) => b.prs - a.prs).filter((s, i, arr) => s.id !== "platform" || arr.length === 1).slice(0, 2);
+  if (!top.length) return "Release";
+  const names = top.map((s) => SHORT_LABEL[s.id]);
+  return names.length === 1 && top[0].id === "platform" ? names[0] : `${names.join(" & ")} updates`;
+}
+
+export interface ConversionImpact {
+  /** relative change in conversion, e.g. 0.042 = +4.2% */
+  rel: number | null;
+  before: { value: number | null; orders: number; sessions: number; from: string; to: string; label: string };
+  after: { value: number | null; orders: number; sessions: number; from: string; to: string; days: number };
+  verdict: "better" | "worse" | "no clear change" | "too early" | "no data";
+}
+
+/**
+ * Change in conversion (orders ÷ non-bounce sessions) after a release vs before it, inside the selected
+ * range (before = range start → day before go-live; comparison period when < 3 days precede go-live).
+ * "Clear" = the 95% interval of the difference (Newcombe/Wilson) excludes zero. Never a causal claim.
+ */
+export function conversionImpact(rows: DailyRow[], goLive: string, scope: "web" | "ios" | "android", range: Win, cmp: Win, markets: Market[], windowDays?: number): ConversionImpact {
+  let after: Win;
+  let before: Win & { label: string };
+  if (windowDays) {
+    // fixed, easy-to-explain windows: the N days after go-live vs the N days before it
+    after = { from: goLive, to: addDays(goLive, windowDays - 1) };
+    before = { from: addDays(goLive, -windowDays), to: addDays(goLive, -1), label: `${windowDays} days before` };
+  } else {
+    after = { from: goLive > range.from ? goLive : range.from, to: range.to };
+    const pre: Win = { from: range.from, to: addDays(goLive, -1) };
+    const useCmp = goLive <= range.from || daysBetween(pre.from, pre.to) + 1 < 3;
+    before = useCmp ? { ...cmp, label: "comparison period" } : { ...pre, label: "before go-live" };
+  }
+  const sum = (w: Win) => {
+    let orders = 0,
+      sessions = 0;
+    const days = new Set<string>();
+    for (const r of rows) {
+      if (r.day < w.from || r.day > w.to || r.platform !== scope || !markets.includes(r.market) || r.total <= 0) continue;
+      orders += r.e_orders ?? r.s_orders ?? 0;
+      sessions += r.nb;
+      days.add(r.day);
+    }
+    return { orders, sessions, days: days.size, value: sessions > 0 ? orders / sessions : null };
+  };
+  const a = sum(before);
+  const b = sum(after);
+  const out = {
+    before: { value: a.value, orders: a.orders, sessions: a.sessions, from: before.from, to: before.to, label: before.label },
+    after: { value: b.value, orders: b.orders, sessions: b.sessions, from: after.from, to: after.to, days: b.days },
+  };
+  if (a.value == null || b.value == null || a.value === 0) return { ...out, rel: null, verdict: b.days === 0 ? "too early" : "no data" };
+  const rel = (b.value - a.value) / a.value;
+  if (b.days < 3) return { ...out, rel, verdict: "too early" };
+  const ci = newcombeDiff(a.orders, a.sessions, b.orders, b.sessions);
+  const clear = ci && (ci[0] > 0 || ci[1] < 0);
+  return { ...out, rel, verdict: clear ? (rel > 0 ? "better" : "worse") : "no clear change" };
 }
 
 export interface SectionImpact {

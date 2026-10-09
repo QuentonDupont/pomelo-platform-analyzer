@@ -14,6 +14,7 @@ import DataQuality from "./DataQuality";
 import Dropoffs from "./Dropoffs";
 import Funnel from "./Funnel";
 import Releases from "./Releases";
+import ReleaseScorecard from "./ReleaseScorecard";
 import ChangeBridge from "./ChangeBridge";
 import SegmentMatrix from "./SegmentMatrix";
 import TrendExplorer from "./TrendExplorer";
@@ -71,7 +72,17 @@ export default function Panels(props: PanelProps & { set: (p: Partial<Filters>) 
     case "overview":
       return <Funnel {...p} />;
     case "releases":
-      return <Releases {...p} />;
+      return (
+        <div className="grid">
+          <ReleaseScorecard {...p} />
+          <details className="more-detail">
+            <summary>More detail — release timeline, calendar and every PR</summary>
+            <div className="grid">
+              <Releases {...p} />
+            </div>
+          </details>
+        </div>
+      );
     case "quality":
       return <DataQuality {...p} />;
   }

@@ -47,6 +47,55 @@ table.kv td:first-child { width: 34%; color: var(--muted); font-weight: 600; }
   table.kv tr { display: block; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 }
 
+/* ---- CEO release scorecard ---- */
+.scorecard { padding: 20px 22px; }
+.sc-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+.sc-title { font-size: 20px; line-height: 1.25; margin: 0; text-wrap: balance; }
+.sc-sub { margin: 4px 0 0; color: var(--muted); max-width: 70ch; }
+.sc-toggle { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); cursor: pointer; }
+.sc-verdict { font-size: 15px; margin: 14px 0 12px; }
+.sc-good { color: var(--good); font-weight: 700; }
+.sc-bad { color: var(--bad); font-weight: 700; }
+table.sc-table { width: 100%; border-collapse: separate; border-spacing: 0 6px; }
+table.sc-table thead th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 0 10px 2px; border: 0; }
+table.sc-table th.sc-col { text-align: center; width: 17%; }
+table.sc-table th.sc-rel { text-align: left; }
+table.sc-table tbody th.sc-rel { padding: 0; border: 0; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.sc-name { all: unset; box-sizing: border-box; display: grid; gap: 1px; width: 100%; padding: 10px 12px; border-radius: 10px 0 0 10px; background: var(--grid); cursor: pointer; }
+.sc-name:focus-visible { outline: 2px solid var(--web); outline-offset: 2px; }
+.sc-date { font-size: 12px; color: var(--muted); }
+.sc-what { font-size: 15px; font-weight: 700; color: var(--ink); }
+.sc-where { font-size: 12px; color: var(--muted); }
+td.sc-cell { text-align: center; vertical-align: middle; padding: 8px 6px; border: 0; background: var(--grid); }
+td.sc-cell:last-child { border-radius: 0 10px 10px 0; }
+td.sc-cell.better { background: color-mix(in srgb, var(--good) 22%, var(--panel)); }
+td.sc-cell.worse { background: color-mix(in srgb, var(--bad) 22%, var(--panel)); }
+.sc-arrow { display: block; font-size: 13px; line-height: 1; }
+td.sc-cell.better .sc-arrow { color: var(--good); }
+td.sc-cell.worse .sc-arrow { color: var(--bad); }
+td.sc-cell.flat .sc-arrow { color: var(--muted); }
+.sc-pct { display: block; font-size: 19px; font-weight: 800; color: var(--ink); font-variant-numeric: proportional-nums; }
+td.sc-cell.flat .sc-pct { color: var(--muted); font-weight: 600; font-size: 16px; }
+.sc-abs { display: block; font-size: 11px; color: var(--muted); }
+.sc-na { color: var(--muted); font-size: 18px; }
+.sc-na.small { font-size: 12px; }
+tr.sc-detail td { border: 0; padding: 4px 12px 10px; text-align: left; white-space: normal; }
+tr.sc-detail ul { margin: 0 0 4px; padding-left: 18px; display: grid; gap: 2px; }
+.sc-legend { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; font-size: 13px; margin-top: 10px; }
+.sc-chip { display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; border-radius: 6px; font-size: 11px; margin-right: 4px; }
+.sc-chip.better { background: color-mix(in srgb, var(--good) 22%, var(--panel)); color: var(--good); }
+.sc-chip.worse { background: color-mix(in srgb, var(--bad) 22%, var(--panel)); color: var(--bad); }
+.sc-chip.flat { background: var(--grid); color: var(--muted); }
+.sc-foot { font-size: 12px; color: var(--muted); margin: 10px 0 0; max-width: 100ch; }
+details.more-detail { margin-top: 4px; }
+details.more-detail > summary { cursor: pointer; font-weight: 600; padding: 10px 0; color: var(--muted); }
+details.more-detail[open] > summary { margin-bottom: 8px; }
+@media (max-width: 600px) {
+  .sc-pct { font-size: 16px; }
+  .sc-abs { display: none; }
+  table.sc-table th.sc-col { width: auto; }
+}
+
 /* ---- Releases: calendar, section matrix, release items ---- */
 .rel-cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
 .rel-cal-dow { font-size: 11px; color: var(--muted); text-align: center; padding-bottom: 2px; }
@@ -118,3 +167,4 @@ table.dropoffs .bar span { display: block; height: 4px; background: var(--div-ne
 .dtp-foot label { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); }
 .dtp-done { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
 .field-warn { flex-basis: 100%; font-size: 12px; color: var(--amber); font-weight: 600; }
+.sc-flat { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
