@@ -36,6 +36,17 @@ button.kpi[aria-expanded="true"] { outline: 2px solid var(--web); outline-offset
 .arrow-down::before { content: "▼ "; font-size: 9px; }
 .chart-controls { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 
+/* ---- Key/value tables (Data quality: coverage, sources): text wraps inside its own panel ---- */
+.panel { min-width: 0; }
+.grid > * { min-width: 0; }
+table.kv { table-layout: fixed; width: 100%; }
+table.kv td, table.kv th { white-space: normal; overflow-wrap: anywhere; text-align: left; vertical-align: top; }
+table.kv td:first-child { width: 34%; color: var(--muted); font-weight: 600; }
+@media (max-width: 520px) {
+  table.kv td { display: block; width: 100%; border-bottom: 0; padding-bottom: 2px; }
+  table.kv tr { display: block; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+}
+
 /* ---- Funnel drop-off table ---- */
 table.dropoffs { border-collapse: separate; border-spacing: 0 2px; }
 table.dropoffs .flow-row th { text-align: left; font-size: 13px; color: var(--ink); text-transform: none; letter-spacing: 0; padding-top: 12px; border-bottom: 1px solid var(--line); }

@@ -69,7 +69,7 @@ export default function DataQuality(props: PanelProps) {
       </Panel>
       <div className="grid two">
         <Panel id="panel-coverage" title="Coverage & suppression">
-          <table>
+          <table className="kv">
             <tbody>
               <tr>
                 <td>Unknown / unmapped platform</td>
@@ -107,7 +107,7 @@ export default function DataQuality(props: PanelProps) {
           </table>
         </Panel>
         <Panel id="panel-sources" title="Sources & sync">
-          <table>
+          <table className="kv">
             <tbody>
               {Object.entries(api.source).map(([k, v]) => (
                 <tr key={k}>
