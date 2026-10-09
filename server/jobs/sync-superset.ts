@@ -17,6 +17,11 @@ export const TRAFFIC_COLUMNS = [
   "non_bounces",
   "gross_orders",
   "revenue_after_discount_in_usd",
+  "total_product_views",
+  "total_number_added_to_bag",
+  "total_number_product_list_viewed",
+  "total_number_products_clicked",
+  "total_number_product_searches",
 ];
 
 const addDays = (d: string, n: number) => new Date(new Date(d + "T00:00:00Z").getTime() + n * 86400000).toISOString().slice(0, 10);
@@ -89,10 +94,11 @@ export async function syncSuperset(lookbackDays = Number(process.env.SYNC_LOOKBA
   const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Bangkok" }).format(new Date());
   const db = getDb();
   const upTraffic = db.prepare(
-    `INSERT INTO traffic_daily (day, platform, device, market, total_sessions, bounces, non_bounces, orders, revenue_usd, source)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `INSERT INTO traffic_daily (day, platform, device, market, total_sessions, bounces, non_bounces, orders, revenue_usd, product_views, added_to_bag, list_views, product_clicks, searches, source)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
      ON CONFLICT(day, platform, device, market) DO UPDATE SET total_sessions=excluded.total_sessions, bounces=excluded.bounces,
-       non_bounces=excluded.non_bounces, orders=excluded.orders, revenue_usd=excluded.revenue_usd, source=excluded.source`,
+       non_bounces=excluded.non_bounces, orders=excluded.orders, revenue_usd=excluded.revenue_usd, product_views=excluded.product_views,
+       added_to_bag=excluded.added_to_bag, list_views=excluded.list_views, product_clicks=excluded.product_clicks, searches=excluded.searches, source=excluded.source`,
   );
   const upOrders = db.prepare(
     `INSERT INTO orders_daily (day, platform, device, market, orders, revenue_usd, source) VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -127,22 +133,19 @@ export async function syncSuperset(lookbackDays = Number(process.env.SYNC_LOOKBA
       tx(() => {
         // aggregate in case the source returns more than one row per platform x shop
         const acc = new Map<string, number[]>();
+        const measures = TRAFFIC_COLUMNS.slice(2);
         for (const r of traffic) {
           const shop = Number(r.id_shop);
           if (!SHOP_MARKET[shop]) continue;
           const { platform, device } = normalizePlatform(r.app_name_short_version as string);
           const k = `${platform}|${device}|${SHOP_MARKET[shop]}`;
-          const a = acc.get(k) ?? [0, 0, 0, 0, 0];
-          a[0] += n(r.total_sessions) ?? 0;
-          a[1] += n(r.bounces) ?? 0;
-          a[2] += n(r.non_bounces) ?? 0;
-          a[3] += n(r.gross_orders) ?? 0;
-          a[4] += n(r.revenue_after_discount_in_usd) ?? 0;
+          const a = acc.get(k) ?? measures.map(() => 0);
+          measures.forEach((m, i) => (a[i] += n(r[m]) ?? 0));
           acc.set(k, a);
         }
         for (const [k, a] of acc) {
           const [platform, device, market] = k.split("|");
-          upTraffic.run(day, platform, device, market, a[0], a[1], a[2], a[3], a[4], src);
+          upTraffic.run(day, platform, device, market, a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], src);
           rows++;
         }
         const oacc = new Map<string, number[]>();

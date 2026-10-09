@@ -47,6 +47,31 @@ table.kv td:first-child { width: 34%; color: var(--muted); font-weight: 600; }
   table.kv tr { display: block; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 }
 
+/* ---- Releases: calendar, section matrix, release items ---- */
+.rel-cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.rel-cal-dow { font-size: 11px; color: var(--muted); text-align: center; padding-bottom: 2px; }
+.rel-cal-day { display: flex; flex-direction: column; align-items: stretch; gap: 3px; min-height: 92px; padding: 5px; text-align: left; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font-size: 11px; overflow: hidden; }
+.rel-cal-day:hover { border-color: var(--muted); }
+.rel-cal-day.outside { opacity: .45; }
+.rel-cal-day.in-range { background: color-mix(in srgb, var(--web) 9%, var(--panel)); }
+.rel-cal-day.selected { outline: 2px solid var(--web); outline-offset: -1px; }
+.rel-cal-num { font-weight: 700; font-size: 12px; }
+.rel-chip { display: block; border-left: 3px solid var(--unknown); padding: 1px 4px; background: var(--grid); border-radius: 3px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rel-chip.more { border-left-color: transparent; color: var(--muted); }
+@media (max-width: 700px) { .rel-cal-day { min-height: 58px; } .rel-chip { font-size: 0; height: 6px; padding: 0; } .rel-chip.more { display: none; } }
+table.sec-matrix th[scope="row"] { text-align: left; text-transform: none; letter-spacing: 0; font-size: 13px; color: var(--ink); font-weight: 600; }
+table.sec-matrix td { text-align: left; }
+.rel-list { display: grid; gap: 10px; }
+.rel-item { border: 1px solid var(--line); border-left: 4px solid var(--unknown); border-radius: 8px; padding: 10px 12px; }
+.rel-head { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: flex-start; }
+.rel-head > div { min-width: 0; flex: 1; }
+.rel-sections { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.sec-chip { display: inline-block; font-size: 11.5px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); background: var(--grid); color: var(--ink); }
+.sec-chip.small { font-size: 10.5px; padding: 0 6px; margin-left: 2px; }
+.pr-list { margin: 4px 0 8px; padding-left: 18px; display: grid; gap: 3px; }
+.pr-list li { overflow-wrap: anywhere; }
+.rel-body h3 { margin-top: 10px; }
+
 /* ---- Event-funnel step rows ---- */
 table.stage-rows { width: 100%; margin-top: 4px; }
 table.stage-rows th[scope="row"] { text-align: left; font-weight: 600; white-space: normal; width: 30%; text-transform: none; letter-spacing: 0; font-size: 13px; color: var(--ink); }

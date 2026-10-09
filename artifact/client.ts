@@ -20,6 +20,9 @@ declare global {
 }
 
 export const SUPERSET_SERVER = "host:superset";
+// Same order as the stored daily tuple: sessions, bounces, non-bounces, orders, revenue, then event counts.
+const TRAFFIC_MEASURES = ["total_sessions", "bounces", "non_bounces", "gross_orders", "revenue_after_discount_in_usd", "total_product_views", "total_number_added_to_bag", "total_number_product_list_viewed", "total_number_products_clicked", "total_number_product_searches"];
+const TRAFFIC_MEASURES_COLUMNS = ["app_name_short_version", "id_shop", ...TRAFFIC_MEASURES];
 const LIVE_DAYS = 3; // refresh re-pulls today and the 2 days before (late events / cancellations)
 
 const capability = (name: string): Promise<Cap | null> => (window.claude?.use ? window.claude.use(name).catch(() => null) : Promise.resolve(null));
@@ -27,7 +30,7 @@ const bangkokToday = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Ba
 
 // ---------- compact row codecs (keep documents well under 256 KiB) ----------
 type T = (string | number | null)[];
-const decTraffic = (r: T) => ({ day: r[0], platform: r[1], device: r[2], market: r[3], total_sessions: r[4], bounces: r[5], non_bounces: r[6], orders: r[7], revenue_usd: r[8] });
+const decTraffic = (r: T) => ({ day: r[0], platform: r[1], device: r[2], market: r[3], total_sessions: r[4], bounces: r[5], non_bounces: r[6], orders: r[7], revenue_usd: r[8], product_views: r[9] ?? null, added_to_bag: r[10] ?? null, list_views: r[11] ?? null, product_clicks: r[12] ?? null, searches: r[13] ?? null });
 const decOrders = (r: T) => ({ day: r[0], platform: r[1], device: r[2], market: r[3], orders: r[4], revenue_usd: r[5] });
 const decHourly = (day: string) => (r: T) => ({ day, hour: r[0], platform: r[1], device: r[2], market: r[3], total_sessions: r[4], bounces: r[5], non_bounces: r[6], orders: r[7], revenue_usd: r[8] });
 const decHourlyOrders = (day: string) => (r: T) => ({ day, hour: r[0], platform: r[1], device: r[2], market: r[3], orders: r[4], revenue_usd: r[5] });
@@ -198,7 +201,7 @@ export const artifactClient: DataClient = {
         onProgress?.({ step: `Pulling sessions for ${day}`, done, total });
         const traffic = await call({
           dataset_id: 63,
-          columns: ["app_name_short_version", "id_shop", "total_sessions", "bounces", "non_bounces", "gross_orders", "revenue_after_discount_in_usd"],
+          columns: [...TRAFFIC_MEASURES_COLUMNS],
           filters: [
             { column: "session_start_date", operator: "gte", value: day },
             { column: "session_start_date", operator: "lt", value: next },
@@ -218,7 +221,7 @@ export const artifactClient: DataClient = {
         done++;
         fresh.push({
           day,
-          traffic: aggregateRows(traffic, "app_name_short_version", ["total_sessions", "bounces", "non_bounces", "gross_orders", "revenue_after_discount_in_usd"]).map((r) => [day, ...r]) as T[],
+          traffic: aggregateRows(traffic, "app_name_short_version", TRAFFIC_MEASURES).map((r) => [day, ...r]) as T[],
           orders: aggregateRows(orders, "platform", ["gross_orders", "revenue_after_discount_in_USD"]).map((r) => [day, ...r]) as T[],
         });
       }

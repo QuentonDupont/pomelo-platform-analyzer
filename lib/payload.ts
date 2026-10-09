@@ -28,6 +28,11 @@ export function mergeDaily(traffic: Rec[], orders: Rec[]): DailyRow[] {
       s_revenue: r.revenue_usd == null ? null : Number(r.revenue_usd),
       e_orders: hasOrders ? Number(e?.orders ?? 0) : null,
       e_revenue: hasOrders ? Number(e?.revenue_usd ?? 0) : null,
+      pdp: r.product_views == null ? null : Number(r.product_views),
+      atb: r.added_to_bag == null ? null : Number(r.added_to_bag),
+      lists: r.list_views == null ? null : Number(r.list_views),
+      clicks: r.product_clicks == null ? null : Number(r.product_clicks),
+      searches: r.searches == null ? null : Number(r.searches),
     };
   });
   // backend orders on a key with no tracked sessions stay visible (orders without traffic), never dropped

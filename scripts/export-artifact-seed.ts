@@ -20,7 +20,7 @@ function group<K extends string>(rows: Rec[], key: (r: Rec) => K, enc: (r: Rec) 
   return m;
 }
 
-for (const [week, rows] of group(all("SELECT * FROM traffic_daily WHERE total_sessions > 0"), (r) => mondayOf(String(r.day)), (r) => [r.day, r.platform, r.device, r.market, r.total_sessions, r.bounces, r.non_bounces, n(r.orders), n(r.revenue_usd)]))
+for (const [week, rows] of group(all("SELECT * FROM traffic_daily WHERE total_sessions > 0"), (r) => mondayOf(String(r.day)), (r) => [r.day, r.platform, r.device, r.market, r.total_sessions, r.bounces, r.non_bounces, n(r.orders), n(r.revenue_usd), n(r.product_views), n(r.added_to_bag), n(r.list_views), n(r.product_clicks), n(r.searches)]))
   docs.push({ collection: "daily", id: week, body: { rows } });
 for (const [week, rows] of group(all("SELECT * FROM orders_daily"), (r) => mondayOf(String(r.day)), (r) => [r.day, r.platform, r.device, r.market, n(r.orders), n(r.revenue_usd)]))
   docs.push({ collection: "orders", id: week, body: { rows } });

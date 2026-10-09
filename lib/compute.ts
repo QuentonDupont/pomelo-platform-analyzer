@@ -17,6 +17,12 @@ export interface DailyRow {
   s_revenue: number | null;
   e_orders: number | null; // backend eligible orders by order date (dataset 33)
   e_revenue: number | null;
+  /** session-attributed event counts (dataset 63); absent on hourly rows */
+  pdp?: number | null;
+  atb?: number | null;
+  lists?: number | null;
+  clicks?: number | null;
+  searches?: number | null;
 }
 
 export type OrdersSource = "backend" | "session";

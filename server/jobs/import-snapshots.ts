@@ -48,11 +48,12 @@ export function importTrafficDaily(): number {
   if (!snap?.rows?.length) return 0;
   const src = label(snap, "traffic_daily");
   const st = getDb().prepare(
-    `INSERT INTO traffic_daily (day, platform, device, market, total_sessions, bounces, non_bounces, orders, revenue_usd, product_views, added_to_bag, checkout, payment, source)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `INSERT INTO traffic_daily (day, platform, device, market, total_sessions, bounces, non_bounces, orders, revenue_usd, product_views, added_to_bag, checkout, payment, list_views, product_clicks, searches, source)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
      ON CONFLICT(day, platform, device, market) DO UPDATE SET total_sessions=excluded.total_sessions, bounces=excluded.bounces,
        non_bounces=excluded.non_bounces, orders=excluded.orders, revenue_usd=excluded.revenue_usd, product_views=excluded.product_views,
-       added_to_bag=excluded.added_to_bag, checkout=excluded.checkout, payment=excluded.payment, source=excluded.source`,
+       added_to_bag=excluded.added_to_bag, checkout=excluded.checkout, payment=excluded.payment, list_views=excluded.list_views,
+       product_clicks=excluded.product_clicks, searches=excluded.searches, source=excluded.source`,
   );
   let n = 0;
   tx(() => {
@@ -77,6 +78,9 @@ export function importTrafficDaily(): number {
         num(pick(r, "added_to_bag", "total_number_added_to_bag")),
         num(pick(r, "checkout", "checkout_started")),
         num(pick(r, "payment", "payment_info_entered")),
+        num(pick(r, "list_views", "total_number_product_list_viewed")),
+        num(pick(r, "product_clicks", "total_number_products_clicked")),
+        num(pick(r, "searches", "total_number_product_searches")),
         src,
       );
       n++;

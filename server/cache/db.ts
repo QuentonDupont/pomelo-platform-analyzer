@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS traffic_daily (
   day TEXT NOT NULL, platform TEXT NOT NULL, device TEXT NOT NULL, market TEXT NOT NULL,
   total_sessions INTEGER NOT NULL, bounces INTEGER NOT NULL, non_bounces INTEGER NOT NULL,
   orders REAL, revenue_usd REAL, product_views REAL, added_to_bag REAL, checkout REAL, payment REAL,
+  list_views REAL, product_clicks REAL, searches REAL,
   source TEXT NOT NULL,
   PRIMARY KEY (day, platform, device, market)
 );
@@ -106,7 +107,19 @@ export function getDb(): DatabaseSync {
   db = new DatabaseSync(p);
   db.exec("PRAGMA journal_mode = WAL;");
   db.exec(SCHEMA);
+  migrate(db);
   return db;
+}
+
+/** Additive column migrations for caches created by earlier versions. */
+function migrate(d: DatabaseSync) {
+  for (const col of ["list_views", "product_clicks", "searches"]) {
+    try {
+      d.exec(`ALTER TABLE traffic_daily ADD COLUMN ${col} REAL`);
+    } catch {
+      /* column already exists */
+    }
+  }
 }
 
 /** For tests: swap in a fresh in-memory database. */
