@@ -8,6 +8,7 @@ import FilterBar, { compareFor, endOf, rangeError, startOf } from "./components/
 import Kpis from "./components/Kpis";
 import { useReducedMotion } from "./components/shared";
 import Panels from "./components/Panels";
+import PeriodSummary from "./components/PeriodSummary";
 import { getClient, RefreshProgress } from "./components/client";
 import Report from "./report/Report";
 import type { Api, Filters, PanelProps } from "./components/types";
@@ -227,6 +228,7 @@ export default function Dashboard() {
           </div>
         )}
 
+        <PeriodSummary {...props} />
         <nav className="tabs" role="tablist" aria-label="Views">
           {(
             [

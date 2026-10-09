@@ -2,22 +2,11 @@
 
 import { Fragment, useMemo, useState } from "react";
 import { fmtDate, fmtInt, fmtPct } from "@/lib/compute";
-import { classifyPr, conversionImpact, ConversionImpact, releaseName, SECTIONS, SectionId } from "@/lib/release-sections";
-import type { PanelProps, ReleaseView } from "./types";
+import { ConversionImpact, SCORE_PLATS, SCORE_WINDOW, scoreReleases } from "@/lib/release-sections";
+import type { PanelProps } from "./types";
 
-type Plat = "web" | "ios" | "android";
-const PLATS: { key: Plat; label: string }[] = [
-  { key: "web", label: "Web" },
-  { key: "ios", label: "iOS" },
-  { key: "android", label: "Android" },
-];
-const WHERE: Record<string, { label: string; ships: Plat[] }> = {
-  web: { label: "Web app", ships: ["web"] },
-  ios: { label: "iOS app", ships: ["ios"] },
-  android: { label: "Android app", ships: ["android"] },
-  backend: { label: "All platforms (API)", ships: ["web", "ios", "android"] },
-};
-const WINDOW = 7;
+const PLATS = SCORE_PLATS;
+const WINDOW = SCORE_WINDOW;
 const weekday = (d: string) => new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { weekday: "short", timeZone: "UTC" });
 
 /** One chart for the CEO: did each release help or hurt conversion on Web, iOS and Android? */
@@ -26,28 +15,10 @@ export default function ReleaseScorecard(props: PanelProps) {
   const [openId, setOpenId] = useState<string | null>(null);
   const [clearOnly, setClearOnly] = useState(false);
 
-  const rows = useMemo(() => {
-    const range = { from: cur.from, to: cur.to };
-    const comp = { from: cmp.from, to: cmp.to };
-    // one row per go-live day and platform: same-day releases share the same before/after window
-    const groups = new Map<string, ReleaseView[]>();
-    for (const r of api.data.releases.filter((x) => x.bangkok_date >= cur.from && x.bangkok_date <= cur.to)) {
-      const k = `${r.bangkok_date}|${r.platform}`;
-      groups.set(k, [...(groups.get(k) ?? []), r]);
-    }
-    return [...groups.values()]
-      .map((list) => {
-        const r = list[0];
-        const prs = list.flatMap((x) => x.prs).map((p) => ({ number: p.number, title: p.title, sections: classifyPr(p.title, p.dirs) }));
-        const counts = new Map<SectionId, number>();
-        for (const p of prs) for (const s of p.sections) counts.set(s, (counts.get(s) ?? 0) + 1);
-        const sections = SECTIONS.filter((s) => counts.has(s.id)).map((s) => ({ id: s.id, prs: counts.get(s.id)! }));
-        const where = WHERE[r.platform] ?? WHERE.backend;
-        const cells = Object.fromEntries(PLATS.map((p) => [p.key, where.ships.includes(p.key) ? conversionImpact(api.data.daily, r.bangkok_date, p.key, range, comp, f.markets, WINDOW) : null])) as Record<Plat, ConversionImpact | null>;
-        return { r, ids: list.map((x) => `${x.repo} ${x.release_id}`), releases: list.length, prs, name: releaseName(sections), where, cells };
-      })
-      .sort((a, b) => (b.r.go_live_at ?? b.r.bangkok_date).localeCompare(a.r.go_live_at ?? a.r.bangkok_date));
-  }, [api.data.releases, api.data.daily, cur.from, cur.to, cmp.from, cmp.to, f.markets]);
+  const rows = useMemo(
+    () => scoreReleases(api.data.releases, api.data.daily, { from: cur.from, to: cur.to }, { from: cmp.from, to: cmp.to }, f.markets),
+    [api.data.releases, api.data.daily, cur.from, cur.to, cmp.from, cmp.to, f.markets],
+  );
 
   const all = rows.flatMap((x) => PLATS.map((p) => x.cells[p.key]).filter((c): c is ConversionImpact => c != null));
   const helped = rows.filter((x) => PLATS.some((p) => x.cells[p.key]?.verdict === "better")).length;

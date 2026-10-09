@@ -200,3 +200,50 @@ export function sectionImpact(rows: DailyRow[], goLive: string, section: Section
   const better = good === "up" ? diff > 0 : diff < 0;
   return { ...base, diff, ci, verdict: clear ? (better ? "better" : "worse") : "no clear change" };
 }
+
+// ---------- shared scorecard rows (used by the release scorecard and the period summary) ----------
+export type ScorePlat = "web" | "ios" | "android";
+export const SCORE_PLATS: { key: ScorePlat; label: string }[] = [
+  { key: "web", label: "Web" },
+  { key: "ios", label: "iOS" },
+  { key: "android", label: "Android" },
+];
+export const SHIPS_TO: Record<string, { label: string; ships: ScorePlat[] }> = {
+  web: { label: "Web app", ships: ["web"] },
+  ios: { label: "iOS app", ships: ["ios"] },
+  android: { label: "Android app", ships: ["android"] },
+  backend: { label: "All platforms (API)", ships: ["web", "ios", "android"] },
+};
+export const SCORE_WINDOW = 7;
+
+type ScoreRelease = { id: string; repo: string; release_id: string | null; platform: string; bangkok_date: string; go_live_at: string | null; prs: { number: number; title: string; dirs: string[] }[] };
+export interface ScoreRow<R extends ScoreRelease = ScoreRelease> {
+  r: R;
+  ids: string[];
+  releases: number;
+  prs: { number: number; title: string; sections: SectionId[] }[];
+  name: string;
+  where: { label: string; ships: ScorePlat[] };
+  cells: Record<ScorePlat, ConversionImpact | null>;
+}
+
+/** One row per go-live day × platform (same-day releases share a window), newest first. */
+export function scoreReleases<R extends ScoreRelease>(releases: R[], daily: DailyRow[], range: Win, cmp: Win, markets: Market[]): ScoreRow<R>[] {
+  const groups = new Map<string, R[]>();
+  for (const r of releases.filter((x) => x.bangkok_date >= range.from && x.bangkok_date <= range.to)) {
+    const k = `${r.bangkok_date}|${r.platform}`;
+    groups.set(k, [...(groups.get(k) ?? []), r]);
+  }
+  return [...groups.values()]
+    .map((list) => {
+      const r = list[0];
+      const prs = list.flatMap((x) => x.prs).map((p) => ({ number: p.number, title: p.title, sections: classifyPr(p.title, p.dirs) }));
+      const counts = new Map<SectionId, number>();
+      for (const p of prs) for (const s of p.sections) counts.set(s, (counts.get(s) ?? 0) + 1);
+      const sections = SECTIONS.filter((s) => counts.has(s.id)).map((s) => ({ id: s.id, prs: counts.get(s.id)! }));
+      const where = SHIPS_TO[r.platform] ?? SHIPS_TO.backend;
+      const cells = Object.fromEntries(SCORE_PLATS.map((p) => [p.key, where.ships.includes(p.key) ? conversionImpact(daily, r.bangkok_date, p.key, range, cmp, markets, SCORE_WINDOW) : null])) as Record<ScorePlat, ConversionImpact | null>;
+      return { r, ids: list.map((x) => `${x.repo} ${x.release_id}`), releases: list.length, prs, name: releaseName(sections), where, cells };
+    })
+    .sort((a, b) => (b.r.go_live_at ?? b.r.bangkok_date).localeCompare(a.r.go_live_at ?? a.r.bangkok_date));
+}
