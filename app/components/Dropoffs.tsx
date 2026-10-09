@@ -83,14 +83,13 @@ export default function Dropoffs(props: PanelProps) {
                     {c.label}
                   </th>
                 ))}
-                <th scope="col">How it is measured</th>
               </tr>
             </thead>
             <tbody>
               {grid.map(({ flow, steps }) => (
                 <Fragment key={flow.id}>
                   <tr className="flow-row">
-                    <th scope="rowgroup" colSpan={COLS.length + 2}>
+                    <th scope="rowgroup" colSpan={COLS.length + 1}>
                       {flow.label}
                       {flow.mapping && <span className="sub"> · {flow.mapping}</span>}
                     </th>
@@ -102,12 +101,12 @@ export default function Dropoffs(props: PanelProps) {
                         <tr key={si}>
                           <td className="step">
                             {step.from} → {step.to}
+                            <div>
+                              <span className="badge b-Low">{m.label}</span>
+                            </div>
                           </td>
                           <td colSpan={COLS.length} className="muted" style={{ whiteSpace: "normal", textAlign: "left" }}>
                             Not measurable from current data. {step.note}
-                          </td>
-                          <td>
-                            <span className="badge b-Low">{m.label}</span>
                           </td>
                         </tr>
                       );
@@ -115,22 +114,22 @@ export default function Dropoffs(props: PanelProps) {
                       <tr key={si}>
                         <td className="step">
                           {step.from} → {step.to}
+                          <div>
+                            <span className={`badge b-${m.tone}`}>{m.label}</span>
+                          </div>
+                          {showMethod && step.note && <div className="sub step-note">{step.note}</div>}
                         </td>
                         {cells.map((c, ci) => {
                           const why = COLS[ci].plats.length === 1 ? step.unsupported?.[COLS[ci].plats[0]] : undefined;
                           return why ? (
                             <td key={COLS[ci].key} className="dcell" title={why}>
-                              <div className="muted">n/a</div>
-                              <div className="small muted" style={{ whiteSpace: "normal" }}>not a banner signal on web</div>
+                              <div className="muted small">Not available on web</div>
+                              <div className="small muted" style={{ whiteSpace: "normal" }}>web has no banner signal</div>
                             </td>
                           ) : (
                             <DropCell key={COLS[ci].key} c={c} step={step} worst={worst[ci] === `${flow.id}:${si}`} label={`${flow.label}, ${step.from} to ${step.to}, ${COLS[ci].label}`} />
                           );
                         })}
-                        <td style={{ whiteSpace: "normal", textAlign: "left", minWidth: 180 }}>
-                          <span className={`badge b-${m.tone}`}>{m.label}</span>
-                          {showMethod && step.note && <div className="sub">{step.note}</div>}
-                        </td>
                       </tr>
                     );
                   })}
@@ -155,17 +154,26 @@ function DropCell({ c, step, worst, label }: { c: Cell; step: StepDef; worst: bo
     const s = c.cur;
     return (
       <td className="dcell" aria-label={`${label}: drop-off not measurable; ${s.nextShare == null ? "no data" : `${fmtPct(s.nextShare, 1)} of ${fmtInt(s.movedOn)} sessions that moved on went here next`}`}>
-        <div className="muted">n/a</div>
-        <div className="small">{s.nextShare == null ? "no data" : `${fmtPct(s.nextShare, 1)} of ${fmtInt(s.movedOn)} moving on went here next`}</div>
+        {s.nextShare == null ? (
+          <div className="muted small">no data</div>
+        ) : (
+          <>
+            <div className="v">{fmtPct(s.nextShare, 1)}</div>
+            <div className="small muted" style={{ whiteSpace: "normal" }}>
+              of {fmtInt(s.movedOn)} sessions that continued went to {step.to} next
+            </div>
+            <div className="small pending">drop-off not tracked</div>
+          </>
+        )}
       </td>
     );
   }
   if (c.cur.inconsistent)
     return (
       <td className="dcell" title={`${fmtInt(c.cur.continued)} reached the next step but only ${fmtInt(c.cur.base)} were counted at this step, so these counts do not measure this transition here.`}>
-        <div className="muted">n/a</div>
+        <div className="muted small">Not comparable here</div>
         <div className="small muted" style={{ whiteSpace: "normal" }}>
-          counts don’t line up here ({fmtInt(c.cur.continued)} &gt; {fmtInt(c.cur.base)})
+          counts don’t line up ({fmtInt(c.cur.continued)} &gt; {fmtInt(c.cur.base)})
         </div>
       </td>
     );
