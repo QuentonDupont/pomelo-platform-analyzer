@@ -240,6 +240,81 @@ export function importHourly(): number {
   return n;
 }
 
+const tri = (v: unknown) => (v === true || /^(true|t|1|yes)$/i.test(String(v)) ? "true" : v === false || /^(false|f|0|no)$/i.test(String(v)) ? "false" : "unknown");
+const fplat = (v: unknown) => {
+  const p = String(v ?? "").toLowerCase();
+  return p.startsWith("web") ? "web" : p.startsWith("ios") ? "ios" : p.startsWith("android") ? "android" : "unknown";
+};
+
+/** Funnel drop-off inputs: Sankey transitions + Cube session flags + Cube user funnel counts. */
+export function importDropoffs(): number {
+  let n = 0;
+  const t = readSnap("snapshots/funnel_transitions.json");
+  if (t?.rows?.length) {
+    const src = label(t, "funnel_transitions");
+    const st = getDb().prepare(
+      `INSERT INTO funnel_transitions (week, platform, source, target, source_stage, target_stage, sessions, source_note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+       ON CONFLICT(week, platform, source, target) DO UPDATE SET sessions=excluded.sessions, source_stage=excluded.source_stage, target_stage=excluded.target_stage, source_note=excluded.source_note`,
+    );
+    tx(() => {
+      for (const r of t.rows!) {
+        const platform = fplat(pick(r, "platform"));
+        if (platform === "unknown") continue;
+        st.run(day10(pick(r, "week", "week_start")), platform, String(pick(r, "source")), String(pick(r, "target")), num(pick(r, "source_stage")), num(pick(r, "target_stage")), num(pick(r, "sessions", "value")) ?? 0, src);
+        n++;
+      }
+    });
+  }
+  const fl = readSnap("snapshots/session_flags_weekly.json");
+  if (fl?.rows?.length) {
+    const src = label(fl, "session_flags_weekly");
+    const acc = new Map<string, number>();
+    for (const r of fl.rows) {
+      const market = marketOf(r);
+      if (!market) continue;
+      const k = [day10(pick(r, "week", "week_start")), fplat(pick(r, "platform", "app_name_short_version")), market, tri(pick(r, "was_signed_in", "signed_in")), tri(pick(r, "was_add_to_cart", "atc")), tri(pick(r, "was_purchase_made", "purchase"))].join("|");
+      acc.set(k, (acc.get(k) ?? 0) + (num(pick(r, "sessions", "total_sessions")) ?? 0));
+    }
+    const st = getDb().prepare(
+      `INSERT INTO session_flags_weekly (week, platform, market, signed_in, atc, purchase, sessions, source_note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+       ON CONFLICT(week, platform, market, signed_in, atc, purchase) DO UPDATE SET sessions=excluded.sessions, source_note=excluded.source_note`,
+    );
+    tx(() => {
+      for (const [k, v] of acc) {
+        st.run(...(k.split("|") as [string, string, string, string, string, string]), v, src);
+        n++;
+      }
+    });
+  }
+  const uf = readSnap("snapshots/user_funnel_weekly.json");
+  if (uf?.rows?.length) {
+    const src = label(uf, "user_funnel_weekly");
+    const acc = new Map<string, number[]>();
+    for (const r of uf.rows) {
+      const market = marketOf(r);
+      if (!market) continue;
+      const k = [day10(pick(r, "week", "week_start")), fplat(pick(r, "platform", "app_name_short_version")), market, tri(pick(r, "was_signed_in", "signed_in"))].join("|");
+      const a = acc.get(k) ?? [0, 0, 0, 0];
+      a[0] += num(pick(r, "users", "total_users")) ?? 0;
+      a[1] += num(pick(r, "users_list_viewed", "total_users_product_list_viewed", "list_viewed")) ?? 0;
+      a[2] += num(pick(r, "users_product_click", "total_users_product_click", "product_click")) ?? 0;
+      a[3] += num(pick(r, "users_added_to_bag", "total_users_added_to_bag", "added_to_bag")) ?? 0;
+      acc.set(k, a);
+    }
+    const st = getDb().prepare(
+      `INSERT INTO user_funnel_weekly (week, platform, market, signed_in, users, list_viewed, product_click, added_to_bag, source_note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+       ON CONFLICT(week, platform, market, signed_in) DO UPDATE SET users=excluded.users, list_viewed=excluded.list_viewed, product_click=excluded.product_click, added_to_bag=excluded.added_to_bag, source_note=excluded.source_note`,
+    );
+    tx(() => {
+      for (const [k, a] of acc) {
+        st.run(...(k.split("|") as [string, string, string, string]), a[0], a[1], a[2], a[3], src);
+        n++;
+      }
+    });
+  }
+  return n;
+}
+
 export function importReleases(): number {
   const p = path.join(dir(), "github_releases.json");
   if (!existsSync(p)) return 0;
@@ -284,6 +359,7 @@ export function importSnapshots() {
     app_version_weekly: importAppVersions(),
     orders_daily: importOrders(),
     funnel_weekly: importFunnel(),
+    dropoffs: importDropoffs(),
     releases: importReleases(),
   };
   const rows = Object.values(counts).reduce((a, b) => a + b, 0);

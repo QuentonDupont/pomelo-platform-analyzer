@@ -32,6 +32,12 @@ for (const [week, rows] of group(all("SELECT * FROM traffic_mix_weekly"), (r) =>
   docs.push({ collection: "mix", id: week, body: { rows } });
 for (const [week, rows] of group(all("SELECT * FROM app_version_weekly"), (r) => String(r.week), (r) => [r.week, r.platform, r.version, r.total_sessions, r.bounces, r.non_bounces, n(r.orders)]))
   docs.push({ collection: "appver", id: week, body: { rows } });
+for (const [week, rows] of group(all("SELECT * FROM funnel_transitions"), (r) => String(r.week), (r) => [r.platform, r.source, r.target, r.source_stage, r.target_stage, r.sessions]))
+  docs.push({ collection: "transitions", id: week, body: { rows } });
+for (const [week, rows] of group(all("SELECT * FROM session_flags_weekly"), (r) => String(r.week), (r) => [r.platform, r.market, r.signed_in, r.atc, r.purchase, r.sessions]))
+  docs.push({ collection: "flags", id: week, body: { rows } });
+for (const [week, rows] of group(all("SELECT * FROM user_funnel_weekly"), (r) => String(r.week), (r) => [r.platform, r.market, r.signed_in, r.users, r.list_viewed, r.product_click, r.added_to_bag]))
+  docs.push({ collection: "ufunnel", id: week, body: { rows } });
 docs.push({ collection: "funnel", id: "all", body: { rows: all("SELECT * FROM funnel_weekly ORDER BY week, platform, stage_order").map((r) => [r.week, r.platform, r.stage, r.stage_order, r.sessions]) } });
 docs.push({ collection: "releases", id: "all", body: { rows: all("SELECT id, repo, platform, release_id, go_live_at, bangkok_date, signal, pr_count, confounded, note, source FROM releases") } });
 for (const [repo, rows] of group(all("SELECT p.*, r.repo FROM release_prs p JOIN releases r ON r.id = p.release_key"), (r) => String(r.repo), (r) => {

@@ -5,6 +5,7 @@
 import type { DataClient, DecisionInput, RefreshProgress, RefreshResult } from "../app/components/client";
 import type { AlertRow, Api, DecisionRow } from "../app/components/types";
 import { addDays, DailyRow, mondayOf } from "../lib/compute";
+import { toDropoffData } from "../lib/dropoffs";
 import { availableWeeks, buildReleases, coverage, DEFAULT_ALERT_RULES, deliveryHealth, evaluateAlertRules, mergeDaily, mergeHourly } from "../lib/payload";
 import type { PrRow, ReleaseRow } from "../server/impact";
 import { DEFINITION_VERSION, IN_SCOPE_SHOPS, normalizePlatform, SHOP_MARKET } from "../server/metrics/definitions";
@@ -96,7 +97,7 @@ export const artifactClient: DataClient = {
   async load(): Promise<Api> {
     const db = await capability("db");
     if (!db) throw new Error("Sign in to claude.ai to load this dashboard's data.");
-    const [daily, orders, hourly, hourlyOrders, mix, appver, funnel, releases, prs, decisions, acks, metaSnap] = await Promise.all([
+    const [daily, orders, hourly, hourlyOrders, mix, appver, funnel, releases, prs, decisions, acks, metaSnap, trans, flags, ufunnel] = await Promise.all([
       all(db, "daily"),
       all(db, "orders"),
       all(db, "hourly"),
@@ -109,6 +110,9 @@ export const artifactClient: DataClient = {
       all(db, "decisions"),
       all(db, "alert_acks"),
       db.doc("meta/info").get(),
+      all(db, "transitions"),
+      all(db, "flags"),
+      all(db, "ufunnel"),
     ]);
     const meta = (metaSnap.exists ? metaSnap.data() : {}) as Record<string, unknown>;
     const dailyRows: DailyRow[] = mergeDaily(rowsOf(daily).map(decTraffic), rowsOf(orders).map(decOrders));
@@ -129,6 +133,11 @@ export const artifactClient: DataClient = {
         hourly: hourlyRows,
         mix: rowsOf(mix).map((r) => ({ week: r[0], platform: r[1], device: r[2], market: r[3], channel: r[4], customer_type: r[5], total_sessions: r[6], bounces: r[7], non_bounces: r[8], orders: r[9], revenue_usd: r[10] })) as unknown as Api["data"]["mix"],
         app_versions: rowsOf(appver).map((r) => ({ week: r[0], platform: r[1], version: r[2], total_sessions: r[3], bounces: r[4], non_bounces: r[5], orders: r[6] })) as unknown as Api["data"]["app_versions"],
+        dropoffs: toDropoffData(
+          trans.flatMap((d) => ((d.data.rows as T[]) ?? []).map((r) => ({ week: d.id, platform: r[0], source: r[1], target: r[2], source_stage: r[3], target_stage: r[4], sessions: r[5] }))),
+          flags.flatMap((d) => ((d.data.rows as T[]) ?? []).map((r) => ({ week: d.id, platform: r[0], market: r[1], signed_in: r[2], atc: r[3], purchase: r[4], sessions: r[5] }))),
+          ufunnel.flatMap((d) => ((d.data.rows as T[]) ?? []).map((r) => ({ week: d.id, platform: r[0], market: r[1], signed_in: r[2], users: r[3], list_viewed: r[4], product_click: r[5], added_to_bag: r[6] }))),
+        ),
         funnel: rowsOf(funnel).map((r) => ({ week: r[0], platform: r[1], stage: r[2], stage_order: r[3], sessions: r[4], source: "funnel snapshot" })) as unknown as Api["data"]["funnel"],
         releases: rels,
         health: deliveryHealth(rels),

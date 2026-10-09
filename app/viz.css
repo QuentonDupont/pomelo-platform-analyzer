@@ -36,6 +36,16 @@ button.kpi[aria-expanded="true"] { outline: 2px solid var(--web); outline-offset
 .arrow-down::before { content: "▼ "; font-size: 9px; }
 .chart-controls { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 
+/* ---- Funnel drop-off table ---- */
+table.dropoffs { border-collapse: separate; border-spacing: 0 2px; }
+table.dropoffs .flow-row th { text-align: left; font-size: 13px; color: var(--ink); text-transform: none; letter-spacing: 0; padding-top: 12px; border-bottom: 1px solid var(--line); }
+table.dropoffs td.step { text-align: left; padding-left: 16px; font-weight: 600; white-space: nowrap; }
+table.dropoffs td.dcell { text-align: right; min-width: 128px; vertical-align: top; border-radius: 6px; }
+table.dropoffs td.dcell .v { font-weight: 700; font-size: 14px; font-variant-numeric: proportional-nums; }
+table.dropoffs td.dcell.worst { outline: 2px solid var(--div-neg); outline-offset: -2px; }
+table.dropoffs .bar { height: 4px; background: var(--line); border-radius: 2px; margin: 3px 0 2px auto; width: 100%; overflow: hidden; }
+table.dropoffs .bar span { display: block; height: 4px; background: var(--div-neg); border-radius: 2px; margin-left: auto; }
+
 /* ---- Date-time picker ---- */
 .dtp { position: relative; display: grid; gap: 3px; }
 .dtp-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }

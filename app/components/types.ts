@@ -1,6 +1,7 @@
 import type { DailyRow, HourlyRow, OrdersSource } from "@/lib/compute";
 import type { Market, PlatformFilter } from "@/server/metrics/definitions";
-import type { ReleaseView } from "@/server/data";
+import type { ReleaseView } from "@/lib/payload";
+import type { DropoffData } from "@/lib/dropoffs";
 
 export type { DailyRow, HourlyRow, OrdersSource, Market, PlatformFilter, ReleaseView };
 
@@ -85,6 +86,7 @@ export interface Api {
     mix: MixRow[];
     app_versions: AppVersionRow[];
     funnel: FunnelRow[];
+    dropoffs: DropoffData;
     releases: ReleaseView[];
     health: HealthRow[];
     alerts: AlertRow[];
@@ -111,7 +113,7 @@ export interface Filters {
   markets: Market[];
   device: "all" | "desktop" | "mobile";
   orders: OrdersSource;
-  tab: "numbers" | "decisions" | "overview" | "releases" | "quality";
+  tab: "numbers" | "dropoffs" | "decisions" | "overview" | "releases" | "quality";
   split: boolean;
   lanes: "market" | "device";
   /** metric shown in the Numbers tab charts (trend, bridge, matrix) */

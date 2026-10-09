@@ -57,7 +57,7 @@ function fromUrl(api: Api): Filters {
     markets: markets.length ? markets : ALL_MARKETS,
     device: (["all", "desktop", "mobile"].includes(q.get("d") ?? "") ? q.get("d") : "all") as Filters["device"],
     orders: q.get("o") === "session" ? "session" : q.get("o") === "backend" && api.data.has_backend_orders ? "backend" : d.orders,
-    tab: (["numbers", "decisions", "overview", "releases", "quality"].includes(q.get("t") ?? "") ? q.get("t") : "numbers") as Filters["tab"],
+    tab: (["numbers", "dropoffs", "decisions", "overview", "releases", "quality"].includes(q.get("t") ?? "") ? q.get("t") : "numbers") as Filters["tab"],
     metric: ((METRIC_KEYS as string[]).includes(q.get("k") ?? "") ? q.get("k") : "bounce_rate") as Filters["metric"],
     split: q.get("split") === "1",
     lanes: q.get("lanes") === "device" ? "device" : "market",
@@ -231,6 +231,7 @@ export default function Dashboard() {
           {(
             [
               ["numbers", "Numbers"],
+              ["dropoffs", "Funnel drop-offs"],
               ["decisions", "Decisions"],
               ["overview", "Bounce & funnel"],
               ["releases", "Releases"],

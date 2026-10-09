@@ -46,6 +46,21 @@ CREATE TABLE IF NOT EXISTS funnel_weekly (
   sessions REAL NOT NULL, source TEXT NOT NULL,
   PRIMARY KEY (week, platform, stage)
 );
+CREATE TABLE IF NOT EXISTS funnel_transitions (
+  week TEXT NOT NULL, platform TEXT NOT NULL, source TEXT NOT NULL, target TEXT NOT NULL,
+  source_stage INTEGER, target_stage INTEGER, sessions REAL NOT NULL, source_note TEXT NOT NULL,
+  PRIMARY KEY (week, platform, source, target)
+);
+CREATE TABLE IF NOT EXISTS session_flags_weekly (
+  week TEXT NOT NULL, platform TEXT NOT NULL, market TEXT NOT NULL,
+  signed_in TEXT NOT NULL, atc TEXT NOT NULL, purchase TEXT NOT NULL, sessions REAL NOT NULL, source_note TEXT NOT NULL,
+  PRIMARY KEY (week, platform, market, signed_in, atc, purchase)
+);
+CREATE TABLE IF NOT EXISTS user_funnel_weekly (
+  week TEXT NOT NULL, platform TEXT NOT NULL, market TEXT NOT NULL, signed_in TEXT NOT NULL,
+  users REAL, list_viewed REAL, product_click REAL, added_to_bag REAL, source_note TEXT NOT NULL,
+  PRIMARY KEY (week, platform, market, signed_in)
+);
 CREATE TABLE IF NOT EXISTS releases (
   id TEXT PRIMARY KEY, repo TEXT NOT NULL, platform TEXT NOT NULL, release_id TEXT,
   go_live_at TEXT, bangkok_date TEXT NOT NULL, signal TEXT, pr_count INTEGER, confounded INTEGER,

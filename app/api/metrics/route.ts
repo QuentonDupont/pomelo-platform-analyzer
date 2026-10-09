@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { OrdersSource } from "@/lib/compute";
 import { getDb } from "@/server/cache/db";
-import { availableWeeks, coverage, deliveryHealth, loadDaily, loadHourly, loadReleases, loadTable } from "@/server/data";
+import { availableWeeks, coverage, deliveryHealth, loadDaily, loadDropoffs, loadHourly, loadReleases, loadTable } from "@/server/data";
 import { importIfChanged } from "@/server/jobs/run";
 import { ELIGIBLE_ORDER_RULE_STATUS } from "@/server/jobs/order-eligibility";
 import { DEFINITION_VERSION } from "@/server/metrics/definitions";
@@ -30,6 +30,7 @@ export async function GET(req: Request) {
       mix: loadTable("SELECT * FROM traffic_mix_weekly"),
       app_versions: loadTable("SELECT * FROM app_version_weekly"),
       funnel: loadTable("SELECT * FROM funnel_weekly ORDER BY week, platform, stage_order"),
+      dropoffs: loadDropoffs(),
       releases,
       health: deliveryHealth(releases),
       alerts: loadTable("SELECT * FROM alert_events ORDER BY fired_at DESC LIMIT 50"),

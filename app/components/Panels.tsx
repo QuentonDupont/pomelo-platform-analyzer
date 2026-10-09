@@ -11,6 +11,7 @@ import D8Delivery from "./decisions/D8Delivery";
 import D9DecisionLog from "./decisions/D9DecisionLog";
 import D10Alerts from "./decisions/D10Alerts";
 import DataQuality from "./DataQuality";
+import Dropoffs from "./Dropoffs";
 import Funnel from "./Funnel";
 import Releases from "./Releases";
 import ChangeBridge from "./ChangeBridge";
@@ -43,6 +44,8 @@ export default function Panels(props: PanelProps & { set: (p: Partial<Filters>) 
           <SegmentMatrix {...p} set={set} />
         </div>
       );
+    case "dropoffs":
+      return <Dropoffs {...p} />;
     case "decisions":
       return (
         <div className="grid" id="panel-decisions">
