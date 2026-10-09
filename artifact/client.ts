@@ -97,7 +97,7 @@ export const artifactClient: DataClient = {
   async load(): Promise<Api> {
     const db = await capability("db");
     if (!db) throw new Error("Sign in to claude.ai to load this dashboard's data.");
-    const [daily, orders, hourly, hourlyOrders, mix, appver, funnel, releases, prs, decisions, acks, metaSnap, trans, flags, ufunnel] = await Promise.all([
+    const [daily, orders, hourly, hourlyOrders, mix, appver, funnel, releases, prs, decisions, acks, metaSnap, trans, flags, ufunnel, cartp] = await Promise.all([
       all(db, "daily"),
       all(db, "orders"),
       all(db, "hourly"),
@@ -113,6 +113,7 @@ export const artifactClient: DataClient = {
       all(db, "transitions"),
       all(db, "flags"),
       all(db, "ufunnel"),
+      all(db, "cartp"),
     ]);
     const meta = (metaSnap.exists ? metaSnap.data() : {}) as Record<string, unknown>;
     const dailyRows: DailyRow[] = mergeDaily(rowsOf(daily).map(decTraffic), rowsOf(orders).map(decOrders));
@@ -137,6 +138,7 @@ export const artifactClient: DataClient = {
           trans.flatMap((d) => ((d.data.rows as T[]) ?? []).map((r) => ({ week: d.id, platform: r[0], source: r[1], target: r[2], source_stage: r[3], target_stage: r[4], sessions: r[5] }))),
           flags.flatMap((d) => ((d.data.rows as T[]) ?? []).map((r) => ({ week: d.id, platform: r[0], market: r[1], signed_in: r[2], atc: r[3], purchase: r[4], sessions: r[5] }))),
           ufunnel.flatMap((d) => ((d.data.rows as T[]) ?? []).map((r) => ({ week: d.id, platform: r[0], market: r[1], signed_in: r[2], users: r[3], list_viewed: r[4], product_click: r[5], added_to_bag: r[6] }))),
+          cartp.flatMap((d) => ((d.data.rows as T[]) ?? []).map((r) => ({ week: d.id, platform: r[0], market: r[1], signed_in: r[2], purchase: r[3], users_added_to_bag: r[4] }))),
         ),
         funnel: rowsOf(funnel).map((r) => ({ week: r[0], platform: r[1], stage: r[2], stage_order: r[3], sessions: r[4], source: "funnel snapshot" })) as unknown as Api["data"]["funnel"],
         releases: rels,

@@ -15,14 +15,20 @@ const COLS: { key: string; label: string; plats: FPlatform[] }[] = [
 
 type Cell = { cur: StepResult; cmp: StepResult };
 
+const weekSpan = (ws: string[]) => (!ws.length ? null : ws.length === 1 ? `the week of ${fmtDate(ws[0])}` : `weeks of ${fmtDate(ws[0])} – ${fmtDate(ws[ws.length - 1])}`);
+
 export default function Dropoffs(props: PanelProps) {
   const { api, f, cur, cmp } = props;
   const [showMethod, setShowMethod] = useState(true);
   const d = api.data.dropoffs;
-  const allWeeks = [...new Set([...d.transitions.map((r) => r.week), ...d.flags.map((r) => r.week), ...d.users.map((r) => r.week)])];
+  const allWeeks = [...new Set([...d.transitions.map((r) => r.week), ...d.flags.map((r) => r.week), ...d.users.map((r) => r.week), ...d.cart.map((r) => r.week)])];
   const wCur = weeksOverlapping(allWeeks, cur.from, cur.to);
   const wCmp = weeksOverlapping(allWeeks, cmp.from, cmp.to);
-  const hasAny = d.transitions.length + d.flags.length + d.users.length > 0;
+  const hasAny = d.transitions.length + d.flags.length + d.users.length + d.cart.length > 0;
+  // web event tracking changed around 15 Sep 2026 (volume ~4x); flag ranges that straddle it
+  const WEB_CHANGE = "2026-09-14";
+  const touched = [...wCur, ...wCmp];
+  const spansWebChange = touched.some((w) => w < WEB_CHANGE) && touched.some((w) => w >= WEB_CHANGE) && d.transitions.some((r) => r.platform === "web");
 
   const cell = (step: StepDef, flow: FlowDef, plats: FPlatform[]): Cell => ({
     cur: computeStep(step, flow, d, wCur, plats, f.markets),
@@ -35,6 +41,7 @@ export default function Dropoffs(props: PanelProps) {
     let key = "";
     for (const g of grid)
       for (const [si, s] of g.steps.entries()) {
+        if (COLS[ci].plats.length === 1 && s.step.unsupported?.[COLS[ci].plats[0]]) continue;
         const v = s.cells[ci].cur.dropoff;
         if (v != null && (s.cells[ci].cur.base ?? 0) >= 30 && v > best) [best, key] = [v, `${g.flow.id}:${si}`];
       }
@@ -48,8 +55,8 @@ export default function Dropoffs(props: PanelProps) {
       badge={<RealBadge />}
       sub={
         <>
-          Drop-off % = share of sessions (or users) at a step that did not reach the next step. Weeks included: {wCur.length ? `${fmtDate(wCur[0])} – ${fmtDate(wCur[wCur.length - 1])}` : "none in range"} (weekly data; full Mon–Sun weeks
-          overlapping your range), compared with {wCmp.length ? `${fmtDate(wCmp[0])} – ${fmtDate(wCmp[wCmp.length - 1])}` : "no earlier weeks"}. Darker red = bigger drop-off; the outlined cell is the largest drop-off in each column.
+          Drop-off % = share of sessions (or users) at a step that did not reach the next step. Weeks included: {weekSpan(wCur) ?? "none in range"} (weekly data; full Mon–Sun weeks
+          overlapping your range), compared with {weekSpan(wCmp) ?? "no earlier weeks"}. Darker red = bigger drop-off; the outlined cell is the largest drop-off in each column.
         </>
       }
       right={
@@ -58,6 +65,11 @@ export default function Dropoffs(props: PanelProps) {
         </button>
       }
     >
+      {spansWebChange && (
+        <div className="field-warn" role="status" style={{ marginBottom: 6 }}>
+          Web event-funnel volume rose about 4× from 15 Sep 2026 (likely a tracking or identity change), so web “estimate” and “next-step” figures before and after that date are not comparable. Pick weeks from 15 Sep onward for web.
+        </div>
+      )}
       {!hasAny ? (
         <NotEvidenced what="Funnel step data" needs="the funnel snapshots (funnel_transitions / session_flags_weekly / user_funnel_weekly) — a data pull is in progress" />
       ) : (
@@ -104,9 +116,17 @@ export default function Dropoffs(props: PanelProps) {
                         <td className="step">
                           {step.from} → {step.to}
                         </td>
-                        {cells.map((c, ci) => (
-                          <DropCell key={COLS[ci].key} c={c} step={step} worst={worst[ci] === `${flow.id}:${si}`} label={`${flow.label}, ${step.from} to ${step.to}, ${COLS[ci].label}`} />
-                        ))}
+                        {cells.map((c, ci) => {
+                          const why = COLS[ci].plats.length === 1 ? step.unsupported?.[COLS[ci].plats[0]] : undefined;
+                          return why ? (
+                            <td key={COLS[ci].key} className="dcell" title={why}>
+                              <div className="muted">n/a</div>
+                              <div className="small muted" style={{ whiteSpace: "normal" }}>not a banner signal on web</div>
+                            </td>
+                          ) : (
+                            <DropCell key={COLS[ci].key} c={c} step={step} worst={worst[ci] === `${flow.id}:${si}`} label={`${flow.label}, ${step.from} to ${step.to}, ${COLS[ci].label}`} />
+                          );
+                        })}
                         <td style={{ whiteSpace: "normal", textAlign: "left", minWidth: 180 }}>
                           <span className={`badge b-${m.tone}`}>{m.label}</span>
                           {showMethod && step.note && <div className="sub">{step.note}</div>}
@@ -140,6 +160,15 @@ function DropCell({ c, step, worst, label }: { c: Cell; step: StepDef; worst: bo
       </td>
     );
   }
+  if (c.cur.inconsistent)
+    return (
+      <td className="dcell" title={`${fmtInt(c.cur.continued)} reached the next step but only ${fmtInt(c.cur.base)} were counted at this step, so these counts do not measure this transition here.`}>
+        <div className="muted">n/a</div>
+        <div className="small muted" style={{ whiteSpace: "normal" }}>
+          counts don’t line up here ({fmtInt(c.cur.continued)} &gt; {fmtInt(c.cur.base)})
+        </div>
+      </td>
+    );
   const v = c.cur.dropoff;
   const base = c.cur.base ?? 0;
   if (v == null || base < 30)

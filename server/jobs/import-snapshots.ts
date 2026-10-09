@@ -312,6 +312,27 @@ export function importDropoffs(): number {
       }
     });
   }
+  const cp = readSnap("snapshots/cart_purchase_weekly.json");
+  if (cp?.rows?.length) {
+    const src = label(cp, "cart_purchase_weekly");
+    const acc = new Map<string, number>();
+    for (const r of cp.rows) {
+      const market = marketOf(r);
+      if (!market) continue;
+      const k = [day10(pick(r, "week", "week_start")), fplat(pick(r, "platform", "app_name_short_version")), market, tri(pick(r, "was_signed_in", "signed_in")), tri(pick(r, "was_purchase_made", "purchase"))].join("|");
+      acc.set(k, (acc.get(k) ?? 0) + (num(pick(r, "users_added_to_bag", "total_users_added_to_bag")) ?? 0));
+    }
+    const st = getDb().prepare(
+      `INSERT INTO cart_purchase_weekly (week, platform, market, signed_in, purchase, users_added_to_bag, source_note) VALUES (?, ?, ?, ?, ?, ?, ?)
+       ON CONFLICT(week, platform, market, signed_in, purchase) DO UPDATE SET users_added_to_bag=excluded.users_added_to_bag, source_note=excluded.source_note`,
+    );
+    tx(() => {
+      for (const [k, v] of acc) {
+        st.run(...(k.split("|") as [string, string, string, string, string]), v, src);
+        n++;
+      }
+    });
+  }
   return n;
 }
 

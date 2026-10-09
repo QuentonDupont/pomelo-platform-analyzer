@@ -23,7 +23,7 @@ export function loadHourly(): HourlyRow[] {
 }
 
 export function loadDropoffs() {
-  return toDropoffData(loadTable<Rec>("SELECT * FROM funnel_transitions"), loadTable<Rec>("SELECT * FROM session_flags_weekly"), loadTable<Rec>("SELECT * FROM user_funnel_weekly"));
+  return toDropoffData(loadTable<Rec>("SELECT * FROM funnel_transitions"), loadTable<Rec>("SELECT * FROM session_flags_weekly"), loadTable<Rec>("SELECT * FROM user_funnel_weekly"), loadTable<Rec>("SELECT * FROM cart_purchase_weekly"));
 }
 
 export function loadReleases(rows: DailyRow[], src: OrdersSource): ReleaseView[] {

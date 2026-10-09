@@ -20,6 +20,12 @@ const data: DropoffData = toDropoffData(
     { week: W, platform: "web", market: "SG", signed_in: "true", atc: "false", purchase: "false", sessions: 999 },
   ],
   [{ week: W, platform: "web", market: "TH", signed_in: "true", users: 900, list_viewed: 800, product_click: 200, added_to_bag: 50 }],
+  [
+    { week: W, platform: "web", market: "TH", signed_in: "false", purchase: "true", users_added_to_bag: 5 },
+    { week: W, platform: "web", market: "TH", signed_in: "false", purchase: "false", users_added_to_bag: 95 },
+    { week: W, platform: "web", market: "TH", signed_in: "true", purchase: "true", users_added_to_bag: 20 },
+    { week: W, platform: "web", market: "TH", signed_in: "true", purchase: "false", users_added_to_bag: 80 },
+  ],
 );
 const flow = (id: string) => FLOWS.find((f) => f.id === id)!;
 
@@ -40,7 +46,7 @@ describe("funnel drop-offs", () => {
       "Special Showcase → Product list",
     ]);
   });
-  it("session flags: cart → order, all sessions and guest only", () => {
+  it("user-level cart → order, all users and guests only", () => {
     const all = computeStep(flow("cart-order").steps[0], flow("cart-order"), data, [W], ["web"], ["TH", "SG"]);
     expect(all).toMatchObject({ base: 200, continued: 25 });
     expect(all.dropoff).toBeCloseTo(0.875);
@@ -59,6 +65,17 @@ describe("funnel drop-offs", () => {
     const r = computeStep(f.steps[0], f, data, [W], ["web"], ["TH"]);
     expect(r).toMatchObject({ base: 1000, continued: 300 });
     expect(r.dropoff).toBeCloseTo(0.7);
+  });
+  it("never caps a 'continued' count above the step count into a fake 0% drop-off", () => {
+    const d2 = toDropoffData([], [], [{ week: W, platform: "web", market: "TH", signed_in: "true", users: 900, list_viewed: 100, product_click: 400, added_to_bag: 50 }]);
+    const r = computeStep(flow("list-pdp").steps[0], flow("list-pdp"), d2, [W], ["web"], ["TH"]);
+    expect(r.inconsistent).toBe(true);
+    expect(r.dropoff).toBeNull();
+  });
+  it("hero banner on web is shown as unsupported, not measured", () => {
+    const f = FLOWS.find((x) => x.id === "hero-list-pdp")!;
+    expect(f.steps[1].unsupported?.web).toMatch(/not a banner signal/);
+    expect(f.steps[1].unsupported?.ios).toBeUndefined();
   });
   it("next-step split never claims a drop-off %", () => {
     const f = flow("feed-pdp");
