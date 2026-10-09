@@ -88,7 +88,7 @@ export default function ReleaseScorecard(props: PanelProps) {
                   </tr>
                   {openId === r.id && (
                     <tr className="sc-detail">
-                      <td colSpan={4}>
+                      <td colSpan={PLATS.length + 1}>
                         <ul>
                           {prs.map((p) => (
                             <li key={p.number}>

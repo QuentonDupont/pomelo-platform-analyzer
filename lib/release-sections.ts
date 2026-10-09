@@ -107,7 +107,11 @@ export interface ConversionImpact {
  * range (before = range start → day before go-live; comparison period when < 3 days precede go-live).
  * "Clear" = the 95% interval of the difference (Newcombe/Wilson) excludes zero. Never a causal claim.
  */
-export function conversionImpact(rows: DailyRow[], goLive: string, scope: "web" | "ios" | "android", range: Win, cmp: Win, markets: Market[], windowDays?: number): ConversionImpact {
+/** Scorecard scopes: whole platforms plus mobile web on its own (rows carry device = "mobile" | "desktop" for web). */
+export type ImpactScope = "web" | "web_mobile" | "ios" | "android";
+const inScope = (r: DailyRow, scope: ImpactScope) => (scope === "web_mobile" ? r.platform === "web" && r.device === "mobile" : r.platform === scope);
+
+export function conversionImpact(rows: DailyRow[], goLive: string, scope: ImpactScope, range: Win, cmp: Win, markets: Market[], windowDays?: number): ConversionImpact {
   let after: Win;
   let before: Win & { label: string };
   if (windowDays) {
@@ -125,7 +129,7 @@ export function conversionImpact(rows: DailyRow[], goLive: string, scope: "web" 
       sessions = 0;
     const days = new Set<string>();
     for (const r of rows) {
-      if (r.day < w.from || r.day > w.to || r.platform !== scope || !markets.includes(r.market) || r.total <= 0) continue;
+      if (r.day < w.from || r.day > w.to || !inScope(r, scope) || !markets.includes(r.market) || r.total <= 0) continue;
       orders += r.e_orders ?? r.s_orders ?? 0;
       sessions += r.nb;
       days.add(r.day);
@@ -202,17 +206,18 @@ export function sectionImpact(rows: DailyRow[], goLive: string, section: Section
 }
 
 // ---------- shared scorecard rows (used by the release scorecard and the period summary) ----------
-export type ScorePlat = "web" | "ios" | "android";
+export type ScorePlat = ImpactScope;
 export const SCORE_PLATS: { key: ScorePlat; label: string }[] = [
-  { key: "web", label: "Web" },
+  { key: "web", label: "Web (all)" },
+  { key: "web_mobile", label: "Web mobile" },
   { key: "ios", label: "iOS" },
   { key: "android", label: "Android" },
 ];
 export const SHIPS_TO: Record<string, { label: string; ships: ScorePlat[] }> = {
-  web: { label: "Web app", ships: ["web"] },
+  web: { label: "Web app", ships: ["web", "web_mobile"] },
   ios: { label: "iOS app", ships: ["ios"] },
   android: { label: "Android app", ships: ["android"] },
-  backend: { label: "All platforms (API)", ships: ["web", "ios", "android"] },
+  backend: { label: "All platforms (API)", ships: ["web", "web_mobile", "ios", "android"] },
 };
 export const SCORE_WINDOW = 7;
 

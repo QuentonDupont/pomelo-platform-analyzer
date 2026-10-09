@@ -70,7 +70,7 @@ table.kv td:first-child { width: 34%; color: var(--muted); font-weight: 600; }
 .sc-bad { color: var(--bad); font-weight: 700; }
 table.sc-table { width: 100%; border-collapse: separate; border-spacing: 0 6px; }
 table.sc-table thead th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 0 10px 2px; border: 0; }
-table.sc-table th.sc-col { text-align: center; width: 17%; }
+table.sc-table th.sc-col { text-align: center; width: 15%; }
 table.sc-table th.sc-rel { text-align: left; }
 table.sc-table tbody th.sc-rel { padding: 0; border: 0; font-weight: 400; text-transform: none; letter-spacing: 0; }
 .sc-name { all: unset; box-sizing: border-box; display: grid; gap: 1px; width: 100%; padding: 10px 12px; border-radius: 10px 0 0 10px; background: var(--grid); cursor: pointer; }

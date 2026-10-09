@@ -31,14 +31,14 @@ function convLine(label: string, a: Agg, b: Agg): SummaryLine | null {
 
 export function buildSummary(cur: ResolvedRange, cmp: ResolvedRange, markets: Market[], src: "backend" | "session", releases: ScoreRow[]): SummaryLine[] {
   const lines: SummaryLine[] = [];
-  const agg = (r: ResolvedRange, platform: "web" | "app") => aggregate(filterRows(r.rows, { from: r.from, to: r.to, platform, markets, device: "all" }), src);
+  const agg = (r: ResolvedRange, platform: "web" | "app", device: "all" | "mobile" = "all") => aggregate(filterRows(r.rows, { from: r.from, to: r.to, platform, markets, device }), src);
   const like = comparable(cur, cmp);
 
   if (!cur.daysWithData) return [{ tone: "note", text: "No session data for this period yet — choose dates with data (green dots in the date picker)." }];
 
   // 1. Web and App headline
-  for (const [label, p] of [["Web", "web"], ["App", "app"]] as const) {
-    const l = convLine(label, agg(cmp, p), agg(cur, p));
+  for (const [label, p, dev] of [["Web", "web", "all"], ["Web mobile", "web", "mobile"], ["App", "app", "all"]] as const) {
+    const l = convLine(label, agg(cmp, p, dev), agg(cur, p, dev));
     if (l) lines.push(l);
   }
 
@@ -73,9 +73,11 @@ export function buildSummary(cur: ResolvedRange, cmp: ResolvedRange, markets: Ma
   const cells = releases.flatMap((r) =>
     (Object.entries(r.cells) as [string, NonNullable<ScoreRow["cells"]["web"]> | null][])
       .filter(([, c]) => c && (c.verdict === "better" || c.verdict === "worse"))
+      // mobile web repeats web when both moved the same way: keep the whole-web line only
+      .filter(([plat, c]) => !(plat === "web_mobile" && r.cells.web?.verdict === c!.verdict))
       .map(([plat, c]) => ({ r, plat, c: c! })),
   );
-  const platName = (p: string) => (p === "web" ? "Web" : p === "ios" ? "iOS" : "Android");
+  const platName = (p: string) => (p === "web" ? "Web" : p === "web_mobile" ? "Web mobile" : p === "ios" ? "iOS" : "Android");
   // an API release is shown with the platform it was measured on, so two same-day rows don't look identical
   const fmtRel = (x: (typeof cells)[number]) =>
     `${x.r.name} (${x.r.r.platform === "backend" ? `API release, on ${platName(x.plat)}` : platName(x.plat)}, ${fmtDate(x.r.r.bangkok_date)}, ${pct(x.c.rel ?? 0, 0)})`;
