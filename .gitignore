@@ -13,3 +13,5 @@ data/
 .next-build/
 artifact/dist/
 artifact/seed/
+# bulk Superset data pulls stay local (aggregates of business data); rebuild with the discovery agents
+discovery/snapshots/
