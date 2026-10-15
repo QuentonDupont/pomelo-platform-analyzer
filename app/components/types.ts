@@ -104,6 +104,8 @@ export interface Api {
 
 /** Global filter state. from/to are Bangkok local "YYYY-MM-DDTHH:mm" (hour precision, To hour inclusive). */
 export interface Filters {
+  /** "simple" is the plain-language landing view; "analyst" is the full filterable dashboard (unchanged). */
+  view: "simple" | "analyst";
   from: string;
   to: string;
   cfrom: string;
