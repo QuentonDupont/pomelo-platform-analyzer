@@ -49,7 +49,8 @@ export function rangeWarning(from: string, to: string, days: Set<string>, min: s
 
 const pad2 = (n: number) => String(n).padStart(2, "0");
 
-export default function FilterBar({ f, set, api }: { f: Filters; set: (p: Partial<Filters>) => void; api: Api }) {
+/** Date range + Compare-to: the two fieldsets shared by the Analyst view's FilterBar and the CEO view's own controls. */
+export function DateRangeControls({ f, set, api }: { f: Filters; set: (p: Partial<Filters>) => void; api: Api }) {
   const cal = api.data.calendar;
   const min = cal.earliest;
   const max = cal.latest;
@@ -82,7 +83,7 @@ export default function FilterBar({ f, set, api }: { f: Filters; set: (p: Partia
   const lengthText = lengthHours == null ? "" : lengthHours % 24 === 0 ? `${lengthHours / 24} day${lengthHours === 24 ? "" : "s"}` : `${lengthHours} hours`;
 
   return (
-    <div className="filters" role="search" aria-label="Dashboard filters">
+    <>
       <fieldset className="range">
         <legend>Date range (Bangkok time, ICT)</legend>
         <DateTimePicker label="From" value={f.from} dataDays={dataDays} rangeFrom={f.from} rangeTo={f.to} onChange={(v) => applyRange(v, v > f.to ? `${v.slice(0, 10)}T23:00` : f.to)} />
@@ -141,7 +142,14 @@ export default function FilterBar({ f, set, api }: { f: Filters; set: (p: Partia
           </div>
         )}
       </fieldset>
+    </>
+  );
+}
 
+export default function FilterBar({ f, set, api }: { f: Filters; set: (p: Partial<Filters>) => void; api: Api }) {
+  return (
+    <div className="filters" role="search" aria-label="Dashboard filters">
+      <DateRangeControls f={f} set={set} api={api} />
       <label>
         Platform
         <span className="seg" role="group" aria-label="Platform">

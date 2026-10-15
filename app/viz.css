@@ -180,3 +180,40 @@ table.dropoffs .bar span { display: block; height: 4px; background: var(--div-ne
 .dtp-done { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
 .field-warn { flex-basis: 100%; font-size: 12px; color: var(--amber); font-weight: 600; }
 .sc-flat { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
+
+/* ---- CEO weekly view ---- */
+.ceo { display: grid; gap: 16px; margin: 4px 0 8px; }
+.ceo-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 2px 0; }
+.week-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.week-pills .pill { border-radius: 999px; padding: 5px 12px; font-size: 13px; }
+.week-pills .pill[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.week-pills .pill-partial { border-style: dashed; }
+.ceo-verdict-text { font-family: ui-serif, Georgia, "Times New Roman", serif; font-size: 22px; line-height: 1.4; margin: 0 0 6px; max-width: 76ch; text-wrap: balance; }
+.scorecard-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.scorecard-tile { text-align: left; border-radius: 0; border: 0; border-right: 1px solid var(--line); border-top: 3px solid transparent; padding: 14px 16px; background: var(--panel); cursor: pointer; }
+.scorecard-tile:last-child { border-right: 0; }
+.scorecard-tile.selected { border-top-color: var(--web); }
+.scorecard-tile .simple-tile-value { font-family: ui-serif, Georgia, "Times New Roman", serif; font-size: 26px; font-weight: 600; line-height: 1.15; margin: 4px 0 6px; font-variant-numeric: proportional-nums; }
+.scorecard-tile .tile-def { font-size: 11.5px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+@media (max-width: 700px) {
+  .scorecard-strip { grid-template-columns: repeat(2, 1fr); }
+  .scorecard-tile { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+}
+table.by-market td:first-child, table.by-market th:first-child { text-align: left; }
+.bar-track { display: inline-block; vertical-align: middle; width: 70px; height: 8px; background: var(--grid); border-radius: 4px; overflow: hidden; margin-right: 8px; }
+.bar-track .bar-fill { display: block; height: 8px; border-radius: 4px; }
+.bar-track.thin { height: 4px; margin-top: 2px; }
+.bar-track.thin .bar-fill { height: 4px; }
+.journey { display: grid; gap: 14px; }
+.journey-step { display: grid; gap: 4px; }
+.journey-carry { font-size: 12px; color: var(--muted); }
+.journey-carry.down { color: var(--bad); font-weight: 600; }
+.journey-label { font-size: 13px; font-weight: 600; }
+.glossary summary { cursor: pointer; font-weight: 600; padding: 4px 0; }
+.glossary dl { display: grid; gap: 8px; margin: 10px 0 0; }
+.glossary dt { font-weight: 600; font-size: 13px; }
+.glossary dd { margin: 2px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+@media (max-width: 420px) {
+  .ceo-verdict-text { font-size: 18px; }
+  .scorecard-tile .simple-tile-value { font-size: 21px; }
+}

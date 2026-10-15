@@ -104,6 +104,11 @@ export interface Api {
 
 /** Global filter state. from/to are Bangkok local "YYYY-MM-DDTHH:mm" (hour precision, To hour inclusive). */
 export interface Filters {
+  /** "simple" is the CEO weekly view; "analyst" is the full filterable dashboard (unchanged). */
+  view: "simple" | "analyst";
+  /** CEO view's own channel/market filters — the date range (from/to/cfrom/cto/compare below) is shared with the Analyst view by design. */
+  ceoChannel: "all" | "web" | "app";
+  ceoMarket: "all" | Market;
   from: string;
   to: string;
   cfrom: string;

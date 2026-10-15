@@ -9,6 +9,7 @@ import Kpis from "./components/Kpis";
 import { useReducedMotion } from "./components/shared";
 import Panels from "./components/Panels";
 import PeriodSummary from "./components/PeriodSummary";
+import SimpleView from "./components/SimpleView";
 import { getClient, RefreshProgress } from "./components/client";
 import Report from "./report/Report";
 import type { Api, Filters, PanelProps } from "./components/types";
@@ -23,6 +24,9 @@ function defaults(api: Api): Filters {
   const from = startOf(w);
   const to = endOf(addDays(w, 6));
   return {
+    view: "simple",
+    ceoChannel: "all",
+    ceoMarket: "all",
     from,
     to,
     compare: "prior",
@@ -49,6 +53,9 @@ function fromUrl(api: Api): Filters {
   const markets = (q.get("m") ?? "").split(",").filter((m): m is Market => (ALL_MARKETS as string[]).includes(m));
   const f: Filters = {
     ...d,
+    view: q.get("view") === "analyst" ? "analyst" : "simple",
+    ceoChannel: (["all", "web", "app"].includes(q.get("cc") ?? "") ? q.get("cc") : d.ceoChannel) as Filters["ceoChannel"],
+    ceoMarket: (q.get("cm") === "all" || (ALL_MARKETS as string[]).includes(q.get("cm") ?? "") ? q.get("cm") : d.ceoMarket) as Filters["ceoMarket"],
     from,
     to,
     compare,
@@ -68,7 +75,23 @@ function fromUrl(api: Api): Filters {
 }
 
 export function filtersToQuery(f: Filters) {
-  const q = new URLSearchParams({ from: f.from, to: f.to, cfrom: f.cfrom, cto: f.cto, c: f.compare, p: f.platform, m: f.markets.join(","), d: f.device, o: f.orders, t: f.tab, lanes: f.lanes, k: f.metric });
+  const q = new URLSearchParams({
+    view: f.view,
+    cc: f.ceoChannel,
+    cm: f.ceoMarket,
+    from: f.from,
+    to: f.to,
+    cfrom: f.cfrom,
+    cto: f.cto,
+    c: f.compare,
+    p: f.platform,
+    m: f.markets.join(","),
+    d: f.device,
+    o: f.orders,
+    t: f.tab,
+    lanes: f.lanes,
+    k: f.metric,
+  });
   if (f.split) q.set("split", "1");
   return q.toString();
 }
@@ -169,7 +192,11 @@ export default function Dashboard() {
           <div>
             <h1>Pomelo bounce rate &amp; release impact</h1>
             <div className="sub">
-              Web (pomelofashion.com) + App (iOS + Android) · TH SG HK Global-USD AU · Bangkok time · bot_flag = false · definitions {DEFINITION_VERSION}
+              {f.view === "simple" ? (
+                "A plain-English weekly readout for the website and app."
+              ) : (
+                <>Web (pomelofashion.com) + App (iOS + Android) · TH SG HK Global-USD AU · Bangkok time · bot_flag = false · definitions {DEFINITION_VERSION}</>
+              )}
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
@@ -178,6 +205,9 @@ export default function Dashboard() {
               {failed ? "A sync failed — showing last good data" : `data as of ${asOf} ICT`}
               {pulse === "amber" && !failed && (client.kind === "artifact" ? " · press Refresh for the latest" : " · stale (live sync not connected)")}
             </div>
+            <button type="button" className="button" onClick={() => set({ view: f.view === "simple" ? "analyst" : "simple" })}>
+              {f.view === "simple" ? "Analyst view" : "Simple view"}
+            </button>
             <button
               type="button"
               className="refresh"
@@ -218,43 +248,49 @@ export default function Dashboard() {
         )}
         {report && <Report embedded api={api} params={{ from: f.from, to: f.to, cfrom: f.cfrom, cto: f.cto, p: f.platform, m: f.markets, d: f.device, o: f.orders }} />}
         <div hidden={report}>
-        <FilterBar f={f} set={set} api={api} />
-        {ranges.cur.partialDays.length > 0 && (
-          <div className="note" role="note">
-            Partial days:{" "}
-            {ranges.cur.partialDays
-              .map((p) => `${p.day} ${String(p.fromHour).padStart(2, "0")}:00–${String(p.toHour).padStart(2, "0")}:59 (${p.precision === "hour" ? "hourly data" : "no hourly data → whole day used"}${p.orders === "unavailable" ? ", orders not hourly" : ""})`)
-              .join(" · ")}
-          </div>
+        {f.view === "simple" ? (
+          <SimpleView {...props} set={set} />
+        ) : (
+          <>
+            <FilterBar f={f} set={set} api={api} />
+            {ranges.cur.partialDays.length > 0 && (
+              <div className="note" role="note">
+                Partial days:{" "}
+                {ranges.cur.partialDays
+                  .map((p) => `${p.day} ${String(p.fromHour).padStart(2, "0")}:00–${String(p.toHour).padStart(2, "0")}:59 (${p.precision === "hour" ? "hourly data" : "no hourly data → whole day used"}${p.orders === "unavailable" ? ", orders not hourly" : ""})`)
+                  .join(" · ")}
+              </div>
+            )}
+
+            <PeriodSummary {...props} />
+            <nav className="tabs" role="tablist" aria-label="Views">
+              {(
+                [
+                  ["numbers", "Numbers"],
+                  ["dropoffs", "Funnel drop-offs"],
+                  ["decisions", "Decisions"],
+                  ["overview", "Bounce & funnel"],
+                  ["releases", "Releases"],
+                  ["quality", "Data quality"],
+                ] as const
+              ).map(([k, label]) => (
+                <button key={k} role="tab" aria-selected={f.tab === k} onClick={() => set({ tab: k })}>
+                  {label}
+                </button>
+              ))}
+            </nav>
+
+            <Kpis {...props} set={set} />
+            <div className="grid" style={{ marginTop: 12 }}>
+              {f.tab === "overview" && <BounceCourt {...props} set={set} />}
+              <Panels {...props} set={set} reload={load} />
+            </div>
+            <p className="note">
+              Non-bounce CR = eligible backend orders / known-bot-excluded non-bounce tracked sessions (operational ratio, not matched session conversion). Booked revenue = after-discount
+              merchandise value in USD before returns. Cells with &lt; 30 sessions or &lt; 5 orders show “insufficient sample”. Changes are shown vs comparison; no causal claims.
+            </p>
+          </>
         )}
-
-        <PeriodSummary {...props} />
-        <nav className="tabs" role="tablist" aria-label="Views">
-          {(
-            [
-              ["numbers", "Numbers"],
-              ["dropoffs", "Funnel drop-offs"],
-              ["decisions", "Decisions"],
-              ["overview", "Bounce & funnel"],
-              ["releases", "Releases"],
-              ["quality", "Data quality"],
-            ] as const
-          ).map(([k, label]) => (
-            <button key={k} role="tab" aria-selected={f.tab === k} onClick={() => set({ tab: k })}>
-              {label}
-            </button>
-          ))}
-        </nav>
-
-        <Kpis {...props} set={set} />
-        <div className="grid" style={{ marginTop: 12 }}>
-          {f.tab === "overview" && <BounceCourt {...props} set={set} />}
-          <Panels {...props} set={set} reload={load} />
-        </div>
-        <p className="note">
-          Non-bounce CR = eligible backend orders / known-bot-excluded non-bounce tracked sessions (operational ratio, not matched session conversion). Booked revenue = after-discount
-          merchandise value in USD before returns. Cells with &lt; 30 sessions or &lt; 5 orders show “insufficient sample”. Changes are shown vs comparison; no causal claims.
-        </p>
         </div>
       </main>
     </>
