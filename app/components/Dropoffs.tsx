@@ -1,0 +1,208 @@
+"use client";
+
+import { Fragment, useState } from "react";
+import { fmtDate, fmtInt, fmtPct } from "@/lib/compute";
+import { computeStep, FlowDef, FLOWS, FPlatform, METHOD_LABEL, StepDef, StepResult, weeksOverlapping } from "@/lib/dropoffs";
+import { NotEvidenced, Panel, RealBadge } from "./shared";
+import type { PanelProps } from "./types";
+
+const COLS: { key: string; label: string; plats: FPlatform[] }[] = [
+  { key: "web", label: "Web", plats: ["web"] },
+  { key: "ios", label: "iOS", plats: ["ios"] },
+  { key: "android", label: "Android", plats: ["android"] },
+  { key: "app", label: "App (iOS + Android)", plats: ["ios", "android"] },
+];
+
+type Cell = { cur: StepResult; cmp: StepResult };
+
+const weekSpan = (ws: string[]) => (!ws.length ? null : ws.length === 1 ? `the week of ${fmtDate(ws[0])}` : `weeks of ${fmtDate(ws[0])} – ${fmtDate(ws[ws.length - 1])}`);
+
+export default function Dropoffs(props: PanelProps) {
+  const { api, f, cur, cmp } = props;
+  const [showMethod, setShowMethod] = useState(true);
+  const d = api.data.dropoffs;
+  const allWeeks = [...new Set([...d.transitions.map((r) => r.week), ...d.flags.map((r) => r.week), ...d.users.map((r) => r.week), ...d.cart.map((r) => r.week)])];
+  const wCur = weeksOverlapping(allWeeks, cur.from, cur.to);
+  const wCmp = weeksOverlapping(allWeeks, cmp.from, cmp.to);
+  const hasAny = d.transitions.length + d.flags.length + d.users.length + d.cart.length > 0;
+  // web event tracking changed around 15 Sep 2026 (volume ~4x); flag ranges that straddle it
+  const WEB_CHANGE = "2026-09-14";
+  const touched = [...wCur, ...wCmp];
+  const spansWebChange = touched.some((w) => w < WEB_CHANGE) && touched.some((w) => w >= WEB_CHANGE) && d.transitions.some((r) => r.platform === "web");
+
+  const cell = (step: StepDef, flow: FlowDef, plats: FPlatform[]): Cell => ({
+    cur: computeStep(step, flow, d, wCur, plats, f.markets),
+    cmp: computeStep(step, flow, d, wCmp, plats, f.markets),
+  });
+  const grid = FLOWS.map((flow) => ({ flow, steps: flow.steps.map((step) => ({ step, cells: COLS.map((c) => cell(step, flow, c.plats)) })) }));
+  // largest measured drop-off per column (exact/estimated rows only)
+  const worst = COLS.map((_, ci) => {
+    let best = -1;
+    let key = "";
+    for (const g of grid)
+      for (const [si, s] of g.steps.entries()) {
+        if (COLS[ci].plats.length === 1 && s.step.unsupported?.[COLS[ci].plats[0]]) continue;
+        const v = s.cells[ci].cur.dropoff;
+        if (v != null && (s.cells[ci].cur.base ?? 0) >= 30 && v > best) [best, key] = [v, `${g.flow.id}:${si}`];
+      }
+    return key;
+  });
+
+  return (
+    <Panel
+      id="panel-dropoffs"
+      title="Funnel drop-offs by step"
+      badge={<RealBadge />}
+      sub={
+        <>
+          Drop-off % = share of sessions (or users) at a step that did not reach the next step. Weeks included: {weekSpan(wCur) ?? "none in range"} (weekly data; full Mon–Sun weeks
+          overlapping your range), compared with {weekSpan(wCmp) ?? "no earlier weeks"}. Darker red = bigger drop-off; the outlined cell is the largest drop-off in each column.
+        </>
+      }
+      right={
+        <button type="button" aria-pressed={showMethod} onClick={() => setShowMethod(!showMethod)}>
+          {showMethod ? "Hide method notes" : "Show method notes"}
+        </button>
+      }
+    >
+      {spansWebChange && (
+        <div className="field-warn" role="status" style={{ marginBottom: 6 }}>
+          Web event-funnel volume rose about 4× from 15 Sep 2026 (likely a tracking or identity change), so web “estimate” and “next-step” figures before and after that date are not comparable. Pick weeks from 15 Sep onward for web.
+        </div>
+      )}
+      {!hasAny ? (
+        <NotEvidenced what="Funnel step data" needs="the funnel snapshots (funnel_transitions / session_flags_weekly / user_funnel_weekly) — a data pull is in progress" />
+      ) : (
+        <div className="scroll">
+          <table className="dropoffs">
+            <thead>
+              <tr>
+                <th scope="col">Flow · step</th>
+                {COLS.map((c) => (
+                  <th key={c.key} scope="col" style={{ textAlign: "right" }}>
+                    {c.label}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {grid.map(({ flow, steps }) => (
+                <Fragment key={flow.id}>
+                  <tr className="flow-row">
+                    <th scope="rowgroup" colSpan={COLS.length + 1}>
+                      {flow.label}
+                      {flow.mapping && <span className="sub"> · {flow.mapping}</span>}
+                    </th>
+                  </tr>
+                  {steps.map(({ step, cells }, si) => {
+                    const m = METHOD_LABEL[step.method];
+                    if (step.method === "not_evidenced")
+                      return (
+                        <tr key={si}>
+                          <td className="step">
+                            {step.from} → {step.to}
+                            <div>
+                              <span className="badge b-Low">{m.label}</span>
+                            </div>
+                          </td>
+                          <td colSpan={COLS.length} className="muted" style={{ whiteSpace: "normal", textAlign: "left" }}>
+                            Not measurable from current data. {step.note}
+                          </td>
+                        </tr>
+                      );
+                    return (
+                      <tr key={si}>
+                        <td className="step">
+                          {step.from} → {step.to}
+                          <div>
+                            <span className={`badge b-${m.tone}`}>{m.label}</span>
+                          </div>
+                          {showMethod && step.note && <div className="sub step-note">{step.note}</div>}
+                        </td>
+                        {cells.map((c, ci) => {
+                          const why = COLS[ci].plats.length === 1 ? step.unsupported?.[COLS[ci].plats[0]] : undefined;
+                          return why ? (
+                            <td key={COLS[ci].key} className="dcell" title={why}>
+                              <div className="muted small">Not available on web</div>
+                              <div className="small muted" style={{ whiteSpace: "normal" }}>web has no banner signal</div>
+                            </td>
+                          ) : (
+                            <DropCell key={COLS[ci].key} c={c} step={step} worst={worst[ci] === `${flow.id}:${si}`} label={`${flow.label}, ${step.from} to ${step.to}, ${COLS[ci].label}`} />
+                          );
+                        })}
+                      </tr>
+                    );
+                  })}
+                </Fragment>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      <div className="note">
+        <strong>Exact</strong> = session-level flags in the Cube session table (5 markets, bot_flag = false; market filter applies). <strong>User-level</strong> = distinct users per week × platform × market (market filter applies).{" "}
+        <strong>Estimate (arrivals)</strong> = event funnel from RudderStack (Sankey datasets): base is sessions that reached the step from an earlier step; all shops, not split by market or web device.{" "}
+        <strong>Next-step split</strong> = the event funnel does not record exits, so only the share of sessions that moved on whose next step was the target is known; no drop-off % is shown. Exact numbers for every row need the per-session funnel dataset in{" "}
+        <code>docs/FUNNEL_DATASET.sql</code>.
+      </div>
+    </Panel>
+  );
+}
+
+function DropCell({ c, step, worst, label }: { c: Cell; step: StepDef; worst: boolean; label: string }) {
+  if (step.method === "next_step") {
+    const s = c.cur;
+    return (
+      <td className="dcell" aria-label={`${label}: drop-off not measurable; ${s.nextShare == null ? "no data" : `${fmtPct(s.nextShare, 1)} of ${fmtInt(s.movedOn)} sessions that moved on went here next`}`}>
+        {s.nextShare == null ? (
+          <div className="muted small">no data</div>
+        ) : (
+          <>
+            <div className="v">{fmtPct(s.nextShare, 1)}</div>
+            <div className="small muted" style={{ whiteSpace: "normal" }}>
+              of {fmtInt(s.movedOn)} sessions that continued went to {step.to} next
+            </div>
+            <div className="small pending">drop-off not tracked</div>
+          </>
+        )}
+      </td>
+    );
+  }
+  if (c.cur.inconsistent)
+    return (
+      <td className="dcell" title={`${fmtInt(c.cur.continued)} reached the next step but only ${fmtInt(c.cur.base)} were counted at this step, so these counts do not measure this transition here.`}>
+        <div className="muted small">Not comparable here</div>
+        <div className="small muted" style={{ whiteSpace: "normal" }}>
+          counts don’t line up ({fmtInt(c.cur.continued)} &gt; {fmtInt(c.cur.base)})
+        </div>
+      </td>
+    );
+  const v = c.cur.dropoff;
+  const base = c.cur.base ?? 0;
+  if (v == null || base < 30)
+    return (
+      <td className="dcell">
+        <span className="pending small">{v == null ? "no data" : "insufficient sample"}</span>
+        {base > 0 && <div className="small muted">n {fmtInt(base)}</div>}
+      </td>
+    );
+  const d = c.cmp.dropoff != null && (c.cmp.base ?? 0) >= 30 ? v - c.cmp.dropoff : null;
+  const tint = `color-mix(in srgb, var(--div-neg) ${Math.round(8 + v * 55)}%, var(--panel))`;
+  return (
+    <td
+      className={`dcell${worst ? " worst" : ""}`}
+      style={{ background: tint }}
+      title={`${fmtInt(c.cur.continued)} of ${fmtInt(base)} reached the next step${c.cur.ci ? ` · 95% CI of drop-off ${fmtPct(c.cur.ci[0], 1)}–${fmtPct(c.cur.ci[1], 1)}` : ""}`}
+      aria-label={`${label}: drop-off ${fmtPct(v, 1)}, ${fmtInt(base)} at step, ${fmtInt(c.cur.continued)} continued${d != null ? `, ${d >= 0 ? "up" : "down"} ${(Math.abs(d) * 100).toFixed(1)} points vs comparison` : ""}`}
+    >
+      <div className="v">{fmtPct(v, 1)}</div>
+      <div className="bar" aria-hidden>
+        <span style={{ width: `${Math.max(2, v * 100)}%` }} />
+      </div>
+      <div className="small muted">
+        {fmtInt(c.cur.continued)} / {fmtInt(base)} continued
+      </div>
+      {d != null && <div className={`small ${d > 0 ? "down arrow-up" : d < 0 ? "up arrow-down" : "flat"}`}>{`${d >= 0 ? "+" : ""}${(d * 100).toFixed(1)} pp vs comparison`}</div>}
+    </td>
+  );
+}

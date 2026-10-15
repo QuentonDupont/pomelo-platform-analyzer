@@ -1,0 +1,807 @@
+{
+  "id": 63,
+  "table_name": "segment_session",
+  "schema": "public",
+  "database": {
+    "id": 3,
+    "name": "Cube-PROD",
+    "backend": "postgresql"
+  },
+  "main_dttm_col": "session_start_date",
+  "sql": "",
+  "cache_timeout": 21600,
+  "changed_on": "2025-08-07T00:20:05.333584",
+  "columns": [
+    {
+      "column_name": "total_product_views",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_users_product_list_viewed",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_users_added_to_wishlist",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_exs_spend",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_new_spend",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_brd_spend",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_spend",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_conversion_ex_bounce",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percent_user_clicked_category",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percent_user_clicked_product",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percent_user_add_to_cart",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percent_user_add_to_wishlist",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percent_user_searched_product",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_conversion",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_ex_bounce_device_for_push",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "country_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_customer",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ecomm_customer",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "home_feed_Andriod_version_comparison",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "__cubeJoinField",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_list_viewed_app_version",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_users",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_number_added_to_bag",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_number_product_searches",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "distinct_signed_in_users",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "bounces",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "team",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "channel_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "bounced_signed_in_users",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_users_searched",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "bounced_users",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "non_bounces",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_s2s_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_duration",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "was_signed_in",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "zero_length",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "open_attribution_secondary_publisher",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_billable_order",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "__user",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_purchase_behavior",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "pomelo_man",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "was_add_to_cart",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "open_attribution_channel_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "open_attribution_medium",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "social_paid_flag",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "open_attribution_strategy_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "dynamic_session_start",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "tier_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "transaction_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "open_attribution_channel",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "open_attribution_campaign_id",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "attribution_advertising_partner_name_raw",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "open_attribution_advertising_partner_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_start_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_shop",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "bot_flag",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "country",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "country_platform",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "existing_customer",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "app_name_short_version",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "platform_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "open_attribution_channel_grouped_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "country_arrangements",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_list_viewed_users_count",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_list_viewed_event_count",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_eComm_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_offline_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "new_home_feed_avg_session_duration",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "bounce_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sessions",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_customer",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_number_products_clicked",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_number_products_added",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_session_duration",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_number_products_clicked",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_number_product_list_viewed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_per_user",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_users_not_bounce",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_click_per_user",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_added_per_user",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_users_product_click",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_users_added_to_bag",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "app_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "app_only",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "was_purchase_made",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "Channel",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "open_attribution_campaign_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "exclude_store_staff_uniform_and_influencer_orders",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "not_pomelo_man",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "potential_tier",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "home_feed_iOS_version_comparison",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "conversion_rate_for_channel",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_orders_for_channel",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "channel_grouped_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_list_viewed_timestamp",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_start_month",
+      "type": null,
+      "is_dttm": false,
+      "expression": "DATE_TRUNC('month', session_start_date) ",
+      "verbose_name": "session_date",
+      "description": null
+    }
+  ],
+  "metrics": [
+    {
+      "metric_name": "count",
+      "expression": "COUNT(*)",
+      "verbose_name": "COUNT(*)"
+    }
+  ]
+}

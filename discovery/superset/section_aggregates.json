@@ -1,0 +1,5 @@
+{
+  "status": "NOT AVAILABLE",
+  "reason": "dataset 63 has no landing-page / site-section column (dynamic_session_start is a timestamp). Closest candidate: rudderstack_*.product_list_viewed.ref_type (e.g. home_slider, home_masonry, navigation, app_feed) used by sankey datasets 276-286; not aggregatable by week via query_dataset.",
+  "rows": []
+}

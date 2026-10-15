@@ -1,0 +1,23 @@
+# Fallback when a PR does not declare "Success metric: ...": changed paths -> surface -> default metric.
+# Rules are matched in order against each changed path (lower-cased); first match wins per path.
+# The release's inferred surface is the most frequent surface across its PRs' paths. Shown with an "inferred" badge.
+rules:
+  - { pattern: "checkout|payment|omise|2c2p|adyen", surface: checkout }
+  - { pattern: "cart|bag|voucher|coupon", surface: bag }
+  - { pattern: "pdp|product[-_/]?detail|productcontainer|size[-_]?guide|/product/|products/", surface: pdp }
+  - { pattern: "search|algolia|typeahead", surface: search }
+  - { pattern: "listing|category|catalog|plp|filter|sort|collection", surface: listing }
+  - { pattern: "account|profile|login|signin|sign-in|register|auth|otp", surface: account }
+  - { pattern: "home|feed|banner|hero", surface: home }
+  - { pattern: "campaign|landing|cms|content|lookbook|blog", surface: content }
+
+surface_metrics:
+  home: { metric: bounce_rate, direction: down }
+  listing: { metric: bounce_rate, direction: down }
+  search: { metric: bounce_rate, direction: down }
+  content: { metric: bounce_rate, direction: down }
+  account: { metric: bounce_rate, direction: down }
+  pdp: { metric: pdp_to_atb, direction: up }
+  bag: { metric: atb_to_checkout, direction: up }
+  checkout: { metric: checkout_to_payment, direction: up }
+  platform: { metric: nonbounce_cr, direction: up }

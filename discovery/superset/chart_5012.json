@@ -1,0 +1,24 @@
+{
+  "id": 5012,
+  "name": "All Platforms Conversion Rate (Ex Bounces)",
+  "dashboard": 528,
+  "datasource": "63__table",
+  "viz": "echarts_timeseries_line",
+  "x_axis": "session_start_date",
+  "time_grain": "P1D",
+  "metric": {
+    "type": "SIMPLE",
+    "column": "session_conversion",
+    "aggregate": "SUM",
+    "label": "Conversion Rate Ex Bounce"
+  },
+  "filters": [
+    {
+      "col": "session_duration",
+      "op": ">",
+      "val": 10
+    }
+  ],
+  "y_format": ".2%",
+  "note": "Ex-bounce applied as WHERE session_duration > 10 on top of cube measure session_conversion; the separate session_conversion_ex_bounce measure is NOT used."
+}

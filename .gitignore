@@ -5,3 +5,13 @@ node_modules/
 .DS_Store
 dist/
 coverage/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+data/
+.env.local
+.next-build/
+artifact/dist/
+artifact/seed/
+# bulk Superset data pulls stay local (aggregates of business data); rebuild with the discovery agents
+discovery/snapshots/

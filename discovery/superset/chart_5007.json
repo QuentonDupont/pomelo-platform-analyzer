@@ -1,0 +1,28 @@
+{
+  "id": 5007,
+  "name": "iOS Daily Bounce Rate",
+  "dashboard": 528,
+  "datasource": "63__table",
+  "viz": "echarts_timeseries_line",
+  "x_axis": "session_start_date",
+  "time_grain": "P1D",
+  "metric": {
+    "type": "SIMPLE",
+    "column": "bounce_rate",
+    "aggregate": "SUM",
+    "label": "Bounce Rate"
+  },
+  "groupby": [
+    "app_name_short_version"
+  ],
+  "filters": [
+    {
+      "col": "app_name_short_version",
+      "op": "IN",
+      "val": [
+        "iOS"
+      ]
+    }
+  ],
+  "y_format": ".2%"
+}

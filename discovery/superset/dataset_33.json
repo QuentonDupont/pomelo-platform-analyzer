@@ -1,0 +1,7679 @@
+{
+  "id": 33,
+  "table_name": "online_sales",
+  "schema": "public",
+  "database": {
+    "id": 3,
+    "name": "Cube-PROD",
+    "backend": "postgresql"
+  },
+  "main_dttm_col": "order_date",
+  "sql": "",
+  "cache_timeout": 3600,
+  "changed_on": "2025-08-07T00:20:19.562608",
+  "columns": [
+    {
+      "column_name": "order_frequency_f24m",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gm3_percent",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_credit_used_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "new_customers_ex_frauds",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_net_cogs_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_ff_item_only_bangna_wh",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_vs_target_percentage",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_cart_rule",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "delivery_customer_first_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "delivery_customer_last_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_gross_unit_sold",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_gross_unit",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "TTB_all_accepted_orders_count",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ttb_fee",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "loyalty_credit_redeemed_amount_lcy_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_ttb_fee",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ttb_all_accepted_discount",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ttb_exchanged_quantity",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_paid_real",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fullfil_orders_count",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_retention_f0m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_retention_f24m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_retention_f36m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_frequency_f6m",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_frequency_f9m",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_frequency_f12m",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_frequency_f18m",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_frequency_f36m",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_lcy_b4_shipping_fee",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_rating_count",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_shipping_tax_incl",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_lcy_b4_subsidy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "adjusted_revenue_from_voucher_in_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "adjusted_revenue_from_voucher_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_b4_voucher_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_shipping_tax_incl_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_b4_voucher_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "wallet_credit_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "wallet_credit_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_lcy_excl_wallet_credit",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_usd_excl_wallet_credit",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_USD_b4_shipping_fee",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "payment_failed_expired_bank_transfer_cancelled_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "oos_cancelled_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "mobile_banking_failed_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "omise_failed_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cancelled_order_other",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "qr_prompt_pay_expired_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "adyen_payment_failed_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "omise_payment_failed_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "my_mobile_banking_payment_failed_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "th_mobile_banking_expired_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "rad_for_cancelled_orders_payment_failed_and_expired",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "shipping_fee_cancelled_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "fulfilled_gross_revenue_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "fulfilled_cogs_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "online_gross_revenue_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_cancelled_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_USD_with_voucher",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_USD_clothes_only",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_USD_last_hour",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_lcy_b4_shipping_fee",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_USD_b4_shipping_fee",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "averge_original_price_th_to_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cumulative_revenue_delivery_failed_in_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_revenue_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "vat_output_net_revenue_in_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_revenue_in_usd_ex_vat",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_revenue_in_usd_b4_subsidy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_revenue_delivered_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_cancelled_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_no_show_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_shipping_tax_excl",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_s2s_revenue_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_revenue_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_revenue_in_lcy_b4_subsidy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_cogs_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_cogs_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_since_return_arrived_at_wh",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_cost_by_country_lcy_b4_write_off",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cumulative_total_gm3",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_cost_by_country_usd_b4_write_off",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gm1",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gm1_percent",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gm1_b4_write_off_percent",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gm2",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gm2_percent",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_credit_used_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ttb_fee_refunded",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "referral_credit_used_LCY",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "referral_credit_used_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_discount_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "slash_3rdparty_share_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "slash_3rdparty_share_percentage",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "slash_pomelo_share_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "lash_3rdparty_share_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_returnable_item_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_non_returnable_item_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_item_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "inventory_returnable_item_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "inventory_non_returnable_item_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "clearance_item_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_retention_f6m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_retention_f9m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "inventory_item_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "inventory_voucher_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_voucher_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketing_voucher_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "new_customer_voucher_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_inventory_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_promotion_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ASP_gross_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ASP_gross_in_USD_clothes_only",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ASP_gross_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_units_sold",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ASP_after_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_clothes_only",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_retention_f36m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_retention_f0m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_retention_f6m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_retention_f9m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_retention_f12m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_retention_f18m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_cancelled_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "fulfilled_revenue_after_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_USD_inhouse",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_USD_3p",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_USD_b4_subsidy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_USD_with_voucher",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cumulative_revenue_after_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ASP_after_discount_in_usd_clothes_only",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "asp_after_discount_b4_voucher_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_gross_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_s2s_after_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_gross_in_USD_last_hour",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_gross_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_after_discount_b4_voucher_in_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_after_discount_b4_voucher_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_after_discount_in_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_gross_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cancelled_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_last_hour",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_delivery_failed",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_delivered",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_after_discount_in_USD_last_hour",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_after_discount_in_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_net_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_S2S_net_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_per_basket_gross",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_per_basket_net",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "discount_utilization_incl_marketplace_discount",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "discount_utilization_b4_subsidy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "clearance_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "inventory_item_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_non_returnable_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_returnable_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "inventory_returnable_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "inventory_non_returnable_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "inventory_voucher_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_voucher_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "retention_voucher_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_USD_clothes_only",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_revenue_after_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_in_USD_last_hour",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "canceled_cogs_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "retention_voucher_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "new_customer_voucher_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_inventory_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_promotion_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "pomelo_voucher_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "partner_voucher_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketing_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "loyalty_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "discount_revenue_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "discount_revenue_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "discount_utilization_b4_voucher",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "discount_utilization_marketplace",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_delivery_failed_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_delivery_failed_in_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gm3",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_fully_accepted_customers_count",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_with_voucher",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_with_loyalty",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "loyalty_order_contribution",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "in_progress_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_th",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_id",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_my",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_sg",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_ph",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_gl",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_th_dfc",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_my_dfc",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_id_dfc",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_for_s2s",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_for_partner",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_for_online_and_mkp",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_for_online",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_for_mkp",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_delivered_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_in_progress_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "second_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_cancelled",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_fully_cancelled",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_partial_cancelled",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_by_system",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_lost_by_wh",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_OOS_by_store",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_defect_by_wh",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_defect_by_wh_th",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_lost_by_wh_th",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_defect_by_wh_id",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_lost_by_wh_id",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_defect_by_wh_my",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_lost_by_wh_my",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_payment_failed",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_requested_by_marketplace",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_excl_payment_failed",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_by_system_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_lost_by_wh_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_defect_by_wh_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_by_wh",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_lost_by_wh_rate_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_defect_by_wh_rate_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_by_wh_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_lost_by_wh_rate_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_defect_by_wh_rate_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_by_wh_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_lost_by_wh_rate_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_defect_by_wh_rate_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_by_wh_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_payment_failed_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_requested_by_marketplace_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_canceled_OOS_excl_payment_failed_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cancelled_orders_for_s2s",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cancellation_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_orders_delivered_to_store",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_out_for_delivery",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "no_show_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "no_show_customers",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "no_show_orders_s2s",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "distinct_products_sold",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "distinct_products_sold_by_size",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_of_delivered_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_of_orders_in_progress",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_full_rejection",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_partial_rejection",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "orders_fully_accepted",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_full_rejection",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_partial_rejection",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ttb_revenue_partial_rejection",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ttb_revenue_full_rejection_excl_no_show",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "first_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "repeated_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "packed_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_quantity",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_product_quantity",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_inhouse",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_3P",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_with_voucher",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "brands_list",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_item_discounts",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_for_s2s",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_for_partner",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_for_online_and_mkp",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_s2s_units_sold",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_last_hour",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "not_cancelled_or_delivery_failed_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "delivered_s2s_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_units_delivered_to_store",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_pick_up_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "units_cancelled",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_all_returned_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "units_delivery_failed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cumulative_units_delivery_failed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "units_no_show",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_gross_revenue_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_customers",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_customer_lifespan",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_customer_lifespan",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_purchase_frequency",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_purchase_value",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_life_time_value",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "new_customers",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "new_customers_excl_delivery_failed",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "online_new_customers",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "existing_customers",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "retention_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_order_rating",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_rating_response_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "average_hours_since_last_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "number_of_shipped_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "number_of_shipped_order_for_past_date",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "number_of_delivered_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "average_hours_between_arrived_and_scheduled_pickup",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "average_days_between_arrived_and_pickup_date",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "average_hours_between_paid_and_out",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_partner",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_marketplace",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_product_cost_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_preparation_in_progress_to_packed_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_preparation_in_progress_to_packed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_preparation_in_progress_to_packed_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_preparation_in_progress_to_packed_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_impairment_cost_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "late_gross_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "on_time_gross_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_deliver_on_time",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "late_e2e_deliver_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "not_late_e2e_deliver_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_deliver_on_time_e2e",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "late_gross_orders_sep_review",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_refunded_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "on_time_gross_orders_sep_review",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "on_time_delivery_percentage_sep_review",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "writeoff_product_cost_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_1_3_rating",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_1_2_rating",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_4_5_rating",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_1_3_rating_delivery",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_4_5_rating_delivery",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_4_5_rating_order_delivery",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_4_5_rating_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_1_3_rating_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_1_2_rating_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_rating_balanced_score",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_late_th",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_intime_th",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_late_my",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_intime_my",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_late_id",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_intime_id",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_intime_order_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_intime_order_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_intime_order_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_payment_accepted_to_preparation_in_progress",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_payment_accepted_to_preparation_in_progress_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_payment_accepted_to_preparation_in_progress_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_payment_accepted_to_preparation_in_progress_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_packed_to_shipped_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_packed_to_shipped",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_packed_to_shipped_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_packed_to_shipped_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_ff_leadtime_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_ff_leadtime_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_ff_leadtime_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "outbound_in_time_order_th",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "outbound_in_time_order_my",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "outbound_in_time_order_sg",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "outbound_in_time_order_ph",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "outbound_in_time_order_id",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "outbound_in_time_order_gl",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "outbound_in_time_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_in_time_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_in_time_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_in_time_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_in_time_sg",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_in_time_ph",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_in_time_gl",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_net_revenue",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_net_revenue_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_net_revenue_3rd_party",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_net_revenue_3rd_party_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_net_revenue_3rd_party_percent",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_gross_revenue",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_gross_revenue_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_gross_revenue_3rd_party",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_gross_revenue_3rd_party_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_gross_revenue_3rd_party_percent",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_net_cogs",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_fulfilled_revenue_after_discount",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_fulfilled_revenue_after_discount_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_revenue_after_discount",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_revenue_after_discount_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_revenue_after_discount_3rd_party",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_gross_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_gross_order_ex_MP",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_net_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_net_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_traffic_online",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "loyalty_credit_earned_amount_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_order_to_delivered_seconds",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_order_to_shipped_in_seconds",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_order_to_shipped_in_minutes",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_order_to_shipped_in_hours",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_shipped_to_delivered_seconds",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_shipped_to_delivered_minutes",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_shipped_to_delivered_hours",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "pageview_all",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_brand",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_skus",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_refunded_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_returned_units_to_wh",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_return_units_received_at_WH",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_refunded_units_rejection",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "rejection_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_all_returns_created",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_returns_created_in_po",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "payment_failed_percentage",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_order_to_delivered_ex_lazada_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_shipped_to_delivered_ex_lazada_th",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_shipped_to_delivered_real_LT_seconds",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_shipped_to_delivered_real_LT_minutes",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_shipped_to_delivered_real_LT_hours",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_shipped_to_delivered_real_LT_days",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_ff_gross_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "non_store_ff_gross_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_ff_item",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_rejected_item",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_online_non_split_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_online_non_split_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sf_non_split_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sf_non_split_item_from_store",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sf_non_split_item_from_wh",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_value_by_sf_non_split_item",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_value_sf_cancelled_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sf_cancelled_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sf_splitted_cancelled_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "rad_by_sf_non_splitted_item_from_store",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "rad_sf_cancelled_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sf_full_rejected_non_split_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sf_cancelled_unit_by_store",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sf_cancelled_unit_by_wh",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "shipped_orders_in_last_13_days",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "non_store_ff_item_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_ff_item_only_store",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "partial_cancelled_sf_splitted_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "full_cancelled_sf_non_splitted_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "split_order_cancelled_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "non_split_order_cancelled_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cancelled_units_oos_by_system_item",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "partial_cancelled_sf_splitted_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "full_cancelled_sf_non_splitted_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sf_state_pending_item",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sf_state_rejected_item",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_order_to_packed_seconds",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_sf_rr_time_out",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_sf_rr_item_defect",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_sf_rr_customer_trying",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_sf_rr_erpl_stock_no_physical_item",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_sf_rr_stock_sold_not_updated",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sf_state_rejected_item_not_in_sf_rr",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_product_cost_of_refunded_unit",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_cost_of_refunded_unit_in_last_12_months",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_cost_of_refunded_unit_in_last_12_weeks",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_delivered_in_operation_perspective",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_order_delivery_failed_rate",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_out_for_delivery_success",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_returned_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_returns_created",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_refunds_issued",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_from_refund_created_date_to_refund_closed_date",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_from_return_initial_date_to_received_date",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_from_refund_failed_date_to_refund_updated_date",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "units_cancelled_dueto_not_payment_failed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "units_cancelled_dueto_payment_failed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_all_returned_rma_not_cancel_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_all_returned_billable_order_units",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_qty",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_transfer_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "online_line_app_gross_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "online_line_app_gross_units_sold",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_orders_type_s2s",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_sold_type_s2s",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_revenue_after_discount_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_gross_revenue_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "discount_utilization_percentage",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_discount_utilization_percentage",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_discount_utilization_percentage",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sf_items_sold_from_store",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sf_items_sold_from_bkk_store",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_non_sf_online_item_sold",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_sf_items_sold_from_upc_store",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_vs_target_percentage",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_item_discount_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_returnable_discount_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cumulative_gross_revenue_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cumulative_revenue_after_discount_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_discount_marketplace_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_discount_marketplace_pomelo_share_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_discount_marketplace_pomelo_share_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_discount_pomelo_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "discount_utilization_usd_incl_marketplace_discount",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_pomelo_share_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_partner_share_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_discount_pomelo_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_pomelo_share_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_partner_share_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cumulative_discount_utilization",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cumulative_new_customers",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "avg_customer_age",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "signed_up_customers",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_refunded_units_ex_rejection",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_rate_ex_rejection",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_age_avg",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_online_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_online_item",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_online_order_Excl_sf_order",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_online_item_Excl_sf_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_cancelled_oreder_oos_by_system",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_cancelled_item_oos_by_system",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_value_oos_by_system_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_USD_offline_sales",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "net_revenue_in_USD_offline_sales",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_offline_sales",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_returned_units_incorrect_fit_within_60D",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_rate_L6M_incorrect_fit",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "warehouse_inventory_available_units_for_TH",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_count",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_bounced_count",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_exs_spend",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_new_spend",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_brd_spend",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "total_spend",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_after_discount_after_marketplace_discount_in_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_size_available_th_wh",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "count_distinct_sizes",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "purchase_attribution_gross_orders",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "purchase_attribution_revenue_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "purchase_attribution_net_revenue_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "loyalty_credit_redeemed_amount_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_retention_f12m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_retention_f18m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_retention_f24m",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ASP_net_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "abuse_amount_lcy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_USD_from_fb_gg",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "fraud_orders",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "session_non_bounces_count_for_date_level",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "Estimated_weight_in_KG",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cod_amount",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_amount_usd_return",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_amount_usd_rejection",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_discount_marketplace_LCY",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_shop",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_carrier",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_week",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_day_of_week",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "effective_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "effective_age_for_ops",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "aging_group_for_ops",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_hour",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_carrier_tracking_code",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_note",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_referral_customer_flag",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cancel_reason",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "release_collection",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_rating_question",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_rating",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_rating_comment",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_rating_reason",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_rating_submitted_date",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_rating_update_timestamp",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "business_unit_grouped",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_quantity",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_date_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "thirdparty_category_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "third_party_brand_ranking",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_type_new",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "rma_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_country",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_reason",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_customer",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_status",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "payment_failed_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fulfillment_pending_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_push_3pm_out_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fulfillment_inprogress_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fulfillment_partial_confirmed_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fulfillment_confirmed_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "preparation_in_progress_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "preparation_in_progress_minutes",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "netsuite_updated_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "bin_allocation_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "arrived_at_store_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cancelled_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "wms_cancelled_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "mp_cancelled_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "packed_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "shipped_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "shipped_time",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_scheduled_pickup_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "awaiting_failed_delivery_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_since_awaiting_failed_delivery",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "pending_lead_time_from_awaiting_failed_delivery_segmentation",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_since_shipped",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "pending_lead_time_from_shipped_segmentation",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_since_out_for_delivery",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "pending_lead_time_from_out_for_delivery_segmentation",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "wh_processing_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketplace_effective_cancellation_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "effective_cancellation_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "out_for_delivery_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "out_for_delivery_day_of_week",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "delivered_day_of_week",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "delivered_in_operation_perspective",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "delivered_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "delivery_failed_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "last_updated_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "invoice_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "expected_delivery_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "expected_shipped_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_created_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_received_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "successful_pickup_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "partner_open_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "segment_session_start_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "aftership_tracking",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "aftership_order_status",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "aftership_order_message",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percent_discount",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "platform",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "last_id_supplier",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "exchanged_product_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "dfc_sla",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "exchanged_product_name",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "rejected_product_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "rejected_product_name",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_usd_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "brand_cluster",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_using_voucher",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "asp_in_usd_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_in_usd_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "unit_price_after_discount_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "unit_price_after_discount_usd_tier",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "TTB_all_accept_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ttb_all_accepted_discount_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "exchanged_quantity_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_revenue_in_lcy_raw_bin",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "rad_in_lcy_raw_bin",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "rad_in_lcy_raw_bin_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_redeem_refund_credit",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_usd_excl_wallet_credit_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_full_price",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_full_price_b4_voucher",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "brand_Inhouse_3rdParty",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_Italist",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "revenue_in_usd_raw_b4_subsidy",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "unit_price_after_item_discount_usd",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "slash_voucher_split",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_code",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucherify_partner_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucherify_campaign_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "voucher_reduction",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "promotion_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cart_rule_date_from_date",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cart_rule_date_to_date",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_discount_percentage",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "item_discount_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "original_voucher_discount_pomelo_in_lcy_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "AOV_net_delivered_orders_in_USD",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "gross_units_per_sku",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "exclude_store_staff_uniform_and_influencer_orders",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_currency",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_with_hero_product",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_reference",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_order_type",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_product_attribute",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_selling_entity",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "dfc",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_specific_price_rule",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_email",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "holiday_daycount_during_shipped_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "holiday_sunday_count_during_shipped_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_shipped_to_delivered_in_day_scale",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_expected_operation_to_delivered_in_day_scale",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_exceed_promised_delivery_date",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_exceed_promised_e2e_delivery_date",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_type_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "province",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "area",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "area_groups",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "state",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "city",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "Indonesia_area",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "Indonesia_Area_Groups",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "malaysia_area",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "malaysia_area_groups",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "philippines_area",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "payment_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "payment_services",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_before_mtd",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "province_bkk_vs_not_bkk",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketplace_order_status",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_type_detail_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketplace_channel",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_order_type_detail_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_platform_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "target_detail",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "partner_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_exceed_marketplace_sla",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_preparation_in_progress_to_packed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_order_to_preparation_in_progress",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_payment_accepted_to_preparation_in_progress",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_packed_to_shipped",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_order_to_packed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_payment_accepted_to_packed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_shipped_to_deliveried",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "signup_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_first_order_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_last_order_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_lifespan",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "quarter_first_order_since_signup",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_since_signup",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "months_since_signup",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "release_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "henry_category_1",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "image",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "henry_category_2",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "brand",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "brand_order_inhouse_3rdparty",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_brand_3p",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_order_since_release",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_order_since_release_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_order_since_release_my",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_since_first_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "months_since_first_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "quarters_since_first_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "years_since_first_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_billable_order",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "not_pomelo_man",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_first_order",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cancelled_first_order",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "users_who_cancelled_first_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "first_order_cancelled_status",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "have_second_order",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "simple_order_status",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "simple_order_status_for_s2s",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "business_unit",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "partner_store_status",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "partner_order_state",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "active_pomelo_pickup",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_line_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketplace_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "pickup_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_reorder",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "s2s_notification_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "shop_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "specific_price_rule_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sale_section",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_new_item",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_new_brand",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "specific_price_rule_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "test",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "country",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "PR_Country",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "Finance_country",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "country_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketplace_arrangements",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "country_for_finance_target",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "country_for_fb_ad",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "hours_since_last_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "next_order_within_30days",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "next_order_within_60days",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketplace_order_id",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_free_shipping",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "shipping_value_TH",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_contain_filter_release_collection",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketplace_discount_factor",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cohort_age_year",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "retention_f6m",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "retention_f9m",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "retention_f12m",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_fraud_customer",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fulfill_qty",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fulfillment_transfer_number",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fulfillment_location_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fulfillment_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_fulfillment_state",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_category",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_sf_split_parent_order",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_sf_splitted_order",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cohort_age_quarter",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cohort_age_month",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cohort_age_from_first_return_month",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "marketplace_voucher_code",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_pomelo_marketplace_voucher_share",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "percentage_marketplace_voucher_share",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "e_ordering_store_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_top_5_by_measure",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_since_last_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_group_based_on_last_order",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "attributed_channel",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "advertising_partner_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "channelnew",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "purchase_attribution_channel_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "channel_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "channel_group_for_sessions",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "loyalty_order",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "loyalty_sign_up_after_order",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "payment_push_3pm_out_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "preparation_in_progress_push_3pm_out_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "delivered_lead_time_segmentation",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "expected_operation_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "dynamic_released_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "apollo_dynamic_released_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "effective_age",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "ageing_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_exclude_holiday_no_cutoff3pm_raw",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "payment_accepted_exclude_holiday_no_cutoff3pm_raw",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "expected_operation_for_preparation_in_progress_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_shipped_within_expected_pick_up_time_using_preparation_in_progress",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_shipped_within_expected_pick_up_time",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "expected_operation_no_cutoff3pm_raw",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "lead_time_to_out_for_delivery_seconds",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "lead_time_to_out_for_delivery_minutes",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "lead_time_to_out_for_delivery_hours",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "lead_time_to_out_for_delivery_days",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "lead_time_to_out_for_delivery_weeks",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "lead_time_to_out_for_delivery_months",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "lead_time_to_out_for_delivery_years",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_expected_operation_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "minutes_lead_time_expected_operation_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "hours_lead_time_expected_operation_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_lead_time_expected_operation_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_expected_operation_to_shipped",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "minutes_lead_time_expected_operation_to_shipped",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "hours_lead_time_expected_operation_to_shipped",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_lead_time_expected_operation_to_shipped",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_shipped_to_out_for_delivery",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "minutes_lead_time_shipped_to_out_for_delivery",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "hours_lead_time_shipped_to_out_for_delivery",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_lead_time_shipped_to_out_for_delivery",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_lead_time_shipped_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "minutes_lead_time_shipped_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "hours_lead_time_shipped_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_lead_time_shipped_to_delivered",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "campaign_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "accum_area",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sla_of_lg",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "aging_deduct_sunday",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "late_or_not",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_late",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "late_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "state_id",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sf_store_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sf_id_store",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sf_state_added_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "units_item_count",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_sf_state",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sf_rejection_reason",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "address_alias",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_id_product",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_size",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_cost_usd_first_order_date",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_created_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_closed_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "holiday_status",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "store_name_raw",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "aging",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_carrier_status_notification",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "claim_period_order",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "claim_late_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_late_or_not",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_late_from_notification",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "carrier_tracking_number",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "buyer_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_quantity_raw",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "product_pageview_country",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "date_view_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_leadtime_refund_created_TO_closed",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_leadtime_return_created_TO_return_received",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_leadtime_ordered_TO_returned",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "preferred_product_style_1",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "agg_brand",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "price_sensitivity_original_price_tier",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "price_sensitivity_price",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "loyalty_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_price_point",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_clearance",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "address_line_1",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "address_line_2",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "design_collection_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "partner_voucher_code",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "partner_voucher_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "tier_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "any_phone",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "Discount_utilization_split",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cart_rule_minimum_amount",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cart_rule_maximum_discount_amount",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "__user",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "__cubeJoinField",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "delivered_in_operation_perspective_week",
+      "type": null,
+      "is_dttm": false,
+      "expression": "DATE_TRUNC('week', delivered_in_operation_perspective) ",
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "order_date_hour",
+      "type": null,
+      "is_dttm": false,
+      "expression": "EXTRACT(hour FROM order_date)\n",
+      "verbose_name": "order_date_hour",
+      "description": null
+    },
+    {
+      "column_name": "shipped_week",
+      "type": null,
+      "is_dttm": false,
+      "expression": "DATE_TRUNC('week', shipped_date) ",
+      "verbose_name": "shipped_week",
+      "description": null
+    },
+    {
+      "column_name": "shipped_month",
+      "type": null,
+      "is_dttm": false,
+      "expression": "DATE_TRUNC('month', shipped_date) ",
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "dynamic_released_month",
+      "type": null,
+      "is_dttm": false,
+      "expression": "TO_CHAR(dynamic_released_date, 'YYYY-MM')",
+      "verbose_name": "dynamic_released_month",
+      "description": null
+    },
+    {
+      "column_name": "order_date_month",
+      "type": null,
+      "is_dttm": false,
+      "expression": "DATE_TRUNC('month', order_date)\n",
+      "verbose_name": "order_date_month",
+      "description": null
+    },
+    {
+      "column_name": "order_date_week",
+      "type": null,
+      "is_dttm": false,
+      "expression": "DATE_TRUNC('week', order_date) ",
+      "verbose_name": "order_date_week",
+      "description": null
+    },
+    {
+      "column_name": "return_order_count",
+      "type": "BIGINT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "in_time",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "payment_accepted_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "api_source_name_grouped",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "payment_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "selling_entity_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "big_campaign",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "no_show_rate",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "supplier_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "henry_id_product",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_arrived_at_th_wh",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_status",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "return_ready_for_forwarding_to_th_wh",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "sku_complete",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_order_return",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "from_location_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "to_location_name",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "online_to_offline_convert",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "month_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cart_rule_category",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_age",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "days_leadtime_ordered_TO_returned",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_failed_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_updated_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "seconds_leadtime_refund_failed_TO_updated",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "refund_status",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "expected_universal_operation_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "expected_universal_operation_week",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "Add_days_dueto_Sunday_Saturday",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "Real_expected_operation_date",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "Is_shipped_before_latest_shippingtime_or_not",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "date_sent",
+      "type": "TIMESTAMP WITHOUT TIME ZONE",
+      "is_dttm": true,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "budget_version",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_3rd_party",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_non_commercial_store",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_inhouse_only",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "country_abbr",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "cart_rule_mech",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "id_group",
+      "type": "NUMERIC",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_aov_tier",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_voucher_staff",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "is_partner_voucher",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "customer_age_group",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "has_loyalty_member",
+      "type": "BOOLEAN",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "third_party_brand_type",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    },
+    {
+      "column_name": "third_party_product_category",
+      "type": "TEXT",
+      "is_dttm": false,
+      "expression": null,
+      "verbose_name": null,
+      "description": null
+    }
+  ],
+  "metrics": [
+    {
+      "metric_name": "count",
+      "expression": "COUNT(*)",
+      "verbose_name": "COUNT(*)"
+    }
+  ]
+}

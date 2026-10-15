@@ -1,0 +1,24 @@
+# Production go-live signal per repo (see docs/GITHUB_RELEASES.md for the evidence).
+# GitHub Deployments and GitHub Releases are NOT production here: releases only reach pre-prod.
+repos:
+  - repo: pomelofashion/www
+    platform: web
+    signal: workflow_run
+    workflow: deploy.yml
+    # version deployed = latest GitHub release published before the dispatch (run logs expire after ~30 days)
+    version: latest_release_before_run
+  - repo: pomelofashion/api
+    platform: backend
+    signal: workflow_run
+    workflow: deploy-production.yml
+    version: latest_release_before_run
+  - repo: pomelofashion/mobile-ios
+    platform: ios
+    signal: workflow_run
+    workflow: ci-production.yaml
+    version: head_sha
+  - repo: pomelofashion/mobile-android
+    platform: android
+    # every deploy_production.yml run since 2026-09-05 failed; tags are the only (weak) signal
+    signal: tag
+    version: tag
