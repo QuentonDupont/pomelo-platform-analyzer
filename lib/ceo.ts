@@ -2,6 +2,7 @@
 // aggregate/filterRows/METRICS/metricValue (lib/compute.ts), newcombeDiff (server/metrics/definitions.ts)
 // and scoreReleases (lib/release-sections.ts) — nothing here recomputes a metric formula.
 import { addDays, Agg, aggregate, DailyRow, filterRows, fmtDate, fmtInt, fmtPct, fmtRange, fmtUsd, METRICS, MetricKey, metricValue, mondayOf, OrdersSource } from "@/lib/compute";
+import { releaseFeatures } from "@/lib/features";
 import { scoreReleases, SCORE_PLATS, ScorePlat, ScoreRow } from "@/lib/release-sections";
 import { Market, MARKETS, newcombeDiff } from "@/server/metrics/definitions";
 
@@ -284,6 +285,8 @@ export interface ReleaseRowView {
   releaseCount: number;
   source: string;
   what: string;
+  /** every customer-facing feature in the release, most telling first (empty: behind-the-scenes only) */
+  features: string[];
   wentLive: string;
   measuredOn: string;
   result: ReleaseVerdict;
@@ -305,6 +308,7 @@ export function ceoReleases(releases: ReleaseLike[], daily: DailyRow[], range: D
   const rows: ReleaseRowView[] = [];
   const rate = (v: number | null, orders: number) => (v == null ? "—" : `${fmtPct(v, 2)} (${fmtInt(orders)} orders)`);
   for (const r of scored) {
+    const features = releaseFeatures(r.prs.map((p) => p.title));
     // another source that went live the same day and is measured on the same platform gets the very same numbers
     const sameDayOn = (plat: ScorePlat) =>
       scored.filter((o) => o !== r && o.r.bangkok_date === r.r.bangkok_date && o.cells[plat]).map((o) => RELEASE_SOURCE_LABEL[o.r.platform] ?? o.r.repo);
@@ -325,6 +329,7 @@ export function ceoReleases(releases: ReleaseLike[], daily: DailyRow[], range: D
         releaseCount: r.releases,
         source: RELEASE_SOURCE_LABEL[r.r.platform] ?? r.r.repo,
         what: r.name,
+        features,
         wentLive: fmtDate(r.r.bangkok_date),
         measuredOn: PLAT_LABEL[p.key],
         result,

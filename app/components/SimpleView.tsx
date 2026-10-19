@@ -238,7 +238,15 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
             <tbody>
               {releaseRows.map((r) => (
                 <tr key={r.key} title={`${r.ids.join(", ")}${r.prTitles.length ? " · " + r.prTitles.join("; ") : ""}`}>
-                  <th scope="row">{r.what}</th>
+                  <th scope="row" className="rel-what">
+                    {r.features.length ? r.features.slice(0, 3).join(" · ") : r.what}
+                    {r.features.length > 3 && (
+                      <span className="rel-more" title={r.features.slice(3).join(" · ")} tabIndex={0}>
+                        {" "}
+                        +{r.features.length - 3} more
+                      </span>
+                    )}
+                  </th>
                   <td>{r.source}</td>
                   <td>{r.wentLive}</td>
                   <td>{r.measuredOn}</td>

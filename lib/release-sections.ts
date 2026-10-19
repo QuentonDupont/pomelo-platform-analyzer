@@ -2,6 +2,7 @@
 // funnel: Product list, PDP, Add to bag, Cart, Checkout …) and range-driven impact per section.
 // Pure and browser-safe: runs identically in the local app and the published Artifact.
 import { addDays, DailyRow, daysBetween } from "@/lib/compute";
+import { featureName } from "@/lib/features";
 import { bootstrapRatioDiff, Market, newcombeDiff } from "@/server/metrics/definitions";
 
 export type SectionId = "home_feed" | "product_list" | "search" | "pdp" | "add_to_bag" | "cart" | "checkout" | "order" | "account" | "wishlist" | "content" | "platform";
@@ -399,7 +400,9 @@ export function scoreReleases<R extends ScoreRelease>(releases: R[], daily: Dail
       const sections = SECTIONS.filter((s) => counts.has(s.id)).map((s) => ({ id: s.id, prs: counts.get(s.id)! }));
       const where = SHIPS_TO[r.platform] ?? SHIPS_TO.backend;
       const cells = Object.fromEntries(SCORE_PLATS.map((p) => [p.key, where.ships.includes(p.key) ? conversionImpact(daily, r.bangkok_date, p.key, range, cmp, markets, SCORE_WINDOW) : null])) as Record<ScorePlat, ConversionImpact | null>;
-      return { r, ids: list.map((x) => `${x.repo} ${x.release_id}`), releases: list.length, prs, name: releaseName(sections), where, cells };
+      // named by the specific features its PRs touched; section names only when no PR title says more
+      const name = featureName(prs.map((p) => p.title), prs.length ? "Behind-the-scenes fixes" : releaseName(sections));
+      return { r, ids: list.map((x) => `${x.repo} ${x.release_id}`), releases: list.length, prs, name, where, cells };
     })
     .sort((a, b) => (b.r.go_live_at ?? b.r.bangkok_date).localeCompare(a.r.go_live_at ?? a.r.bangkok_date));
 }
