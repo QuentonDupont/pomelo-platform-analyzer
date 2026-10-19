@@ -229,9 +229,7 @@ table.by-market td:first-child, table.by-market th:first-child { text-align: lef
 .funnel-link.worst .funnel-carry { color: var(--bad); font-weight: 600; }
 .funnel-flag { font-size: 11px; }
 .journey-empty { margin: 12px 0; }
-.badge.b-bad { color: var(--bad); }
-td.rel-notes { white-space: normal; text-align: left; min-width: 240px; font-size: 11.5px; color: var(--muted); }
-@media (max-width: 560px) {
+.badge.b-bad { color: var(--bad); }@media (max-width: 560px) {
   .funnel-row, .funnel-link { grid-template-columns: minmax(0, 1fr) auto; }
   .funnel-bar-wrap { grid-column: 1 / -1; grid-row: 2; height: 18px; }
   .funnel-link { height: auto; padding: 6px 0; }

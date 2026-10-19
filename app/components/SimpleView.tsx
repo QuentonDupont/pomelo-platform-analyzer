@@ -233,7 +233,6 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
                 <th scope="col">Conversion before</th>
                 <th scope="col">After</th>
                 <th scope="col">Change</th>
-                <th scope="col">Notes</th>
               </tr>
             </thead>
             <tbody>
@@ -249,7 +248,6 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
                   <td>{r.before}</td>
                   <td>{r.after}</td>
                   <td className={RESULT_CLASS[r.result]}>{r.change}</td>
-                  <td className="rel-notes">{r.notes.join(" · ") || "—"}</td>
                 </tr>
               ))}
             </tbody>
