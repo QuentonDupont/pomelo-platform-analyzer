@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { addDays, fmtDate, fmtInt, fmtPct, fmtUsd, METRICS, MetricKey, mondayOf } from "@/lib/compute";
+import { addDays, fmtDate, fmtInt, fmtPct, fmtRange, fmtUsd, METRICS, MetricKey, mondayOf } from "@/lib/compute";
 import { CEO_MARKET_LABEL, CeoPeriod, ceoByMarket, ceoJourney, ceoReleases, ceoScorecard, ceoTrend, ceoVerdict, ceoWeeks, rangeAgg, ScorecardTile, TILE_DEF, TrendPoint, weekAgg } from "@/lib/ceo";
 import { Market, MARKETS, METRIC_DEFS } from "@/server/metrics/definitions";
 import { compareFor, DateRangeControls, endOf, startOf } from "./FilterBar";
@@ -28,9 +28,14 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
   const weekMatch = useMemo(() => allWeeks.find((w) => cur.from === w && cur.to === addDays(w, 6)) ?? null, [allWeeks, cur.from, cur.to]);
   const period: CeoPeriod = weekMatch ? { kind: "week", week: weekMatch } : { kind: "range", from: cur.from, to: cur.to };
   const isPartialWeek = Boolean(partial && weekMatch === partial.week);
-  // Journey/by-market/releases are inherently weekly concepts: snap to the matched week, or best-effort to the range's own week.
+  // By-market is a weekly table: snap to the matched week, or best-effort to the range's own week.
+  // The trend chart, journey and releases follow the selected range itself.
   const sectionWeek = weekMatch ?? mondayOf(cur.from);
   const prevSectionWeek = addDays(sectionWeek, -7);
+  const periodLabel = weekMatch ? `Week of ${fmtDate(weekMatch)}` : fmtRange(cur.from, cur.to);
+  const inRangeWeeks = useMemo(() => allWeeks.filter((w) => w <= cur.to && addDays(w, 6) >= cur.from), [allWeeks, cur.from, cur.to]);
+  // A range spanning several weeks narrows the chart to those weeks; a single week keeps the history for context.
+  const chartWeeks = inRangeWeeks.length >= 2 ? inRangeWeeks : allWeeks;
 
   const marketsForAgg = useMemo<Market[]>(() => (f.ceoMarket === "all" ? (MARKETS.map((m) => m.id) as Market[]) : [f.ceoMarket]), [f.ceoMarket]);
   const curAgg = useMemo(() => rangeAgg(cur.rows, f.ceoChannel, marketsForAgg, f.orders), [cur.rows, f.ceoChannel, marketsForAgg, f.orders]);
@@ -41,12 +46,15 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
   const series = useMemo(() => allWeeks.map((w) => weekAgg(api.data.daily, w, f.ceoChannel, marketsForAgg, f.orders)), [allWeeks, api.data.daily, f.ceoChannel, marketsForAgg, f.orders]);
   const tiles = useMemo(() => ceoScorecard(curAgg, prevAgg, isPartialWeek, noPriorData, series, period.kind === "week"), [curAgg, prevAgg, isPartialWeek, noPriorData, series, period.kind]);
   const trendWeeks = useMemo(() => allWeeks.map((w) => ({ week: w, partial: partial?.week === w })), [allWeeks, partial]);
-  const trend = useMemo(() => ceoTrend(trendWeeks, selectedMetric, series), [trendWeeks, selectedMetric, series]);
+  const trend = useMemo(() => ceoTrend(trendWeeks, selectedMetric, series).filter((t) => chartWeeks.includes(t.week)), [trendWeeks, selectedMetric, series, chartWeeks]);
 
   const byMarket = useMemo(() => ceoByMarket(api.data.daily, sectionWeek, f.ceoChannel, prevSectionWeek, f.orders), [api.data.daily, sectionWeek, f.ceoChannel, prevSectionWeek, f.orders]);
-  const journey = useMemo(() => ceoJourney(api.data.funnel, sectionWeek, f.ceoChannel), [api.data.funnel, sectionWeek, f.ceoChannel]);
-  const prevJourney = useMemo(() => ceoJourney(api.data.funnel, prevSectionWeek, f.ceoChannel), [api.data.funnel, prevSectionWeek, f.ceoChannel]);
-  const releaseRows = useMemo(() => ceoReleases(api.data.releases, api.data.daily, sectionWeek, prevSectionWeek), [api.data.releases, api.data.daily, sectionWeek, prevSectionWeek]);
+  const journey = useMemo(() => ceoJourney(api.data.funnel, { from: cur.from, to: cur.to }, f.ceoChannel), [api.data.funnel, cur.from, cur.to, f.ceoChannel]);
+  const prevJourney = useMemo(() => ceoJourney(api.data.funnel, { from: cmp.from, to: cmp.to }, f.ceoChannel), [api.data.funnel, cmp.from, cmp.to, f.ceoChannel]);
+  const releaseRows = useMemo(
+    () => ceoReleases(api.data.releases, api.data.daily, { from: cur.from, to: cur.to }, { from: cmp.from, to: cmp.to }),
+    [api.data.releases, api.data.daily, cur.from, cur.to, cmp.from, cmp.to],
+  );
   const releaseCounts = useMemo(() => {
     const out: Record<string, number> = { Helped: 0, Hurt: 0, "No clear effect": 0, "Too early to tell": 0 };
     for (const r of releaseRows) out[r.result]++;
@@ -123,7 +131,10 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
 
       <section className="panel">
         <h2>{METRICS[selectedMetric].label} by week</h2>
-        <TrendChart trend={trend} metricKey={selectedMetric} selectedWeek={weekMatch} onSelectWeek={selectWeek} reduced={reduced} />
+        <div className="sub">
+          {chartWeeks === inRangeWeeks ? `Weeks in ${fmtRange(cur.from, cur.to)}` : `${periodLabel} highlighted`} · click a week to select it
+        </div>
+        <TrendChart trend={trend} metricKey={selectedMetric} highlighted={inRangeWeeks} onSelectWeek={selectWeek} reduced={reduced} />
       </section>
 
       <div className="two" style={{ marginTop: 12 }}>
@@ -173,17 +184,19 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
         <section className="panel">
           <h2>Shopping journey</h2>
           <div className="sub">
-            Week of {fmtDate(sectionWeek)} · {CHANNEL_LABEL[f.ceoChannel]} · previous week shown as the thin bar
+            {journey.weeks.length ? (journey.weeks.length === 1 ? `Week of ${fmtDate(journey.weeks[0])}` : `Weeks of ${fmtRange(journey.weeks[0], journey.weeks[journey.weeks.length - 1])}`) : periodLabel} · {CHANNEL_LABEL[f.ceoChannel]}
           </div>
           {f.ceoMarket !== "all" && <p className="note">This journey isn&apos;t split by market — it covers all markets.</p>}
-          {journey.minWeek && sectionWeek < journey.minWeek && <p className="note">Shopping-journey data starts the week of {fmtDate(journey.minWeek)}.</p>}
-          <JourneyChart steps={journey.steps} prevSteps={prevJourney.steps} />
+          {journey.minWeek && cur.to < journey.minWeek && <p className="note">Shopping-journey data starts the week of {fmtDate(journey.minWeek)}.</p>}
+          <JourneyChart steps={journey.steps} prevSteps={prevJourney.steps} prevLabel={weekMatch ? "week before" : "previous period"} />
         </section>
       </div>
 
       <section className="panel" style={{ marginTop: 12 }}>
-        <h2>Did this week&apos;s releases help?</h2>
-        <p className="sub">We compare conversion after a release with before. Helped/Hurt only when the change is too big to be normal ups and downs. Timing, not proof of cause. Covers all markets.</p>
+        <h2>{weekMatch ? "Did this week's releases help?" : `Did releases from ${fmtRange(cur.from, cur.to)} help?`}</h2>
+        <p className="sub">
+          Releases that went live {weekMatch ? `the week of ${fmtDate(weekMatch)}` : fmtRange(cur.from, cur.to)}. We compare conversion after a release with before. Helped/Hurt only when the change is too big to be normal ups and downs. Timing, not proof of cause. Covers all markets.
+        </p>
         <div className="chips" style={{ display: "flex", gap: 10, flexWrap: "wrap", margin: "8px 0" }}>
           {(["Helped", "Hurt", "No clear effect", "Too early to tell"] as const).map((k) => (
             <span key={k} className={`badge b-${RESULT_CLASS[k] === "good" ? "High" : RESULT_CLASS[k] === "bad" ? "Low" : "Medium"}`}>
@@ -219,7 +232,7 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
             </tbody>
           </table>
         ) : (
-          <p className="muted">No releases went live the week before, so there&apos;s nothing to measure yet.</p>
+          <p className="muted">No releases went live in this period, so there&apos;s nothing to measure.</p>
         )}
       </section>
 
@@ -271,8 +284,10 @@ function Sparkline({ values }: { values: (number | null)[] }) {
   );
 }
 
-function TrendChart({ trend, metricKey, selectedWeek, onSelectWeek, reduced }: { trend: TrendPoint[]; metricKey: MetricKey; selectedWeek: string | null; onSelectWeek: (week: string) => void; reduced: boolean }) {
+function TrendChart({ trend, metricKey, highlighted, onSelectWeek, reduced }: { trend: TrendPoint[]; metricKey: MetricKey; highlighted: string[]; onSelectWeek: (week: string) => void; reduced: boolean }) {
   const m = METRICS[metricKey];
+  // value labels on every highlighted week while they fit; a long range keeps the hover tooltip only
+  const labelHighlighted = highlighted.length <= 8;
   const isRate = m.kind === "rate";
   const W = 680;
   const H = 180;
@@ -290,7 +305,7 @@ function TrendChart({ trend, metricKey, selectedWeek, onSelectWeek, reduced }: {
         <line x1={padL} x2={W} y1={H - padB} y2={H - padB} stroke="var(--line)" />
         {trend.map((t, i) => {
           const cx = padL + i * col + col / 2;
-          const isSelected = t.week === selectedWeek;
+          const isSelected = highlighted.includes(t.week);
           return (
             <g key={t.week}>
               <rect
@@ -322,7 +337,7 @@ function TrendChart({ trend, metricKey, selectedWeek, onSelectWeek, reduced }: {
               <text x={cx} y={H - 6} textAnchor="middle" fontSize="10" fontWeight={isSelected ? 700 : 400} fill={isSelected ? "var(--ink)" : "var(--muted)"}>
                 {fmtDate(t.week)}
               </text>
-              {isSelected && t.value != null && (
+              {isSelected && labelHighlighted && t.value != null && (
                 <text x={cx} y={Math.max(12, yOf(t.value) - 6)} textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--ink)">
                   {m.fmt(t.value)}
                 </text>
@@ -359,38 +374,79 @@ function TrendChart({ trend, metricKey, selectedWeek, onSelectWeek, reduced }: {
   );
 }
 
-function JourneyChart({ steps, prevSteps }: { steps: { label: string; sessions: number }[]; prevSteps: { label: string; sessions: number }[] }) {
-  const top = Math.max(1, steps[0]?.sessions ?? 1);
+/** Share of the first step as a readable number: 1 decimal under 10, whole above. */
+const fmtShare = (v: number) => `${(v * 100).toFixed(v < 0.1 ? 1 : 0)}%`;
+
+/**
+ * The shopping journey as a funnel: one centred bar per step (width = share of shoppers who browsed),
+ * a tapered connector showing how many carried on, the biggest drop-off flagged in red, and each step's
+ * share against the comparison period.
+ */
+function JourneyChart({ steps, prevSteps, prevLabel }: { steps: { label: string; sessions: number }[]; prevSteps: { label: string; sessions: number }[]; prevLabel: string }) {
+  const top = steps[0]?.sessions ?? 0;
+  if (!top) return <p className="muted journey-empty">No shopping-journey data for this period yet.</p>;
+  const prevTop = prevSteps[0]?.sessions ?? 0;
+  const shares = steps.map((s) => s.sessions / top);
   const carries = steps.map((s, i) => (i === 0 ? null : steps[i - 1].sessions ? s.sessions / steps[i - 1].sessions : null));
   const worst = carries.reduce<number>((wi, c, i) => (i > 0 && c != null && (carries[wi] == null || c < (carries[wi] as number)) ? i : wi), 1);
+  // bars keep a visible minimum so the last step never disappears; the number beside it is exact
+  const width = (share: number) => Math.max(6, share * 100);
+  const per100 = shares[shares.length - 1] * 100;
   return (
-    <div className="journey">
-      {steps.map((s, i) => {
-        const pct = (s.sessions / top) * 100;
-        const prevPct = prevSteps[0]?.sessions ? (prevSteps[i]?.sessions ?? 0) / prevSteps[0].sessions : null;
-        const carry = carries[i];
-        const isWorst = i === worst && steps.length > 2;
-        return (
-          <div key={s.label} className="journey-step">
-            {i > 0 && carry != null && (
-              <div className={`journey-carry ${isWorst ? "down" : ""}`}>
-                {fmtPct(carry, 0)} carried on{isWorst ? " · biggest drop-off" : ""}
+    <div className="funnel">
+      <p className="funnel-headline">
+        Of every 100 shoppers who browsed, <strong>{per100 < 10 ? per100.toFixed(1) : Math.round(per100)}</strong> placed an order.
+      </p>
+      <ol className="funnel-steps">
+        {steps.map((s, i) => {
+          const carry = carries[i];
+          const isWorst = i === worst && steps.length > 2;
+          const prevShare = prevTop ? (prevSteps[i]?.sessions ?? 0) / prevTop : null;
+          const delta = i > 0 && prevShare != null ? shares[i] - prevShare : null;
+          const tone = delta == null || Math.abs(delta) < 0.0005 ? "flat" : delta > 0 ? "up" : "down";
+          return (
+            <li key={s.label} className="funnel-item">
+              {i > 0 && carry != null && (
+                <div className={`funnel-link ${isWorst ? "worst" : ""}`}>
+                  <span
+                    className="funnel-taper"
+                    aria-hidden
+                    style={{ clipPath: `polygon(${(100 - width(shares[i - 1])) / 2}% 0, ${(100 + width(shares[i - 1])) / 2}% 0, ${(100 + width(shares[i])) / 2}% 100%, ${(100 - width(shares[i])) / 2}% 100%)` }}
+                  />
+                  <span className="funnel-carry">
+                    ↓ {fmtPct(carry, 0)} carried on
+                    {isWorst && <span className="funnel-flag">Biggest drop-off · {fmtPct(1 - carry, 0)} left here</span>}
+                  </span>
+                </div>
+              )}
+              <div className="funnel-row">
+                <div className="funnel-label">
+                  <span className="funnel-icon" aria-hidden>
+                    {i + 1}
+                  </span>
+                  <span>
+                    <span className="funnel-name">{s.label}</span>
+                    <span className="funnel-count">{fmtInt(s.sessions)} sessions</span>
+                  </span>
+                </div>
+                <div className="funnel-bar-wrap" aria-hidden>
+                  <span className="funnel-bar" style={{ width: `${width(shares[i])}%`, opacity: 1 - i * 0.15 }} />
+                </div>
+                <div className="funnel-share">
+                  <strong>{fmtShare(shares[i])}</strong>
+                  <span className="muted">{i === 0 ? "start" : "of browsers"}</span>
+                  {delta != null && prevShare != null && (
+                    <span className={`funnel-delta ${tone}`} title={`${prevLabel}: ${fmtShare(prevShare)}`}>
+                      {tone === "flat" ? "≈ " : tone === "up" ? "▲ " : "▼ "}
+                      {prevLabel} {fmtShare(prevShare)}
+                    </span>
+                  )}
+                </div>
               </div>
-            )}
-            <div className="journey-label">
-              {s.label} <span className="muted">· {fmtInt(s.sessions)}</span>
-            </div>
-            <span className="bar-track" aria-hidden>
-              <span className="bar-fill" style={{ width: `${Math.max(1, pct)}%`, background: "var(--web)" }} />
-            </span>
-            {prevPct != null && (
-              <span className="bar-track thin" aria-hidden>
-                <span className="bar-fill" style={{ width: `${Math.max(1, prevPct * 100)}%`, background: "var(--cmp)" }} />
-              </span>
-            )}
-          </div>
-        );
-      })}
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 }

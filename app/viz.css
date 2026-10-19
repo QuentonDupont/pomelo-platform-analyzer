@@ -204,11 +204,38 @@ table.by-market td:first-child, table.by-market th:first-child { text-align: lef
 .bar-track .bar-fill { display: block; height: 8px; border-radius: 4px; }
 .bar-track.thin { height: 4px; margin-top: 2px; }
 .bar-track.thin .bar-fill { height: 4px; }
-.journey { display: grid; gap: 14px; }
-.journey-step { display: grid; gap: 4px; }
-.journey-carry { font-size: 12px; color: var(--muted); }
-.journey-carry.down { color: var(--bad); font-weight: 600; }
-.journey-label { font-size: 13px; font-weight: 600; }
+/* ---- Shopping journey funnel ---- */
+.funnel { margin-top: 8px; }
+.funnel-headline { font-family: ui-serif, Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.35; margin: 0 0 12px; }
+.funnel-headline strong { font-size: 24px; color: var(--web); font-variant-numeric: proportional-nums; }
+.funnel-steps { list-style: none; margin: 0; padding: 0; }
+.funnel-row { display: grid; grid-template-columns: minmax(150px, 1fr) minmax(0, 1.6fr) minmax(104px, auto); gap: 12px; align-items: center; }
+.funnel-label { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.funnel-icon { flex: none; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: color-mix(in srgb, var(--web) 16%, var(--panel)); color: var(--web); font-size: 12px; font-weight: 700; }
+.funnel-name { display: block; font-size: 13.5px; font-weight: 600; }
+.funnel-count { display: block; font-size: 12px; color: var(--muted); }
+.funnel-bar-wrap { display: flex; justify-content: center; height: 30px; }
+.funnel-bar { display: block; height: 100%; border-radius: 6px; background: var(--web); transition: width .5s; }
+.funnel-share { display: grid; justify-items: end; text-align: right; font-size: 11.5px; line-height: 1.3; }
+.funnel-share strong { font-size: 17px; font-variant-numeric: proportional-nums; }
+.funnel-delta { font-weight: 600; white-space: nowrap; }
+.funnel-delta.up { color: var(--good); }
+.funnel-delta.down { color: var(--bad); }
+.funnel-delta.flat { color: var(--muted); }
+.funnel-link { display: grid; grid-template-columns: minmax(150px, 1fr) minmax(0, 1.6fr) minmax(104px, auto); gap: 12px; align-items: center; height: 34px; }
+.funnel-taper { grid-column: 2; height: 100%; background: color-mix(in srgb, var(--web) 14%, transparent); }
+.funnel-carry { grid-column: 1; grid-row: 1; padding-left: 36px; font-size: 12px; color: var(--muted); display: grid; line-height: 1.25; }
+.funnel-link.worst .funnel-taper { background: color-mix(in srgb, var(--bad) 22%, transparent); }
+.funnel-link.worst .funnel-carry { color: var(--bad); font-weight: 600; }
+.funnel-flag { font-size: 11px; }
+.journey-empty { margin: 12px 0; }
+@media (max-width: 560px) {
+  .funnel-row, .funnel-link { grid-template-columns: minmax(0, 1fr) auto; }
+  .funnel-bar-wrap { grid-column: 1 / -1; grid-row: 2; height: 18px; }
+  .funnel-link { height: auto; padding: 6px 0; }
+  .funnel-taper { display: none; }
+  .funnel-carry { padding-left: 36px; }
+}
 .glossary summary { cursor: pointer; font-weight: 600; padding: 4px 0; }
 .glossary dl { display: grid; gap: 8px; margin: 10px 0 0; }
 .glossary dt { font-weight: 600; font-size: 13px; }

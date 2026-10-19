@@ -131,15 +131,27 @@ describe("ceoJourney", () => {
       { week: "2026-09-28", platform: "android", stage_order: 12, sessions: 10 },
     ];
   }
+  const week = (w: string) => ({ from: w, to: addDays(w, 6) });
   it("sums Browsed/Opened/Added/Placed across all channels for the week", () => {
-    const { steps, minWeek } = ceoJourney(funnelFixture(), "2026-09-28", "all");
+    const { steps, weeks, minWeek } = ceoJourney(funnelFixture(), week("2026-09-28"), "all");
     expect(steps.map((s) => s.sessions)).toEqual([10472, 9619, 1512, 206]);
     expect(steps.map((s) => s.label)).toEqual(["Browsed products", "Opened a product", "Added to bag", "Placed an order"]);
+    expect(weeks).toEqual(["2026-09-28"]);
     expect(minWeek).toBe("2026-08-31");
   });
   it("filters to one channel's platforms", () => {
-    const { steps } = ceoJourney(funnelFixture(), "2026-09-28", "web");
+    const { steps } = ceoJourney(funnelFixture(), week("2026-09-28"), "web");
     expect(steps[0].sessions).toBe(7000);
+  });
+  it("sums every week that overlaps a multi-week range", () => {
+    const { steps, weeks } = ceoJourney(funnelFixture(), { from: "2026-09-01", to: "2026-09-30" }, "web");
+    expect(weeks).toEqual(["2026-08-31", "2026-09-28"]);
+    expect(steps[0].sessions).toBe(7001);
+  });
+  it("leaves out weeks outside the range", () => {
+    const { steps, weeks } = ceoJourney(funnelFixture(), { from: "2026-09-07", to: "2026-09-20" }, "all");
+    expect(weeks).toEqual([]);
+    expect(steps.every((s) => s.sessions === 0)).toBe(true);
   });
 });
 
@@ -173,12 +185,19 @@ describe("ceoReleases", () => {
 
   it("buckets verdicts into Helped/Hurt/No clear effect in the expected counts", () => {
     const { daily, releases } = fixture();
-    const rows = ceoReleases(releases, daily, "2026-09-21", "2026-09-14");
+    const rows = ceoReleases(releases, daily, { from: "2026-09-21", to: "2026-09-27" }, { from: "2026-09-14", to: "2026-09-20" });
     expect(rows.length).toBe(17);
     const counts: Record<string, number> = {};
     for (const r of rows) counts[r.result] = (counts[r.result] ?? 0) + 1;
     expect(counts["Helped"]).toBe(3);
     expect(counts["Hurt"]).toBe(1);
     expect(counts["No clear effect"]).toBe(13);
+  });
+  it("follows the selected range, not just its first week", () => {
+    const { daily, releases } = fixture();
+    const firstWeekOnly = ceoReleases(releases, daily, { from: "2026-09-21", to: "2026-09-24" }, { from: "2026-09-17", to: "2026-09-20" });
+    expect(new Set(firstWeekOnly.map((r) => r.wentLive))).toEqual(new Set(["21 Sept", "22 Sept", "23 Sept", "24 Sept"]));
+    const lateRange = ceoReleases(releases, daily, { from: "2026-09-26", to: "2026-09-30" }, { from: "2026-09-21", to: "2026-09-25" });
+    expect(new Set(lateRange.map((r) => r.wentLive))).toEqual(new Set(["26 Sept", "27 Sept"]));
   });
 });

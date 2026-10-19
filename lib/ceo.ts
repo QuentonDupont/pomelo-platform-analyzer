@@ -212,7 +212,15 @@ export interface JourneyStep {
 }
 export interface Journey {
   steps: JourneyStep[];
+  /** the funnel weeks (Mondays) summed into `steps`: every week that overlaps the range and has data */
+  weeks: string[];
   minWeek: string | null;
+}
+
+/** An inclusive day range ("YYYY-MM-DD"). */
+export interface DayRange {
+  from: string;
+  to: string;
 }
 
 const JOURNEY_STAGES: { order: number; label: string }[] = [
@@ -222,17 +230,22 @@ const JOURNEY_STAGES: { order: number; label: string }[] = [
   { order: 12, label: "Placed an order" },
 ];
 
-/** Shopping journey (stage_order 3/4/6/12) for one week, summed over the channel's platforms. Not split by market. */
-export function ceoJourney(funnel: FunnelLike[], week: string, channel: CeoChannel): Journey {
+/**
+ * Shopping journey (stage_order 3/4/6/12) summed over the channel's platforms and every funnel week that
+ * overlaps `range` (funnel data is weekly, so a range is widened to whole weeks). Not split by market.
+ */
+export function ceoJourney(funnel: FunnelLike[], range: DayRange, channel: CeoChannel): Journey {
   const plats: FunnelLike["platform"][] = channel === "all" ? ["web", "ios", "android"] : channel === "web" ? ["web"] : ["ios", "android"];
   const byOrder = new Map<number, number>();
+  const weeks = new Set<string>();
   for (const r of funnel) {
-    if (r.week !== week || !plats.includes(r.platform)) continue;
+    if (r.week > range.to || addDays(r.week, 6) < range.from || !plats.includes(r.platform)) continue;
     byOrder.set(r.stage_order, (byOrder.get(r.stage_order) ?? 0) + r.sessions);
+    weeks.add(r.week);
   }
   const steps = JOURNEY_STAGES.map((s) => ({ label: s.label, sessions: byOrder.get(s.order) ?? 0 }));
   const minWeek = funnel.length ? [...funnel].map((r) => r.week).sort()[0] : null;
-  return { steps, minWeek };
+  return { steps, weeks: [...weeks].sort(), minWeek };
 }
 
 export type ReleaseVerdict = "Helped" | "Hurt" | "No clear effect" | "Too early to tell";
@@ -261,9 +274,12 @@ export interface ReleaseRowView {
   prTitles: string[];
 }
 
-/** "Did this week's releases help?" — always all markets, regardless of the UI market filter. */
-export function ceoReleases(releases: ReleaseLike[], daily: DailyRow[], week: string, prevWeek: string): ReleaseRowView[] {
-  const scored: ScoreRow<ReleaseLike>[] = scoreReleases(releases, daily, { from: week, to: addDays(week, 6) }, { from: prevWeek, to: addDays(prevWeek, 6) }, ALL_MARKETS);
+/**
+ * "Did this period's releases help?" — releases that went live inside `range` (the same selected/compare
+ * ranges the analyst Releases tab scores). Always all markets, regardless of the UI market filter.
+ */
+export function ceoReleases(releases: ReleaseLike[], daily: DailyRow[], range: DayRange, cmp: DayRange): ReleaseRowView[] {
+  const scored: ScoreRow<ReleaseLike>[] = scoreReleases(releases, daily, range, cmp, ALL_MARKETS);
   const rows: ReleaseRowView[] = [];
   for (const r of scored) {
     for (const p of SCORE_PLATS) {
