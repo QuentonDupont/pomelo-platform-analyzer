@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { addDays, DailyRow } from "../lib/compute";
-import { ceoByMarket, ceoJourney, ceoReleases, ceoScorecard, ceoVerdict, ceoWeeks, FunnelLike, ReleaseLike, weekAgg } from "../lib/ceo";
+import { ceoByMarket, ceoJourney, ceoReleases, ceoReleaseSources, ceoScorecard, ceoVerdict, ceoWeeks, FunnelLike, ReleaseLike, weekAgg } from "../lib/ceo";
 
 // Two consecutive weeks reproducing the exact reference numbers (all channels, all markets):
 //   week of 2026-09-28: visits 64,839, bounces 46,315 (71.43%), non-bounce 18,524, orders 191, revenue $10,520.63
@@ -192,6 +192,19 @@ describe("ceoReleases", () => {
     expect(counts["Helped"]).toBe(3);
     expect(counts["Hurt"]).toBe(1);
     expect(counts["No clear effect"]).toBe(13);
+  });
+  it("labels where each release shipped from and counts releases (not rows) per source", () => {
+    const { daily, releases } = fixture();
+    releases.push({ id: "api1", repo: "pomelofashion/api", release_id: "v1", platform: "backend", bangkok_date: "2026-09-24", go_live_at: null, prs: [{ number: 99, title: "feat: api change", dirs: [] }] });
+    const rows = ceoReleases(releases, daily, { from: "2026-09-21", to: "2026-09-27" }, { from: "2026-09-14", to: "2026-09-20" });
+    const api = rows.filter((r) => r.source === "API");
+    expect(api.map((r) => r.measuredOn).sort()).toEqual(["Android", "Web", "iOS"]); // web mobile matches web here, so it is deduped
+    expect(ceoReleaseSources(rows)).toEqual([
+      { source: "API", releases: 1 },
+      { source: "Website", releases: 6 },
+      { source: "iOS app", releases: 4 },
+      { source: "Android app", releases: 7 },
+    ]);
   });
   it("follows the selected range, not just its first week", () => {
     const { daily, releases } = fixture();

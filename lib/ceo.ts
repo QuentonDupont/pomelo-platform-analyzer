@@ -261,8 +261,17 @@ export interface ReleaseLike {
   go_live_at: string | null;
   prs: { number: number; title: string; dirs: string[] }[];
 }
+/** Where a release shipped from, in plain words (keyed by the release's platform in config/repos.yml). */
+export const RELEASE_SOURCE_LABEL: Record<string, string> = { backend: "API", web: "Website", ios: "iOS app", android: "Android app" };
+export const RELEASE_SOURCE_ORDER = ["API", "Website", "iOS app", "Android app"];
+
 export interface ReleaseRowView {
   key: string;
+  /** one id per scored release group, shared by its per-platform rows (for counting releases, not rows) */
+  releaseKey: string;
+  /** production releases in the group (same day + source are scored together) */
+  releaseCount: number;
+  source: string;
   what: string;
   wentLive: string;
   measuredOn: string;
@@ -288,6 +297,9 @@ export function ceoReleases(releases: ReleaseLike[], daily: DailyRow[], range: D
       if (p.key === "web_mobile" && r.cells.web && r.cells.web.verdict === c.verdict) continue; // same dedup rule as lib/summary.ts
       rows.push({
         key: `${r.ids.join(",")}-${p.key}`,
+        releaseKey: r.ids.join(","),
+        releaseCount: r.releases,
+        source: RELEASE_SOURCE_LABEL[r.r.platform] ?? r.r.repo,
         what: r.name,
         wentLive: fmtDate(r.r.bangkok_date),
         measuredOn: PLAT_LABEL[p.key],
@@ -301,4 +313,17 @@ export function ceoReleases(releases: ReleaseLike[], daily: DailyRow[], range: D
     }
   }
   return rows;
+}
+
+/** Distinct releases per source in the rows (API, Website, iOS app, Android app order), for the summary chips. */
+export function ceoReleaseSources(rows: ReleaseRowView[]): { source: string; releases: number }[] {
+  const seen = new Map<string, Map<string, number>>();
+  for (const r of rows) {
+    if (!seen.has(r.source)) seen.set(r.source, new Map());
+    seen.get(r.source)!.set(r.releaseKey, r.releaseCount);
+  }
+  const rank = (s: string) => (RELEASE_SOURCE_ORDER.indexOf(s) + 1 || 99);
+  return [...seen]
+    .map(([source, groups]) => ({ source, releases: [...groups.values()].reduce((n, c) => n + c, 0) }))
+    .sort((a, b) => rank(a.source) - rank(b.source));
 }

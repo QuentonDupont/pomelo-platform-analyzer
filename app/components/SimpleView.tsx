@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { addDays, fmtDate, fmtInt, fmtPct, fmtRange, fmtUsd, METRICS, MetricKey, mondayOf } from "@/lib/compute";
-import { CEO_MARKET_LABEL, CeoPeriod, ceoByMarket, ceoJourney, ceoReleases, ceoScorecard, ceoTrend, ceoVerdict, ceoWeeks, rangeAgg, ScorecardTile, TILE_DEF, TrendPoint, weekAgg } from "@/lib/ceo";
+import { CEO_MARKET_LABEL, CeoPeriod, ceoByMarket, ceoJourney, ceoReleases, ceoReleaseSources, ceoScorecard, ceoTrend, ceoVerdict, ceoWeeks, rangeAgg, ScorecardTile, TILE_DEF, TrendPoint, weekAgg } from "@/lib/ceo";
 import { Market, MARKETS, METRIC_DEFS } from "@/server/metrics/definitions";
 import { compareFor, DateRangeControls, endOf, startOf } from "./FilterBar";
 import { Tip, tipLeft } from "./viz";
@@ -55,6 +55,8 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
     () => ceoReleases(api.data.releases, api.data.daily, { from: cur.from, to: cur.to }, { from: cmp.from, to: cmp.to }),
     [api.data.releases, api.data.daily, cur.from, cur.to, cmp.from, cmp.to],
   );
+  const releaseSources = useMemo(() => ceoReleaseSources(releaseRows), [releaseRows]);
+  const latestRelease = useMemo(() => api.data.releases.reduce<string | null>((m, r) => (!m || r.bangkok_date > m ? r.bangkok_date : m), null), [api.data.releases]);
   const releaseCounts = useMemo(() => {
     const out: Record<string, number> = { Helped: 0, Hurt: 0, "No clear effect": 0, "Too early to tell": 0 };
     for (const r of releaseRows) out[r.result]++;
@@ -195,7 +197,11 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
       <section className="panel" style={{ marginTop: 12 }}>
         <h2>{weekMatch ? "Did this week's releases help?" : `Did releases from ${fmtRange(cur.from, cur.to)} help?`}</h2>
         <p className="sub">
-          Releases that went live {weekMatch ? `the week of ${fmtDate(weekMatch)}` : fmtRange(cur.from, cur.to)}. We compare conversion after a release with before. Helped/Hurt only when the change is too big to be normal ups and downs. Timing, not proof of cause. Covers all markets.
+          Production releases from the API, the website and the iOS and Android apps that went live {weekMatch ? `the week of ${fmtDate(weekMatch)}` : fmtRange(cur.from, cur.to)}. For each one we compare conversion in the days after it went live with the days before, on every platform it affects (an API change affects them all). Helped/Hurt only when the change is too big to be normal ups and downs. Timing, not proof of cause. Covers all markets.
+        </p>
+        <p className="sub">
+          {releaseSources.length ? `${releaseSources.reduce((n, s) => n + s.releases, 0)} releases: ${releaseSources.map((s) => `${s.source} ${s.releases}`).join(" · ")}` : "No releases"}
+          {latestRelease && ` · release data up to ${fmtDate(latestRelease)}`}
         </p>
         <div className="chips" style={{ display: "flex", gap: 10, flexWrap: "wrap", margin: "8px 0" }}>
           {(["Helped", "Hurt", "No clear effect", "Too early to tell"] as const).map((k) => (
@@ -209,6 +215,7 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
             <thead>
               <tr>
                 <th scope="col">What shipped</th>
+                <th scope="col">Shipped in</th>
                 <th scope="col">Went live</th>
                 <th scope="col">Measured on</th>
                 <th scope="col">Result</th>
@@ -221,6 +228,7 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
               {releaseRows.map((r) => (
                 <tr key={r.key} title={`${r.ids.join(", ")}${r.prTitles.length ? " · " + r.prTitles.join("; ") : ""}`}>
                   <th scope="row">{r.what}</th>
+                  <td>{r.source}</td>
                   <td>{r.wentLive}</td>
                   <td>{r.measuredOn}</td>
                   <td className={RESULT_CLASS[r.result]}>{r.result}</td>
