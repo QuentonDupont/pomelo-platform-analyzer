@@ -239,13 +239,7 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
               {releaseRows.map((r) => (
                 <tr key={r.key} title={`${r.ids.join(", ")}${r.prTitles.length ? " · " + r.prTitles.join("; ") : ""}`}>
                   <th scope="row" className="rel-what">
-                    {r.features.length ? r.features.slice(0, 3).join(" · ") : r.what}
-                    {r.features.length > 3 && (
-                      <span className="rel-more" title={r.features.slice(3).join(" · ")} tabIndex={0}>
-                        {" "}
-                        +{r.features.length - 3} more
-                      </span>
-                    )}
+                    {r.features.length ? <FeatureList features={r.features} /> : r.what}
                   </th>
                   <td>{r.source}</td>
                   <td>{r.wentLive}</td>
@@ -287,6 +281,25 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
         </dl>
       </details>
     </div>
+  );
+}
+
+/** The first three features of a release, with a "+N more" button that shows the rest in place (works on touch). */
+function FeatureList({ features }: { features: string[] }) {
+  const [open, setOpen] = useState(false);
+  const extra = features.length - 3;
+  return (
+    <>
+      {(open ? features : features.slice(0, 3)).join(" · ")}
+      {extra > 0 && (
+        <>
+          {" "}
+          <button type="button" className="rel-more" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+            {open ? "show less" : `+${extra} more`}
+          </button>
+        </>
+      )}
+    </>
   );
 }
 
