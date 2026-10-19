@@ -2,14 +2,15 @@
 
 import { useMemo, useState } from "react";
 import { addDays, fmtDate, fmtInt, fmtPct, fmtRange, fmtUsd, METRICS, MetricKey, mondayOf } from "@/lib/compute";
-import { CEO_MARKET_LABEL, CeoPeriod, ceoByMarket, ceoJourney, ceoReleases, ceoReleaseSources, ceoScorecard, ceoTrend, ceoVerdict, ceoWeeks, rangeAgg, ScorecardTile, TILE_DEF, TrendPoint, weekAgg } from "@/lib/ceo";
+import { CEO_MARKET_LABEL, CeoPeriod, ceoByMarket, ceoJourney, ceoReleases, ceoReleaseSources, ceoScorecard, RELEASE_VERDICTS, ReleaseVerdict, ceoTrend, ceoVerdict, ceoWeeks, rangeAgg, ScorecardTile, TILE_DEF, TrendPoint, weekAgg } from "@/lib/ceo";
 import { Market, MARKETS, METRIC_DEFS } from "@/server/metrics/definitions";
 import { compareFor, DateRangeControls, endOf, startOf } from "./FilterBar";
 import { Tip, tipLeft } from "./viz";
 import type { Filters, PanelProps } from "./types";
 
 const CHANNEL_LABEL: Record<Filters["ceoChannel"], string> = { all: "Website + app", web: "Website", app: "App" };
-const RESULT_CLASS: Record<string, string> = { Helped: "good", Hurt: "bad", "No clear effect": "flat", "Too early to tell": "muted" };
+const RESULT_CLASS: Record<ReleaseVerdict, string> = { Helped: "up", "Likely helped": "up", "No clear effect": "flat", "Likely hurt": "down", Hurt: "down", "Can't compare": "flat", "Too early to tell": "flat" };
+const RESULT_BADGE: Record<ReleaseVerdict, string> = { Helped: "b-High", "Likely helped": "b-High", "No clear effect": "b-Low", "Likely hurt": "b-bad", Hurt: "b-bad", "Can't compare": "b-Medium", "Too early to tell": "b-Medium" };
 
 /**
  * CEO weekly view: a plain-English readout for one period at a time. Reads the same `cur`/`cmp`
@@ -41,10 +42,14 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
   const curAgg = useMemo(() => rangeAgg(cur.rows, f.ceoChannel, marketsForAgg, f.orders), [cur.rows, f.ceoChannel, marketsForAgg, f.orders]);
   const prevAgg = useMemo(() => (cmp.daysWithData ? rangeAgg(cmp.rows, f.ceoChannel, marketsForAgg, f.orders) : null), [cmp.rows, cmp.daysWithData, f.ceoChannel, marketsForAgg, f.orders]);
   const noPriorData = !cmp.daysWithData;
+  // Visits per day far below the comparison period means the latest day is still loading (orders arrive
+  // faster than sessions), so rates would be wrong: don't compare them until it fills in.
+  const sessionsIncomplete = Boolean(prevAgg && cur.daysWithData && cmp.daysWithData && curAgg.total / cur.daysWithData < 0.5 * (prevAgg.total / cmp.daysWithData));
+  const prevForCompare = sessionsIncomplete ? null : prevAgg;
 
-  const [verdict1, verdict2] = ceoVerdict({ channel: f.ceoChannel, market: f.ceoMarket, period, cur: curAgg, prev: prevAgg, isPartial: isPartialWeek });
+  const [verdict1, verdict2] = ceoVerdict({ channel: f.ceoChannel, market: f.ceoMarket, period, cur: curAgg, prev: prevForCompare, isPartial: isPartialWeek });
   const series = useMemo(() => allWeeks.map((w) => weekAgg(api.data.daily, w, f.ceoChannel, marketsForAgg, f.orders)), [allWeeks, api.data.daily, f.ceoChannel, marketsForAgg, f.orders]);
-  const tiles = useMemo(() => ceoScorecard(curAgg, prevAgg, isPartialWeek, noPriorData, series, period.kind === "week"), [curAgg, prevAgg, isPartialWeek, noPriorData, series, period.kind]);
+  const tiles = useMemo(() => ceoScorecard(curAgg, prevForCompare, isPartialWeek, noPriorData, series, period.kind === "week"), [curAgg, prevForCompare, isPartialWeek, noPriorData, series, period.kind]);
   const trendWeeks = useMemo(() => allWeeks.map((w) => ({ week: w, partial: partial?.week === w })), [allWeeks, partial]);
   const trend = useMemo(() => ceoTrend(trendWeeks, selectedMetric, series).filter((t) => chartWeeks.includes(t.week)), [trendWeeks, selectedMetric, series, chartWeeks]);
 
@@ -58,7 +63,7 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
   const releaseSources = useMemo(() => ceoReleaseSources(releaseRows), [releaseRows]);
   const latestRelease = useMemo(() => api.data.releases.reduce<string | null>((m, r) => (!m || r.bangkok_date > m ? r.bangkok_date : m), null), [api.data.releases]);
   const releaseCounts = useMemo(() => {
-    const out: Record<string, number> = { Helped: 0, Hurt: 0, "No clear effect": 0, "Too early to tell": 0 };
+    const out = Object.fromEntries(RELEASE_VERDICTS.map((v) => [v, 0])) as Record<ReleaseVerdict, number>;
     for (const r of releaseRows) out[r.result]++;
     return out;
   }, [releaseRows]);
@@ -121,7 +126,13 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
 
       {isPartialWeek && partial && (
         <div className="field-warn" role="status">
-          This week is still in progress: {partial.daysIn} of 7 days are in. Totals aren&apos;t compared with full weeks, but conversion and bounce rate are.
+          This week is still in progress: {partial.daysIn} of 7 days are in. Totals aren&apos;t compared with full weeks
+          {sessionsIncomplete ? "." : ", but conversion and bounce rate are."}
+        </div>
+      )}
+      {sessionsIncomplete && (
+        <div className="field-warn" role="status">
+          Visits for the latest day are still coming in (orders arrive sooner), so conversion and bounce rate here are provisional and aren&apos;t compared yet. Use Refresh data later today.
         </div>
       )}
 
@@ -204,8 +215,8 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
           {latestRelease && ` · release data up to ${fmtDate(latestRelease)}`}
         </p>
         <div className="chips" style={{ display: "flex", gap: 10, flexWrap: "wrap", margin: "8px 0" }}>
-          {(["Helped", "Hurt", "No clear effect", "Too early to tell"] as const).map((k) => (
-            <span key={k} className={`badge b-${RESULT_CLASS[k] === "good" ? "High" : RESULT_CLASS[k] === "bad" ? "Low" : "Medium"}`}>
+          {RELEASE_VERDICTS.filter((k) => releaseCounts[k] > 0 || k === "Helped" || k === "Hurt").map((k) => (
+            <span key={k} className={`badge ${RESULT_BADGE[k]}`}>
               {k}: {releaseCounts[k]}
             </span>
           ))}
@@ -222,6 +233,7 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
                 <th scope="col">Conversion before</th>
                 <th scope="col">After</th>
                 <th scope="col">Change</th>
+                <th scope="col">Notes</th>
               </tr>
             </thead>
             <tbody>
@@ -231,10 +243,13 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
                   <td>{r.source}</td>
                   <td>{r.wentLive}</td>
                   <td>{r.measuredOn}</td>
-                  <td className={RESULT_CLASS[r.result]}>{r.result}</td>
+                  <td className={RESULT_CLASS[r.result]} style={{ fontWeight: 600 }}>
+                    {r.result}
+                  </td>
                   <td>{r.before}</td>
                   <td>{r.after}</td>
-                  <td>{r.change}</td>
+                  <td className={RESULT_CLASS[r.result]}>{r.change}</td>
+                  <td className="rel-notes">{r.notes.join(" · ") || "—"}</td>
                 </tr>
               ))}
             </tbody>
@@ -257,8 +272,12 @@ export default function SimpleView(props: PanelProps & { set: (p: Partial<Filter
           <dd>{TILE_DEF.total}</dd>
           <dt>Bounce rate</dt>
           <dd>{METRIC_DEFS.bounce_rate.web} On the app, it&apos;s a single-screen session with no tracked interaction.</dd>
-          <dt>Helped / Hurt / No clear effect / Too early to tell</dt>
-          <dd>Whether conversion after a release changed by more than normal week-to-week ups and downs would explain — a timing comparison, not proof the release caused it.</dd>
+          <dt>Release results</dt>
+          <dd>
+            Each of the 7 days after a release is compared with the same weekday a week earlier. Days with incomplete tracking, a sale or order spike, or a traffic spike are left out with their pair.{" "}
+            <strong>Helped / Hurt</strong>: conversion moved more than normal ups and downs explain (95% sure). <strong>Likely helped / Likely hurt</strong>: the direction is probable (80% sure) but not proven — usually because there are few orders. <strong>No clear effect</strong>: within normal ups and downs.{" "}
+            <strong>Can&apos;t compare</strong>: the visit count itself jumped (a tracking change) or too many days were unusable. <strong>Too early to tell</strong>: fewer than 3 full days since go-live. A timing comparison, not proof the release caused it.
+          </dd>
         </dl>
       </details>
     </div>
@@ -345,9 +364,10 @@ function TrendChart({ trend, metricKey, highlighted, onSelectWeek, reduced }: { 
               <text x={cx} y={H - 6} textAnchor="middle" fontSize="10" fontWeight={isSelected ? 700 : 400} fill={isSelected ? "var(--ink)" : "var(--muted)"}>
                 {fmtDate(t.week)}
               </text>
-              {isSelected && labelHighlighted && t.value != null && (
+              {((isSelected && labelHighlighted) || t.partial) && t.value != null && (
                 <text x={cx} y={Math.max(12, yOf(t.value) - 6)} textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--ink)">
                   {m.fmt(t.value)}
+                  {t.partial ? " so far" : ""}
                 </text>
               )}
             </g>

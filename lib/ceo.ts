@@ -248,8 +248,19 @@ export function ceoJourney(funnel: FunnelLike[], range: DayRange, channel: CeoCh
   return { steps, weeks: [...weeks].sort(), minWeek };
 }
 
-export type ReleaseVerdict = "Helped" | "Hurt" | "No clear effect" | "Too early to tell";
-const VERDICT_MAP: Record<string, ReleaseVerdict> = { better: "Helped", worse: "Hurt", "no clear change": "No clear effect", "too early": "Too early to tell", "no data": "Too early to tell" };
+export type ReleaseVerdict = "Helped" | "Likely helped" | "No clear effect" | "Likely hurt" | "Hurt" | "Can't compare" | "Too early to tell";
+export const RELEASE_VERDICTS: ReleaseVerdict[] = ["Helped", "Likely helped", "No clear effect", "Likely hurt", "Hurt", "Can't compare", "Too early to tell"];
+const VERDICT_MAP: Record<string, ReleaseVerdict> = {
+  better: "Helped",
+  "likely better": "Likely helped",
+  "no clear change": "No clear effect",
+  "likely worse": "Likely hurt",
+  worse: "Hurt",
+  unreliable: "Can't compare",
+  "too early": "Too early to tell",
+  "no data": "Too early to tell",
+};
+const EXCLUDED_LABEL: Record<string, string> = { "incomplete data": "incomplete data", "sale day": "sale", "order spike": "order spike", "traffic spike": "traffic spike" };
 const PLAT_LABEL: Record<ScorePlat, string> = { web: "Web", web_mobile: "Web mobile", ios: "iOS", android: "Android" };
 
 export interface ReleaseLike {
@@ -279,6 +290,8 @@ export interface ReleaseRowView {
   before: string;
   after: string;
   change: string;
+  /** why the result is what it is: unreliable/too-early reason, days left out, other releases sharing the same days */
+  notes: string[];
   ids: string[];
   prTitles: string[];
 }
@@ -290,11 +303,22 @@ export interface ReleaseRowView {
 export function ceoReleases(releases: ReleaseLike[], daily: DailyRow[], range: DayRange, cmp: DayRange): ReleaseRowView[] {
   const scored: ScoreRow<ReleaseLike>[] = scoreReleases(releases, daily, range, cmp, ALL_MARKETS);
   const rows: ReleaseRowView[] = [];
+  const rate = (v: number | null, orders: number) => (v == null ? "—" : `${fmtPct(v, 2)} (${fmtInt(orders)} orders)`);
   for (const r of scored) {
+    // another source that went live the same day and is measured on the same platform gets the very same numbers
+    const sameDayOn = (plat: ScorePlat) =>
+      scored.filter((o) => o !== r && o.r.bangkok_date === r.r.bangkok_date && o.cells[plat]).map((o) => RELEASE_SOURCE_LABEL[o.r.platform] ?? o.r.repo);
     for (const p of SCORE_PLATS) {
       const c = r.cells[p.key];
       if (!c) continue;
       if (p.key === "web_mobile" && r.cells.web && r.cells.web.verdict === c.verdict) continue; // same dedup rule as lib/summary.ts
+      const result = VERDICT_MAP[c.verdict];
+      const notes: string[] = [];
+      if (c.reason) notes.push(c.reason.charAt(0).toUpperCase() + c.reason.slice(1));
+      if (c.excluded?.length) notes.push(`Left out: ${c.excluded.map((e) => `${fmtDate(e.day)} (${EXCLUDED_LABEL[e.reason]})`).join(", ")}`);
+      const sameDay = sameDayOn(p.key);
+      if (sameDay.length) notes.push(`Same day as ${[...new Set(sameDay)].join(" & ")} release — can't tell them apart`);
+      const measured = result !== "Too early to tell" && result !== "Can't compare";
       rows.push({
         key: `${r.ids.join(",")}-${p.key}`,
         releaseKey: r.ids.join(","),
@@ -303,10 +327,11 @@ export function ceoReleases(releases: ReleaseLike[], daily: DailyRow[], range: D
         what: r.name,
         wentLive: fmtDate(r.r.bangkok_date),
         measuredOn: PLAT_LABEL[p.key],
-        result: VERDICT_MAP[c.verdict],
-        before: c.before.value == null ? "—" : fmtPct(c.before.value, 2),
-        after: c.after.value == null ? "—" : fmtPct(c.after.value, 2),
-        change: c.rel == null ? "—" : `${c.rel >= 0 ? "+" : ""}${(c.rel * 100).toFixed(1)}%`,
+        result,
+        before: measured ? rate(c.before.value, c.before.orders) : "—",
+        after: measured ? rate(c.after.value, c.after.orders) : "—",
+        change: !measured || c.rel == null ? "—" : `${c.rel >= 0 ? "+" : ""}${(c.rel * 100).toFixed(1)}%`,
+        notes,
         ids: r.ids,
         prTitles: r.prs.slice(0, 3).map((pr) => pr.title),
       });
