@@ -25,6 +25,8 @@ function defaults(api: Api): Filters {
   const to = endOf(addDays(w, 6));
   return {
     view: "simple",
+    ceoChannel: "all",
+    ceoMarket: "all",
     from,
     to,
     compare: "prior",
@@ -52,6 +54,8 @@ function fromUrl(api: Api): Filters {
   const f: Filters = {
     ...d,
     view: q.get("view") === "analyst" ? "analyst" : "simple",
+    ceoChannel: (["all", "web", "app"].includes(q.get("cc") ?? "") ? q.get("cc") : d.ceoChannel) as Filters["ceoChannel"],
+    ceoMarket: (q.get("cm") === "all" || (ALL_MARKETS as string[]).includes(q.get("cm") ?? "") ? q.get("cm") : d.ceoMarket) as Filters["ceoMarket"],
     from,
     to,
     compare,
@@ -71,7 +75,23 @@ function fromUrl(api: Api): Filters {
 }
 
 export function filtersToQuery(f: Filters) {
-  const q = new URLSearchParams({ view: f.view, from: f.from, to: f.to, cfrom: f.cfrom, cto: f.cto, c: f.compare, p: f.platform, m: f.markets.join(","), d: f.device, o: f.orders, t: f.tab, lanes: f.lanes, k: f.metric });
+  const q = new URLSearchParams({
+    view: f.view,
+    cc: f.ceoChannel,
+    cm: f.ceoMarket,
+    from: f.from,
+    to: f.to,
+    cfrom: f.cfrom,
+    cto: f.cto,
+    c: f.compare,
+    p: f.platform,
+    m: f.markets.join(","),
+    d: f.device,
+    o: f.orders,
+    t: f.tab,
+    lanes: f.lanes,
+    k: f.metric,
+  });
   if (f.split) q.set("split", "1");
   return q.toString();
 }
@@ -172,9 +192,11 @@ export default function Dashboard() {
           <div>
             <h1>Pomelo bounce rate &amp; release impact</h1>
             <div className="sub">
-              {f.view === "simple"
-                ? "Web and app traffic across Thailand, Singapore, Hong Kong, Global and Australia."
-                : <>Web (pomelofashion.com) + App (iOS + Android) · TH SG HK Global-USD AU · Bangkok time · bot_flag = false · definitions {DEFINITION_VERSION}</>}
+              {f.view === "simple" ? (
+                "A plain-English weekly readout for the website and app."
+              ) : (
+                <>Web (pomelofashion.com) + App (iOS + Android) · TH SG HK Global-USD AU · Bangkok time · bot_flag = false · definitions {DEFINITION_VERSION}</>
+              )}
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>

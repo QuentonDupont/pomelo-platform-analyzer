@@ -1,6 +1,50 @@
 import { describe, expect, it } from "vitest";
 import { addDays, DailyRow } from "../lib/compute";
-import { classifyPr, scopesFor, sectionImpact } from "../lib/release-sections";
+import { classifyPr, conversionImpact, scopesFor, sectionImpact } from "../lib/release-sections";
+
+describe("release conversion impact (matched weekdays)", () => {
+  // iOS, one market: `nb` non-bounce sessions and `orders` per day
+  function ios(from: string, days: number, nb: (d: string) => number, orders: (d: string) => number): DailyRow[] {
+    const out: DailyRow[] = [];
+    for (let i = 0; i < days; i++) {
+      const day = addDays(from, i);
+      const n = nb(day);
+      out.push({ day, platform: "ios", device: "app", market: "TH", total: n * 2, bounces: n, nb: n, s_orders: orders(day), s_revenue: 0, e_orders: orders(day), e_revenue: 0 });
+    }
+    return out;
+  }
+  const at = (rows: DailyRow[], goLive: string) => conversionImpact(rows, goLive, "ios", { from: goLive, to: goLive }, { from: goLive, to: goLive }, ["TH"], 7);
+
+  // dates kept clear of double-date sale days (9.9, 10.10)
+  it("pairs each day after go-live with the same weekday a week earlier", () => {
+    const c = at(ios("2026-09-14", 21, () => 1000, (d) => (d >= "2026-09-28" ? 30 : 20)), "2026-09-28");
+    expect([c.before.from, c.before.to, c.after.from, c.after.to]).toEqual(["2026-09-21", "2026-09-27", "2026-09-28", "2026-10-04"]);
+    expect(c.verdict).toBe("better");
+  });
+  it("calls a probable but unproven move 'likely', in the direction of the change", () => {
+    const c = at(ios("2026-09-14", 21, () => 1000, (d) => (d >= "2026-09-28" ? 13 : 10)), "2026-09-28");
+    expect(c.rel).toBeCloseTo(0.3, 5);
+    expect(c.verdict).toBe("likely better");
+  });
+  it("leaves out an incomplete day (today's partial data) and says too early when fewer than 3 full days remain", () => {
+    const rows = ios("2026-09-14", 17, (d) => (d === "2026-09-30" ? 40 : 1000), (d) => (d === "2026-09-30" ? 9 : 20)); // data ends on a partial 30 Sept
+    const c = at(rows, "2026-09-28");
+    expect(c.excluded).toEqual([{ day: "2026-09-30", reason: "incomplete data" }]);
+    expect(c.after.days).toBe(2);
+    expect(c.verdict).toBe("too early");
+  });
+  it("leaves out double-date sale days and their pair", () => {
+    const c = at(ios("2026-09-25", 21, () => 1000, (d) => (d === "2026-10-10" ? 80 : 20)), "2026-10-08");
+    expect(c.excluded).toEqual([{ day: "2026-10-10", reason: "sale day" }]);
+    expect(c.after.days).toBe(6);
+    expect(c.verdict).toBe("no clear change");
+  });
+  it("refuses a verdict when the visit count itself jumps (a tracking change)", () => {
+    const c = at(ios("2026-09-14", 21, (d) => (d >= "2026-09-28" ? 2000 : 1000), () => 20), "2026-09-28");
+    expect(c.verdict).toBe("unreliable");
+    expect(c.reason).toMatch(/visits per day jumped 100%/);
+  });
+});
 
 describe("release → section mapping", () => {
   it("maps real PR titles to funnel sections", () => {

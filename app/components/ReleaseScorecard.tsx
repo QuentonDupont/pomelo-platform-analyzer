@@ -137,20 +137,20 @@ function ScoreCell({ c, platform, release }: { c: ConversionImpact | null; platf
         <span className="sc-na">—</span>
       </td>
     );
-  if (c.verdict === "too early" || c.verdict === "no data")
+  if (c.verdict === "too early" || c.verdict === "no data" || c.verdict === "unreliable")
     return (
-      <td className="sc-cell na" aria-label={`${release} on ${platform}: ${c.verdict}`}>
-        <span className="sc-na small">{c.verdict === "too early" ? "too early" : "no data"}</span>
+      <td className="sc-cell na" title={c.reason} aria-label={`${release} on ${platform}: ${c.verdict}${c.reason ? ` — ${c.reason}` : ""}`}>
+        <span className="sc-na small">{c.verdict === "too early" ? "too early" : c.verdict === "unreliable" ? "can't compare" : "no data"}</span>
       </td>
     );
   const cls = c.verdict === "better" ? "better" : c.verdict === "worse" ? "worse" : "flat";
   const arrow = c.verdict === "better" ? "▲" : c.verdict === "worse" ? "▼" : "●";
   const pct = c.rel == null ? "—" : `${c.rel >= 0 ? "+" : "−"}${Math.abs(c.rel * 100).toFixed(1)}%`;
-  const tip = `${platform} conversion ${fmtPct(c.before.value, 2)} → ${fmtPct(c.after.value, 2)} (${pct})\nBefore: ${c.before.from} → ${c.before.to} (${c.before.label}), ${fmtInt(c.before.orders)} orders / ${fmtInt(c.before.sessions)} sessions\nAfter: ${c.after.from} → ${c.after.to}, ${fmtInt(c.after.orders)} orders / ${fmtInt(c.after.sessions)} sessions`;
+  const tip = `${platform} conversion ${fmtPct(c.before.value, 2)} → ${fmtPct(c.after.value, 2)} (${pct})\nBefore: ${c.before.from} → ${c.before.to} (${c.before.label}), ${fmtInt(c.before.orders)} orders / ${fmtInt(c.before.sessions)} sessions\nAfter: ${c.after.from} → ${c.after.to}, ${fmtInt(c.after.orders)} orders / ${fmtInt(c.after.sessions)} sessions${c.excluded?.length ? `\nLeft out: ${c.excluded.map((e) => `${e.day} (${e.reason})`).join(", ")}` : ""}`;
   if (cls === "flat")
     return (
       <td className="sc-cell flat" title={tip} aria-label={`${release} on ${platform}: no clear change in conversion (${pct}, within normal variation)`}>
-        <span className="sc-flat">No clear change</span>
+        <span className="sc-flat">{c.verdict === "likely better" ? "Likely up" : c.verdict === "likely worse" ? "Likely down" : "No clear change"}</span>
         <span className="sc-abs">
           {pct} · {fmtPct(c.before.value, 2)} → {fmtPct(c.after.value, 2)}
         </span>

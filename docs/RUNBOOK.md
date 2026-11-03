@@ -50,3 +50,11 @@ Add it to `config/repos.yml` with its **production** signal (deploy workflow fil
 
 ## Report
 "Generate report" opens `/report?…` with the current filters. Download PDF = browser print; CSV = `/api/export` aggregates.
+
+## Refresh the Claude artifacts (Analyzer + Platform Changes Tracker)
+Both artifacts are fed from this app's cache, so one Superset pull updates them together.
+1. `npm run sync` with `SUPERSET_MCP_URL` / `SUPERSET_MCP_TOKEN` in `.env.local` (git-ignored). The sync works against the Pomelo Superset MCP server with its bearer token; `tests/superset-adapter.test.ts` covers the response shape.
+2. `scripts/artifact-refresh/build-analyzer-docs.mjs` turns the cache into the Analyzer artifact's data documents (`--verify` compares what the artifact holds with the cache).
+3. `scripts/artifact-refresh/export-tracker-csv.mjs` builds the tracker's `daily_platform` CSV: history before `--from` is kept byte for byte, later days come from the cache, and the current partial day is left out.
+Writing to the artifacts needs a Claude session (the Artifact and ArtifactData tools). The Claude Code skill `refresh-pomelo-artifacts` (in `~/.claude/skills/`) runs all of it: ask Claude to "refresh the artifacts". Data only; the tracker's page and other datasets are never touched.
+`scripts/artifact-refresh/tracker-model.cjs` runs the tracker page's own calculations offline (`--page`, `--data`, optional `--compare`), so the written conclusions beside the numbers can be re-checked when data or window dates change.
