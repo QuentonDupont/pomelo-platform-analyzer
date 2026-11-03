@@ -53,10 +53,15 @@ async function mcpInit() {
   await rpc("notifications/initialized", {}, true);
 }
 
-function rowsFromToolResult(result: { content?: { type: string; text?: string }[]; structuredContent?: unknown }): Record<string, unknown>[] {
+export function rowsFromToolResult(result: { content?: { type: string; text?: string }[]; structuredContent?: unknown }): Record<string, unknown>[] {
   const sc = result?.structuredContent as { data?: unknown; rows?: unknown; result?: unknown } | undefined;
   const fromObj = (o: unknown): Record<string, unknown>[] | null => {
-    if (Array.isArray(o)) return o as Record<string, unknown>[];
+    if (Array.isArray(o)) {
+      // The server wraps rows in a chart-data envelope: result: [{ ..., colnames, data: [rows] }]
+      const env = o as { data?: unknown; colnames?: unknown }[];
+      if (env.length > 0 && env.every((e) => e && Array.isArray(e.data) && Array.isArray(e.colnames))) return env.flatMap((e) => e.data as Record<string, unknown>[]);
+      return o as Record<string, unknown>[];
+    }
     if (o && typeof o === "object") {
       const x = o as Record<string, unknown>;
       for (const k of ["data", "rows", "result", "records"]) {
